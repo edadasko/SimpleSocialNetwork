@@ -23,7 +23,7 @@ namespace SimpleSocialNetwork
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<AppDbContext>();
+                    var context = services.GetRequiredService<UsersContext>();
                     SeedData.Initialize(context);
                 }
                 catch (Exception ex)

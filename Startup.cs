@@ -26,7 +26,8 @@ namespace SimpleSocialNetwork
         public void ConfigureServices(IServiceCollection services)
         {
             string connection = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connection));
+            services.AddTransient<IUsersRepository, EFUsersRepository>();
+            services.AddDbContext<UsersContext>(options => options.UseSqlServer(connection));
             services.AddMvc();
         }
 

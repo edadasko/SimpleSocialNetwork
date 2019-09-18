@@ -11,29 +11,16 @@ namespace SimpleSocialNetwork.Controllers
 {
     public class HomeController : Controller
     {
-        AppDbContext db;
-        public HomeController(AppDbContext context)
+        IUsersRepository _repository;
+        public HomeController(IUsersRepository repository)
         {
-            db = context;
+            _repository = repository;
         }
         public IActionResult Index()
         {
-            var users = db.Users.Include(u => u.OutgoingFrienshipRequests).
-                                 Include(u => u.IncomingFrienshipRequests).
-                                 ToList();
-
-            foreach (var user in users)
-            {
-                var friends = user.Friends;
-            }
-
-            db.Entry(users[0])
-              .Collection(c => c.Posts)
-              .Load();
-
-            var posts = users[0].Posts;
-
-            var friendships = db.Friendships.ToList();
+            var users = _repository.Users.ToList();
+            var messages = _repository.GetUsersMessages(users[0]);
+            var news = _repository.GetUsersNews(users[1]);
 
             return View();
         }

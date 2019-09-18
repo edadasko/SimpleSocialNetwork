@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace SimpleSocialNetwork.Models
 {
-    public class AppDbContext : DbContext
+    public class UsersContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options)
+        public UsersContext(DbContextOptions<UsersContext> options)
             :base(options)
         {
             Database.EnsureCreated();

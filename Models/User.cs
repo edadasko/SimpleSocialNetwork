@@ -75,7 +75,31 @@ namespace SimpleSocialNetwork.Models
         public ICollection<Message> MessageFrom { get; set; }
         public ICollection<Message> MessageTo { get; set; }
 
-      
+        [NotMapped]
+        public Dictionary<User, List<Message>> Messages
+        {
+            get
+            {
+                var groupedOutgoingMessages = MessageFrom.GroupBy(m => m.UserTo);
+                var groupedIncomingMessages = MessageTo.GroupBy(m => m.UserFrom);
+                var groupedMessages = groupedOutgoingMessages.Concat(groupedIncomingMessages)
+                                                             .GroupBy(m => m.Key).ToList();
+                var uniqueMessagesGroups = new Dictionary<User, List<Message>>();
+                foreach (var group in groupedMessages)
+                {
+                    var user = group.Key;
+                    var messagesWithCurrentUser = new List<Message>();
+                    var listGroup = group.ToList();
+                    messagesWithCurrentUser.AddRange(listGroup[0].ToList());
+                    messagesWithCurrentUser.AddRange(listGroup[1].ToList());
+                    messagesWithCurrentUser = messagesWithCurrentUser.OrderByDescending(m => m.Date).ToList();
+                    uniqueMessagesGroups.Add(user, messagesWithCurrentUser);
+                }
+                return uniqueMessagesGroups;
+            }
+            
+        }
+
         public User()
         {
             IncomingFrienshipRequests = new List<Friendship>();

@@ -9,7 +9,7 @@ using SimpleSocialNetwork.Models;
 
 namespace SimpleSocialNetwork.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
+    [DbContext(typeof(UsersContext))]
     [Migration("20190918104033_initial")]
     partial class initial
     {
