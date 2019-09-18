@@ -1,0 +1,43 @@
+﻿<Properties StartupConfiguration="{D606A6B5-E6A2-41C0-8062-68BC1F6BE88F}|Default">
+  <MonoDevelop.Ide.ItemProperties.SimpleSocialNetwork PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/HomeController.cs">
+    <Files>
+      <File FileName="Models/AppDbContext.cs" Line="1" Column="1" />
+      <File FileName="Controllers/HomeController.cs" Line="30" Column="1" />
+      <File FileName="Models/User.cs" Line="45" Column="2" />
+      <File FileName="Migrations/20190918103529_initial.cs" Line="1" Column="1" />
+      <File FileName="Models/Like.cs" Line="1" Column="1" />
+      <File FileName="Models/Post.cs" Line="1" Column="1" />
+      <File FileName="Program.cs" Line="1" Column="1" />
+      <File FileName="README.md" Line="1" Column="1" />
+      <File FileName="Startup.cs" Line="1" Column="1" />
+      <File FileName="SeedData.cs" Line="182" Column="49" />
+      <File FileName="Models/Comment.cs" Line="1" Column="1" />
+      <File FileName="Models/ErrorViewModel.cs" Line="1" Column="1" />
+      <File FileName="Models/Friendship.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SimpleSocialNetwork" expanded="True">
+            <Node name="SimpleSocialNetwork" expanded="True">
+              <Node name="Controllers" expanded="True">
+                <Node name="HomeController.cs" selected="True" />
+              </Node>
+              <Node name="Models" expanded="True" />
+              <Node name="Properties" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/edadasko/SimpleSocialNetwork/Controllers/HomeController.cs" relfile="Controllers/HomeController.cs" line="21" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
