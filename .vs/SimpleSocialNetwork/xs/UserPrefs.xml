@@ -1,25 +1,33 @@
 ﻿<Properties StartupConfiguration="{D606A6B5-E6A2-41C0-8062-68BC1F6BE88F}|Default">
   <MonoDevelop.Ide.ItemProperties.SimpleSocialNetwork PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Models/User.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SeedData.cs">
     <Files>
-      <File FileName="Models/AppDbContext.cs" Line="24" Column="1" />
-      <File FileName="Controllers/HomeController.cs" Line="23" Column="77" />
-      <File FileName="Models/User.cs" Line="81" Column="1" />
+      <File FileName="Controllers/HomeController.cs" Line="19" Column="15" />
+      <File FileName="Controllers/MessageController.cs" Line="15" Column="56" />
+      <File FileName="Models/Comment.cs" Line="18" Column="98" />
+      <File FileName="Models/EFUsersRepository.cs" Line="1" Column="1" />
+      <File FileName="Models/IUsersRepository.cs" Line="1" Column="1" />
       <File FileName="Models/Like.cs" Line="1" Column="1" />
-      <File FileName="Models/Post.cs" Line="1" Column="1" />
-      <File FileName="Program.cs" Line="1" Column="1" />
-      <File FileName="README.md" />
-      <File FileName="Startup.cs" Line="29" Column="15" />
-      <File FileName="SeedData.cs" Line="28" Column="17" />
-      <File FileName="Models/Comment.cs" Line="1" Column="1" />
-      <File FileName="Models/ErrorViewModel.cs" Line="1" Column="1" />
+      <File FileName="Models/User.cs" Line="77" Column="1" />
+      <File FileName="Models/Post.cs" Line="39" Column="47" />
+      <File FileName="SeedData.cs" Line="153" Column="28" />
+      <File FileName="Models/UsersContext.cs" Line="1" Column="1" />
+      <File FileName="Models/Message.cs" Line="22" Column="103" />
+      <File FileName="Models/Photo.cs" Line="15" Column="51" />
       <File FileName="Models/Friendship.cs" Line="1" Column="1" />
-      <File FileName="Properties/launchSettings.json" />
-      <File FileName="Models/IUsersRepository.cs" Line="24" Column="1" />
-      <File FileName="Models/FakeUsersRepository.cs" Line="184" Column="34" />
-      <File FileName="Models/Message.cs" Line="1" Column="1" />
-      <File FileName="Models/EFUsersRepository.cs" Line="83" Column="33" />
-      <File FileName="Models/Photo.cs" Line="1" Column="1" />
+      <File FileName="Models/ErrorViewModel.cs" Line="1" Column="1" />
+      <File FileName="Startup.cs" Line="1" Column="1" />
+      <File FileName="appsettings.json" />
+      <File FileName="Controllers/FriendshipController.cs" Line="15" Column="56" />
+      <File FileName="Program.cs" Line="1" Column="1" />
+      <File FileName="appsettings.Development.json" />
+      <File FileName=".gitignore" />
+      <File FileName="README.md" Line="1" Column="22" />
+      <File FileName="Migrations/20190918104033_initial.cs" />
+      <File FileName="Controllers/CommentController.cs" Line="10" Column="20" />
+      <File FileName="Controllers/LikeController.cs" Line="10" Column="20" />
+      <File FileName="Controllers/PostController.cs" Line="11" Column="20" />
+      <File FileName="Controllers/UserController.cs" Line="54" Column="9" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -27,22 +35,23 @@
           <Node name="SimpleSocialNetwork" expanded="True">
             <Node name="SimpleSocialNetwork" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="User.cs" selected="True" />
-              </Node>
+              <Node name="Migrations" expanded="True" />
+              <Node name="Models" expanded="True" />
               <Node name="Properties" expanded="True" />
+              <Node name="SeedData.cs" selected="True" />
             </Node>
           </Node>
         </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/edadasko/SimpleSocialNetwork/Controllers/HomeController.cs" relfile="Controllers/HomeController.cs" line="21" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

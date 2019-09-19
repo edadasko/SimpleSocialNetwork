@@ -18,6 +18,31 @@ namespace SimpleSocialNetwork.Models
         List<User> GetUsersFriends(User user);
         List<Post> GetUsersNews(User user);
         Dictionary<User, List<Message>> GetUsersMessages(User user);
-        Post GetUserMainPhoto(User user);
+        Post GetUsersMainPhoto(User user);
+
+        User GetUserById(int id);
+
+        void Create(Message message);
+
+        void Create(Post post);
+        void Remove(Post post);
+
+        void Create(Like like);
+        void Remove(Like like);
+
+        void Create(Comment comment);
+        void Remove(Comment comment);
+
+        void Create(Photo photo);
+        void Remove(Photo photo);
+
+        void Create(Friendship friendship);
+        void Update(Friendship friendship);
+        void Remove(Friendship friendship);
+
+        void Save();
+
+        void ClearData();
+
     }
 }

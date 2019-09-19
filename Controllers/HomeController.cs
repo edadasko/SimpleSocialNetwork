@@ -16,13 +16,10 @@ namespace SimpleSocialNetwork.Controllers
         {
             _repository = repository;
         }
-        public IActionResult Index()
+        public string Index()
         {
-            var users = _repository.Users.ToList();
-            var messages = _repository.GetUsersMessages(users[0]);
-            var news = _repository.GetUsersNews(users[1]);
-
-            return View();
+            //_repository.ClearData();
+            return "Simple Social Network";
         }
     }
 }

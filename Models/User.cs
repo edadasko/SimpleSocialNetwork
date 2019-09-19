@@ -29,6 +29,13 @@ namespace SimpleSocialNetwork.Models
         public ICollection<Friendship> IncomingFrienshipRequests { get; set; }
         public ICollection<Friendship> OutgoingFrienshipRequests { get; set; }
 
+        public ICollection<Post> Posts { get; set; }
+
+        public ICollection<Comment> Comments { get; set; }
+        public ICollection<Like> Likes { get; set; }
+
+        public ICollection<Message> MessageFrom { get; set; }
+        public ICollection<Message> MessageTo { get; set; }
 
         [NotMapped]
         public List<User> Friends
@@ -49,31 +56,12 @@ namespace SimpleSocialNetwork.Models
             }
         }
 
-        public ICollection<Post> Posts { get; set; }
 
         [NotMapped]
-        public List<Post> Photos
-        {
-            get
-            {
-                return Posts.Where(p => p.Type == PostType.PhotoOnly).ToList();
-            }
-        }
+        public List<Post> Photos => Posts.Where(p => p.Type == PostType.PhotoOnly).ToList();
 
         [NotMapped]
-        public Post MainPhoto
-        {
-            get
-            {
-                return Posts.Single(p => p.Type == PostType.MainPhoto);
-            }
-        }
-
-        public ICollection<Comment> Comments { get; set; }
-        public ICollection<Like> Likes { get; set; }
-
-        public ICollection<Message> MessageFrom { get; set; }
-        public ICollection<Message> MessageTo { get; set; }
+        public Post MainPhoto => Posts.Single(p => p.Type == PostType.MainPhoto);
 
         [NotMapped]
         public Dictionary<User, List<Message>> Messages
@@ -84,6 +72,9 @@ namespace SimpleSocialNetwork.Models
                 var groupedIncomingMessages = MessageTo.GroupBy(m => m.UserFrom);
                 var groupedMessages = groupedOutgoingMessages.Concat(groupedIncomingMessages)
                                                              .GroupBy(m => m.Key).ToList();
+                if (groupedMessages.Count == 0)
+                    return new Dictionary<User, List<Message>>();
+
                 var uniqueMessagesGroups = new Dictionary<User, List<Message>>();
                 foreach (var group in groupedMessages)
                 {
@@ -91,7 +82,8 @@ namespace SimpleSocialNetwork.Models
                     var messagesWithCurrentUser = new List<Message>();
                     var listGroup = group.ToList();
                     messagesWithCurrentUser.AddRange(listGroup[0].ToList());
-                    messagesWithCurrentUser.AddRange(listGroup[1].ToList());
+                    if (listGroup.Count > 1)
+                        messagesWithCurrentUser.AddRange(listGroup[1].ToList());
                     messagesWithCurrentUser = messagesWithCurrentUser.OrderByDescending(m => m.Date).ToList();
                     uniqueMessagesGroups.Add(user, messagesWithCurrentUser);
                 }

@@ -14,5 +14,7 @@ namespace SimpleSocialNetwork.Models
 
         public int? OwnerId { get; set; }
         public User Owner { get; set; }
+
+        public override string ToString() => Date.ToString() + "\n" + Owner + ": \n" + Text + "\n";
     }
 }

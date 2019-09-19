@@ -11,5 +11,7 @@ namespace SimpleSocialNetwork.Models
 
         public int? PostId { get; set; }
         public Post Post { get; set; }
+
+        public override string ToString() => Image;
     }
 }

@@ -32,5 +32,11 @@ namespace SimpleSocialNetwork.Models
             Likes = new HashSet<Like>();
             Comments = new List<Comment>();
         }
+
+        public override string ToString() => Owner + "\n" +
+                                             Date.ToString() + "\n" + Text + "\n"
+                                             + string.Join("\n", Photos) +
+                                             "\nКоличество лайков: " + Likes.Count +
+                                             "\nКомментарии: \n" + string.Join("\n", Comments);
     }
 }

@@ -14,13 +14,13 @@ namespace SimpleSocialNetwork.Models
             context = ctx;
         }
 
-        public IEnumerable<User> Users => context.Users;
-        public IEnumerable<Message> Messages => context.Messages;
-        public IEnumerable<Post> Posts => context.Posts;
-        public IEnumerable<Like> Likes => context.Likes;
-        public IEnumerable<Comment> Comments => context.Comments;
-        public IEnumerable<Photo> Photos => context.Photos;
-        public IEnumerable<Friendship> Friendships => context.Friendships;
+        public IEnumerable<User> Users => context.Users.ToList();
+        public IEnumerable<Message> Messages => context.Messages.ToList();
+        public IEnumerable<Post> Posts => context.Posts.ToList();
+        public IEnumerable<Like> Likes => context.Likes.ToHashSet();
+        public IEnumerable<Comment> Comments => context.Comments.ToList();
+        public IEnumerable<Photo> Photos => context.Photos.ToList();
+        public IEnumerable<Friendship> Friendships => context.Friendships.ToList();
 
 
         public List<Post> GetUsersPosts(User user)
@@ -31,31 +31,35 @@ namespace SimpleSocialNetwork.Models
 
             foreach (var post in user.Posts)
             {
-                context.Entry(post)
-                       .Collection(c => c.Likes)
-                       .Load();
-
-                context.Entry(post)
-                       .Collection(c => c.Comments)
-                       .Load();
-
-                context.Entry(post)
-                        .Collection(c => c.Photos)
-                        .Load();
+                void load(string x) => context.Entry(post)
+                                              .Collection(x)
+                                              .Load();
+                load("Likes");
+                load("Comments");
+                load("Photos");
             }
             return user.Posts.ToList();
         }
 
         public List<User> GetUsersFriends(User user)
         {
-            context.Entry(user)
-                   .Collection(c => c.IncomingFrienshipRequests)
-                   .Load();
+            void loadRequests(string x) => context.Entry(user)
+                                                  .Collection(x)
+                                                  .Load();
+            loadRequests("IncomingFrienshipRequests");
+            loadRequests("OutgoingFrienshipRequests");
 
-            context.Entry(user)
-                   .Collection(c => c.IncomingFrienshipRequests)
-                   .Load();
+            void loadSenders(string x, Friendship request)
+                            => context.Entry(request)
+                                      .Reference(x)
+                                      .Load();
 
+            foreach (var request in user.IncomingFrienshipRequests)
+                loadSenders("RequestFrom", request);
+
+            foreach (var request in user.OutgoingFrienshipRequests)
+                loadSenders("RequestTo", request);
+            
             return user.Friends;
         }
 
@@ -64,21 +68,32 @@ namespace SimpleSocialNetwork.Models
             var news = new List<Post>();
             var friends = GetUsersFriends(user);
             foreach (var friend in friends)
-            {
                 news.AddRange(GetUsersPosts(friend));
-            }
             return news.OrderBy(n => n.Date).ToList();
         }
 
         public Dictionary<User, List<Message>> GetUsersMessages(User user)
         {
-            context.Entry(user)
-                   .Collection(c => c.MessageFrom)
-                   .Load();
+            void loadMessages(string x) => context.Entry(user)
+                                                  .Collection(x)
+                                                  .Load();
 
-            context.Entry(user)
-                   .Collection(c => c.MessageTo)
-                   .Load();
+            loadMessages("MessageFrom");
+            loadMessages("MessageTo");
+
+            var messagesFrom = user.MessageFrom;
+            var messageTo = user.MessageTo;
+
+            void loadSenders(string x, Message message)
+                            => context.Entry(message)
+                                      .Reference(x)
+                                      .Load();
+
+            foreach (var message in messagesFrom)
+                loadSenders("UserTo", message);
+
+            foreach (var message in messageTo)
+                loadSenders("UserFrom", message);
 
             return user.Messages;
         }
@@ -89,26 +104,22 @@ namespace SimpleSocialNetwork.Models
                    .Collection(c => c.Posts)
                    .Load();
 
+            void load(string x, Post photo)
+                            => context.Entry(photo)
+                                      .Collection(x)
+                                      .Load();
+
             var onlyPhotoPosts = user.Photos;
             foreach (var photo in onlyPhotoPosts)
             {
-                context.Entry(photo)
-                       .Collection(c => c.Likes)
-                       .Load();
-
-                context.Entry(photo)
-                       .Collection(c => c.Comments)
-                       .Load();
-
-                context.Entry(photo)
-                        .Collection(c => c.Photos)
-                        .Load();
-
+                load("Likes", photo);
+                load("Comments", photo);
+                load("Photos", photo);
             }
             return onlyPhotoPosts;
         }
 
-        public Post GetUserMainPhoto(User user)
+        public Post GetUsersMainPhoto(User user)
         {
             context.Entry(user)
                     .Collection(c => c.Posts)
@@ -116,17 +127,13 @@ namespace SimpleSocialNetwork.Models
 
             var mainPhoto = user.MainPhoto;
 
-            context.Entry(mainPhoto)
-                   .Collection(c => c.Likes)
-                   .Load();
+            void load(string x) => context.Entry(mainPhoto)
+                                          .Collection(x)
+                                          .Load();
 
-            context.Entry(mainPhoto)
-                   .Collection(c => c.Comments)
-                   .Load();
-
-            context.Entry(mainPhoto)
-                    .Collection(c => c.Photos)
-                    .Load();
+            load("Likes");
+            load("Comments");
+            load("Photos");
 
             return mainPhoto;
         }
@@ -150,5 +157,20 @@ namespace SimpleSocialNetwork.Models
             context.SaveChanges();
         }
 
+        public void Create(Message message) => context.Messages.Add(message);
+        public void Create(Post post) => context.Posts.Add(post);
+        public void Remove(Post post) => context.Posts.Remove(post);
+        public void Create(Like like) => context.Likes.Add(like);
+        public void Remove(Like like) => context.Likes.Remove(like);
+        public void Create(Comment comment) => context.Comments.Add(comment);
+        public void Remove(Comment comment) => context.Comments.Remove(comment);
+        public void Create(Photo photo) => context.Photos.Add(photo);
+        public void Remove(Photo photo) => context.Photos.Remove(photo);
+        public void Create(Friendship friendship) => context.Friendships.Add(friendship);
+        public void Update(Friendship friendship) => context.Friendships.Update(friendship);
+        public void Remove(Friendship friendship) => context.Friendships.Remove(friendship);
+        public void Save() => context.SaveChanges();
+
+        public User GetUserById(int id) => context.Users.Find(id);
     }
 }
