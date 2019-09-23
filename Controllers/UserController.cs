@@ -47,8 +47,5 @@ namespace SimpleSocialNetwork.Controllers
             }
             return string.Join("\n", news);
         }
-
     }
 }
-
-// 49-51

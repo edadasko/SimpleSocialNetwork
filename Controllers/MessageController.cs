@@ -17,28 +17,17 @@ namespace SimpleSocialNetwork.Controllers
 
         public string Index()
         {
-            var messages =_repository.GetUsersMessages(_user);
-
-            string strMessages = "";
-            foreach (var user in messages.Keys)
-            {
-                foreach (var message in messages[user])
-                {
-                    strMessages += message.ToString();
-                }
-                strMessages += "\n";
-            }
-
-            return strMessages;
+            // вывести список диалогов
+            throw new NotImplementedException();
         }
 
-        public string SendMessage(int idTo, string text)
+        public string Dialog()
         {
-            var userTo = _repository.GetUserById(idTo);
-
-            if (userTo == null)
-                return Index();
-
+            // вывести сообщения с конктретным юзером
+            throw new NotImplementedException();
+        }
+        public string SendMessage(User userTo, string text)
+        {
             Message message = new Message
             {
                 UserFrom = _user,

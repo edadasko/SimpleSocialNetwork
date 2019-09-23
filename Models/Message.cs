@@ -20,6 +20,5 @@ namespace SimpleSocialNetwork.Models
         public User UserTo { get; set; }
 
         public override string ToString() => Date.ToString() + "\n" + UserFrom + ": \n" + Text + "\n";
-
     }
 }

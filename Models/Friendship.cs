@@ -21,6 +21,5 @@ namespace SimpleSocialNetwork.Models
         public User RequestTo { get; set; }
 
         public FriendshipStatus Status { get; set; }
-
     }
 }

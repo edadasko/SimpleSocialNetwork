@@ -18,7 +18,6 @@ namespace SimpleSocialNetwork.Controllers
         }
         public string Index()
         {
-            //_repository.ClearData();
             return "Simple Social Network";
         }
     }

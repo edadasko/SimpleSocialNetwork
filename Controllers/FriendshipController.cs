@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using SimpleSocialNetwork.Models;
 
 namespace SimpleSocialNetwork.Controllers
@@ -42,7 +41,5 @@ namespace SimpleSocialNetwork.Controllers
             _repository.Update(request);
             return request.RequestFrom + " removed from friends";
         }
-
-
     }
 }
