@@ -16,9 +16,9 @@ namespace SimpleSocialNetwork.Controllers
         {
             _repository = repository;
         }
-        public string Index()
+        public RedirectToActionResult Index()
         {
-            return "Simple Social Network";
+            return RedirectToAction("Index", "User");
         }
     }
 }

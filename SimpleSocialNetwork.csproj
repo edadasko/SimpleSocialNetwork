@@ -13,4 +13,12 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\User\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\css\site.min.css" />
+    <Content Remove="Views\Shared\_CookieConsentPartial.cshtml" />
+    <Content Remove="Views\Shared\Error.cshtml" />
+  </ItemGroup>
 </Project>

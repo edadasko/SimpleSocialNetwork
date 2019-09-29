@@ -131,6 +131,32 @@ namespace SimpleSocialNetwork
                 }
             };
 
+
+            var mainPhotosPosts = new List<Post>();
+
+            for (int i = 0; i < 3; i++)
+            {
+                mainPhotosPosts.Add(
+                    new Post
+                    {
+                        Type = PostType.MainPhoto,
+                        Owner = users[i],
+                        Date = DateTime.Now
+                    });
+            }
+
+            var mainPhotos = new List<Photo>();
+
+            for (int i = 0; i < 3; i++)
+            {
+                mainPhotos.Add(
+                    new Photo
+                    {
+                        Image = "~/images/no_photo.png",
+                        Post = mainPhotosPosts[i]
+                    });
+            }
+
             var photos = new List<Photo>
             {
                 new Photo
@@ -139,6 +165,9 @@ namespace SimpleSocialNetwork
                     Post = posts[0]
                 }
             };
+
+            photos.AddRange(mainPhotos);
+            posts.AddRange(mainPhotosPosts);
 
             var comments = new List<Comment>
             {

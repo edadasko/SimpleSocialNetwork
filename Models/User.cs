@@ -62,6 +62,9 @@ namespace SimpleSocialNetwork.Models
         [NotMapped]
         public Post MainPhoto => Posts.Single(p => p.Type == PostType.MainPhoto);
 
+        [NotMapped]
+        public string MainPhotoPath => Posts.Single(p => p.Type == PostType.MainPhoto).Photos.ToList()[0].Image;
+
         public User()
         {
             IncomingFrienshipRequests = new List<Friendship>();

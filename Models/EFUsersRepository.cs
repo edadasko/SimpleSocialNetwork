@@ -31,9 +31,9 @@ namespace SimpleSocialNetwork.Models
             return LoadInformationFromPosts(user.Posts.ToList());
         }
 
-        public List<Post> GetUsersPost(User user, int num)
+        public List<Post> GetUsersPosts(User user, int num)
         {
-            var posts = context.Posts.Include(p => p.Owner == user).Take(num).ToList();
+            var posts = context.Posts.Where(p => p.Owner == user).Take(num).ToList();
             return LoadInformationFromPosts(posts);
         }
 
@@ -128,11 +128,8 @@ namespace SimpleSocialNetwork.Models
 
         public Post GetUsersMainPhoto(User user)
         {
-            context.Entry(user)
-                    .Collection(c => c.Posts)
-                    .Load();
-
-            var mainPhoto = user.MainPhoto;
+            var mainPhoto = context.Posts.Where(p => p.Type == PostType.MainPhoto && p.Owner == user).
+                                          Single();
 
             void load(string x) => context.Entry(mainPhoto)
                                           .Collection(x)
@@ -143,6 +140,14 @@ namespace SimpleSocialNetwork.Models
             load("Photos");
 
             return mainPhoto;
+        }
+
+        public void GetUsersMainPageInfo(User user)
+        {
+            GetUsersFriends(user);
+            GetUsersMainPhoto(user);
+            GetUsersPhotos(user);
+            GetUsersPosts(user);
         }
 
         public void ClearData()
@@ -163,6 +168,28 @@ namespace SimpleSocialNetwork.Models
                 context.Friendships.Remove(entity);
             context.SaveChanges();
         }
+
+        public void Create(User user)
+        {
+            var mainPhotoPost = new Post()
+            {
+                Type = PostType.MainPhoto,
+                Owner = user
+            };
+
+            var mainPhoto = new Photo()
+            {
+                Image = "~/images/no_photo.png",
+                Post = mainPhotoPost
+            };
+
+            context.Posts.Add(mainPhotoPost);
+            context.Photos.Add(mainPhoto);
+            context.Users.Add(user);
+        }
+
+        public void Remove(User user) => context.Users.Remove(user);
+        public void Update(User user) => context.Users.Update(user);
 
         public void Create(Message message) => context.Messages.Add(message);
         public void Create(Post post) => context.Posts.Add(post);

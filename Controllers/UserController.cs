@@ -11,41 +11,36 @@ namespace SimpleSocialNetwork.Controllers
         User _user;
         public UserController(IUsersRepository repository)
         {
+
             _repository = repository;
             _user = ((List<User>)_repository.Users)[0];
         }
 
-        public string Index(int id)
+        public ViewResult Index()
         {
-            var user = id == 0 ? _user: _repository.GetUserById(id);
-            if (user == null)
-                return "";
-            string info = "";
-
-            info += "Дата рождения: " + user.BirthDay?.ToString("dd.MM.yyyy") + "\n";
-            info += "Страна: " + user.Country + "\n";
-            info += "Город: " + user.City + "\n";
-
-            var posts = _repository.GetUsersPosts(user);
-            return user + "\n\n" + info + "\n\n" + string.Join("\n", posts); 
+            _repository.GetUsersMainPageInfo(_user);
+            return View(_user);
         }
 
-        public string Friends(int id)
+        public ViewResult MainPage(int userId)
         {
-            var user = id == 0 ? _user : _repository.GetUserById(id);
-            var friends =_repository.GetUsersFriends(user);
-            return string.Join("\n", friends);
+            User user = _repository.GetUserById(userId);
+            _repository.GetUsersMainPageInfo(user);
+            return View("Index", user);
         }
 
-        public string News()
+        public ViewResult Friends()
         {
-            var news = new List<Post>();
-            var friends = _repository.GetUsersFriends(_user);
-            foreach (var friend in friends)
-            {
-                news.AddRange(_repository.GetUsersPosts(friend));
-            }
-            return string.Join("\n", news);
+            var friends =_repository.GetUsersFriends(_user);
+            foreach(var friend in friends)
+                _repository.GetUsersMainPhoto(friend);
+            return View(friends);
+        }
+
+        public ViewResult News()
+        {
+            var news = _repository.GetUsersNews(_user);
+            return View(news);
         }
     }
 }

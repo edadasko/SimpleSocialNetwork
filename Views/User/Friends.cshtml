@@ -1,0 +1,14 @@
+﻿@model List<User>
+<div>
+    <ul>
+        @foreach (var friend in @Model)
+        {
+            <li>
+                <div>
+                    <img src="@Url.Content(@friend.MainPhotoPath)" width="70" height="70" />
+                    @Html.ActionLink(@friend.ToString(), "MainPage", new { userId = @friend.UserId})
+                </div>
+            </li>
+        }
+    </ul>
+</div>

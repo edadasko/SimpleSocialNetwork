@@ -18,8 +18,13 @@ namespace SimpleSocialNetwork.Models
         List<User> GetUsersFriends(User user);
         List<Post> GetUsersNews(User user);
         Post GetUsersMainPhoto(User user);
+        void GetUsersMainPageInfo(User user);
 
         User GetUserById(int id);
+
+        void Create(User user);
+        void Update(User user);
+        void Remove(User user);
 
         void Create(Message message);
 
