@@ -1,3 +1,38 @@
 ﻿@model User
-<h3>@Model</h3>
-<img src="@Url.Content(@Model.MainPhotoPath)" width="200" height="200">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <h3>@Model</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 panel panel-default">
+            <img src="@Url.Content(@Model.MainPhotoPath)">
+        </div>
+        <div class="col-md-9 panel panel-default">
+            Информация
+        </div>
+    </div>
+
+    <div class="row border">
+        <div class="col-md-3 panel panel-default">
+            <div class="friend_button">
+                @Html.ActionLink("Друзья", "Friends", new { userId = @Model.UserId })
+            </div>
+        </div>
+       
+        <div class="col-md-9 panel panel-default">
+            <div class="posts_list">
+                <ul class="list-group">
+                    @foreach (var post in Model.WallPosts)
+                    {
+                        <li class="list-group-item">
+                            @{await Html.RenderPartialAsync("~/Views/Post/Index.cshtml", @post);}
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>   

@@ -47,6 +47,10 @@ namespace SimpleSocialNetwork.Models
                 load("Likes");
                 load("Comments");
                 load("Photos");
+
+                context.Entry(post)
+                              .Reference("Owner")
+                              .Load();
             }
             return posts;
         }

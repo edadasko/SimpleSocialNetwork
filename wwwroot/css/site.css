@@ -41,3 +41,34 @@ body {
     padding-left: 15px;
     padding-right: 15px;
 }
+
+.posts_list {
+    padding-top: 50px;
+}
+
+.friend_button {
+    background: #006064;
+    color: #FFF;
+
+    align-content: center;
+    text-align: center;
+}
+
+.friend_button:hover {
+    background: #00838f;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.friend_button > a {
+    color: #FFF;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.panel {
+    padding: 1%;
+}

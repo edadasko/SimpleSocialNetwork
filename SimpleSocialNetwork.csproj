@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <Folder Include="Views\User\" />
+    <Folder Include="Views\Post\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\css\site.min.css" />

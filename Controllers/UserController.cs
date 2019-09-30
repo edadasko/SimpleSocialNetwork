@@ -29,9 +29,10 @@ namespace SimpleSocialNetwork.Controllers
             return View("Index", user);
         }
 
-        public ViewResult Friends()
+        public ViewResult Friends(int userId)
         {
-            var friends =_repository.GetUsersFriends(_user);
+            User user = userId == 0 ? _user:_repository.GetUserById(userId);
+            var friends =_repository.GetUsersFriends(user);
             foreach(var friend in friends)
                 _repository.GetUsersMainPhoto(friend);
             return View(friends);

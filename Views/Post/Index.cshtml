@@ -1,0 +1,25 @@
+﻿@model Post
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <img src="@Url.Content(@Model.Owner.MainPhotoPath)"/>
+        </div>
+        <div class="col-md-10">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    @Model.Owner
+                </li>
+                <li class="list-group-item">
+                    @Model.Date
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-10">@Model.Text</div>
+    </div>
+</div>
