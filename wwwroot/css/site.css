@@ -1,4 +1,243 @@
-﻿.left_sidebar {
+﻿@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i');
+
+/* ================================================================================== 
+                                        Reset Css
+===================================================================================== */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+    font-family: 'Source Sans Pro', sans-serif;
+    overflow-x: hidden;
+    font-weight: 400;
+    background-color: #eeeeee;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+button {
+    outline: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a:focus {
+    text-decoration: none;
+    outline: none;
+}
+
+a:hover {
+    color: #fff;
+}
+
+button {
+    outline: none;
+}
+
+input {
+    outline: none;
+}
+
+textarea {
+    outline: none;
+}
+
+section {
+    float: left;
+    width: 100%;
+    position: relative;
+}
+
+img {
+    float: left;
+}
+
+p {
+    font-size: 14px;
+    line-height: 26px;
+    color: #666666;
+}
+
+
+/* =================== Mainpage ================= */
+
+
+main {
+    float: left;
+    width: 100%;
+    padding: 60px 0;
+}
+
+.main-section {
+    float: left;
+    width: 100%;
+}
+
+.main-section-data {
+    float: left;
+    width: 100%;
+}
+
+.main-left-sidebar {
+    float: left;
+    width: 100%;
+}
+
+.full-width {
+    float: left;
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 20px;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    border-radius: 10px;
+}
+
+.username-dt {
+    float: left;
+    width: 100%;
+    background-color: #006064;
+    padding-top: 40px;
+    border-radius: 10px;
+}
+
+.user-data {
+    text-align: center;
+}
+
+.usr-pic {
+    width: 110px;
+    height: 110px;
+    margin: 0 auto;
+    margin-bottom: -48px;
+}
+
+.usr-pic > img {
+    float: none;
+    border: 5px solid #fff;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    width: 100%;
+}
+
+.user-profile {
+    float: left;
+    width: 100%;
+}
+
+.user-specs {
+    float: left;
+    width: 100%;
+    padding: 63px 0 27px 0;
+}
+
+.user-specs h3 {
+    color: #000000;
+    font-size: 24px;
+    text-transform: capitalize;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.user-specs span {
+    color: #686868;
+    font-size: 14px;
+}
+
+.user-fw-status {
+    float: left;
+    width: 100%;
+}
+
+.user-fw-status li {
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+    padding: 15px 0;
+}
+
+.user-fw-status li:last-child {
+    border-bottom: 0;
+}
+
+.user-fw-status li:nth-child(1),
+.user-fw-status li:nth-child(2) {
+    border-bottom: 0;
+}
+
+.user-fw-status li h4 {
+    color: #686868;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.user-fw-status span {
+    color: #000000;
+    font-size: 20px;
+}
+
+.user-fw-status li a {
+    color: #e44d3a;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/*Left Navigation Bar*/
+
+.left_sidebar {
     position: fixed;
     width: 200px;
     height: calc(100vh);
@@ -29,7 +268,8 @@
 }
 
 .main_content {
-    padding-left: 220px;
+    padding-left: 200px;
+    padding-top: 30px;
 }
 
 body {
@@ -71,4 +311,211 @@ img {
 
 .panel {
     padding: 1%;
+}
+
+
+/* ============= Friends-mainpage ============ */
+
+.friends-main-title {
+    float: left;
+    width: 100%;
+    padding: 20px;
+    border-bottom: 1px solid #e5e5e5;
+    position: relative;
+}
+
+.friends-main-title h3 {
+    color: #000000;
+    font-size: 18px;
+    font-weight: 600;
+    float: left;
+}
+
+.friends-main-title>h3>span {
+    color: #006064;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.friends-main-list {
+    float: left;
+    width: 100%;
+}
+
+.friends-main-usd {
+    float: left;
+    width: 100%;
+    padding: 15px 20px;
+}
+
+.friends-main-usd img {
+    width: 40px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+}
+
+.friends-text {
+    float: left;
+    padding-top: 10px;
+    padding-left: 15px;
+}
+
+.friends-text > a:hover {
+    color: #006064
+}
+
+.friends-text a {
+    color: #000000;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.view-more {
+    float: left;
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid #e5e5e5;
+}
+
+.view-more > a {
+    color: #006064;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.view-more > a:hover {
+    color: #e44d3a
+}
+
+
+
+
+/* ============== friends-info ============== */
+
+
+.friends-title {
+    color: #000000;
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.friends-list {
+    float: left;
+    width: 100%;
+    margin-bottom: -30px;
+}
+
+.friend-info {
+    float: left;
+    width: 100%;
+    background-color: #fff;
+    text-align: center;
+    border-left: 1px solid #e4e4e4;
+    border-right: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+    margin-bottom: 30px;
+}
+
+.friend-up-info {
+    float: left;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.friend-up-info>img {
+    float: none;
+    margin-bottom: 10px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    width: 100px;
+    object-fit: cover;
+}
+
+.friend-info > a {
+    display: inline-block;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 18px 0;
+}
+
+.friend-info > a:hover {
+    color: #00838f;
+}
+
+/* ============== post ============== */
+
+.post {
+    padding: 10px 0;
+    margin: 10px 0;
+}
+
+.post-owner > a {
+    display: inline-block;
+    color: #000000;
+    font-size: 16px;
+    margin: 5px 0;
+    font-weight: 600;
+}
+
+.post-owner-photo {
+    width: 90%;
+}
+
+.post-owner > a:hover {
+    color: #00838f;
+}
+
+.post-date {
+    display: inline-block;
+    color: #000000;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.post-text {
+    color: #000000;
+    font-size: 16px;
+    font-weight: 200;
+}
+
+
+/* ============== user-information ============== */
+
+.info {
+    margin-bottom: 30px;
+}
+
+.info-section {
+    margin-bottom: 10px;
+    padding: 15px;
+}
+
+.info-name {
+    color: #000000;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 7px 0px;
+}
+
+.info-value {
+    color: #000000;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 7px 0px;
+}
+
+/* ============== news============== */
+
+.news-title {
+    color: #000000;
+    font-size: 25px;
+    font-weight: 500;
 }

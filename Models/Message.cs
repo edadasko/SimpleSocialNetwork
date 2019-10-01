@@ -19,6 +19,9 @@ namespace SimpleSocialNetwork.Models
         [InverseProperty("MessageTo")]
         public User UserTo { get; set; }
 
+        public int? DialogId { get; set; }
+        public Dialog Dialog { get; set; }
+
         public override string ToString() => Date.ToString() + "\n" + UserFrom + ": \n" + Text + "\n";
     }
 }

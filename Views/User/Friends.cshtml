@@ -1,19 +1,22 @@
 ﻿@model List<User>
-<h2>Друзья</h2>
-<div>
-    <ul class="list-group">
-        @foreach (var friend in @Model)
-        {
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-md-1">
-                        <img src="@Url.Content(@friend.MainPhotoPath)"/>
-                    </div>
-                    <div class="col-md-5">
+
+<div class="container-fluid">
+    <div class="friends-title">
+        <h3>Друзья</h3>
+    </div>
+    <div class="friends-list">
+        <div class="row">
+            @foreach (var friend in Model)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                    <div class="friend-info full-width">
+                        <div class="friend-up-info">
+                            <img src="@Url.Content(@friend.MainPhotoPath)" />
+                        </div>
                         @Html.ActionLink(@friend.ToString(), "MainPage", new { userId = @friend.UserId })
                     </div>
-                </div> 
-            </li>
-        }
-    </ul>
+                </div>
+            }
+        </div>
+    </div>
 </div>

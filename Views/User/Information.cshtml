@@ -1,0 +1,139 @@
+﻿@model User
+
+<div class="container-fluid">
+        @if (@Model.BirthDay != null || @Model.Country != null || @Model.City != null)
+        {
+            <div class="info-section full-width">
+                @{
+                    if (@Model.BirthDay != null)
+                    {
+                        <div class="row info-row">
+                            <div class="col-lg-4 col-md-5 col-sm-6 info-name">
+                                Дата рождения:
+                            </div>
+                            <div class="col-lg-8 col-md-7 col-sm-6 info-value">
+                                @Model.BirthDay.Value.ToString("dd.MM.yyyy")
+                            </div>
+                        </div>
+                    }
+
+                    if (@Model.Country != null)
+                    {
+                        <div class="row info-row">
+                            <div class="col-lg-4 col-md-5 col-sm-6 info-name">
+                                Страна:
+                            </div>
+                            <div class="col-lg-8 col-md-7 col-sm-6 info-value">
+                                @Model.Country
+                            </div>
+                        </div>
+                    }
+
+                    if (@Model.City != null)
+                    {
+                        <div class="row info-row">
+                            <div class="col-lg-4 col-md-5 col-sm-6 info-name">
+                                Город:
+                            </div>
+                            <div class="col-lg-8 col-md-7 col-sm-6 info-value">
+                                @Model.City
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        }
+
+         @if (@Model.University != null || Model.School != null)
+         {
+            <div class="info-section full-width">
+                @{
+                    if (@Model.University != null)
+                    {
+                        <div class="row info-row">
+                            <div class="col-lg-4 col-md-5 col-sm-6 info-name">
+                                Университет:
+                            </div>
+                            <div class="col-lg-8 col-md-7 col-sm-6 info-value">
+                                @Model.University
+                            </div>
+                        </div>
+                    }
+                    if (@Model.School != null)
+                    {
+                        <div class="row info-row">
+                            <div class="col-lg-4 col-md-5 col-sm-6 info-name">
+                                Школа:
+                            </div>
+                            <div class="col-lg-8 col-md-7 col-sm-6 info-value">
+                                @Model.School
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        }
+
+        @if (@Model.MobilePhone != null || Model.Email != null)
+        {
+            <div class="info-section full-width">
+                @{
+                    if (@Model.MobilePhone != null)
+                    {
+                        <div class="row info-row">
+                            <div class="col-lg-4 col-md-5 col-sm-6 info-name">
+                                Мобильный телефон:
+                            </div>
+                            <div class="col-lg-8 col-md-7 col-sm-6 info-value">
+                                @Model.MobilePhone
+                            </div>
+                        </div>
+                    }
+
+                    if (@Model.Email != null)
+                    {
+                        <div class="row info-row">
+                            <div class="col-lg-4 col-md-5 col-sm-6 info-name">
+                                Электронная почта:
+                            </div>
+                            <div class="col-lg-8 col-md-7 col-sm-6 info-value">
+                                @Model.Email
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        }
+
+        @if (@Model.JobPlace != null || Model.JobPosition != null)
+        {
+            <div class="info-section full-width">
+                @{
+                    if (@Model.JobPlace != null)
+                    {
+                        <div class="row info-row">
+                            <div class="col-lg-4 col-md-5 col-sm-6 info-name">
+                                Место работы:
+                            </div>
+                            <div class="col-lg-8 col-md-7 col-sm-6 info-value">
+                                @Model.JobPlace
+                            </div>
+                        </div>
+                    }
+
+                    if (@Model.JobPosition != null)
+                    {
+                        <div class="row info-row">
+                            <div class="col-lg-4 col-md-5 col-sm-6 info-name">
+                                Должность:
+                            </div>
+                            <div class="col-lg-8 col-md-7 col-sm-6 info-value">
+                                @Model.JobPosition
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        }
+</div>
+

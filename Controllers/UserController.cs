@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using SimpleSocialNetwork.Models;
@@ -11,7 +12,6 @@ namespace SimpleSocialNetwork.Controllers
         User _user;
         public UserController(IUsersRepository repository)
         {
-
             _repository = repository;
             _user = ((List<User>)_repository.Users)[0];
         }
@@ -41,7 +41,7 @@ namespace SimpleSocialNetwork.Controllers
         public ViewResult News()
         {
             var news = _repository.GetUsersNews(_user);
-            return View(news);
+            return View(news.Where(p => p.Type == PostType.Normal).ToList());
         }
     }
 }

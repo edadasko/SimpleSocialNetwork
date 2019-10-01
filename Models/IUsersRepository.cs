@@ -44,11 +44,9 @@ namespace SimpleSocialNetwork.Models
         void Update(Friendship friendship);
         void Remove(Friendship friendship);
 
-        List<User> GetDialogs(User user);
+        List<Dialog> GetDialogs(User user);
 
-        List<Message> GetUsersMessages(User user, User dialogUser);
-
-        Message GetFirstMessage(User user, User userWith);
+        List<Message> GetMessagesFromDialog(Dialog dialog);
 
         void Save();
 

@@ -1,0 +1,15 @@
+﻿@model List<Post>
+
+<div class="container-fluid">
+    <div class="news-title">
+        <h3>Новости</h3>
+    </div>
+    <ul class="posts-list">
+        @foreach (var post in @Model)
+        {
+            <li class="post full-width">
+                @{await Html.RenderPartialAsync("~/Views/Post/Index.cshtml", @post);}
+            </li>
+        }
+    </ul>
+</div>

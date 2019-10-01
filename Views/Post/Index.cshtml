@@ -1,25 +1,26 @@
 ﻿@model Post
 
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-2">
-            <img src="@Url.Content(@Model.Owner.MainPhotoPath)"/>
+            <img class="post-owner-photo" src="@Url.Content(@Model.Owner.MainPhotoPath)" />
         </div>
         <div class="col-md-10">
-            <ul class="list-group">
-                <li class="list-group-item">
-                    @Model.Owner
-                </li>
-                <li class="list-group-item">
-                    @Model.Date
-                </li>
-            </ul>
+            <div class="post-owner">
+                @Html.ActionLink(@Model.Owner.ToString(), "MainPage", new { userId = @Model.Owner.UserId })
+            </div>
+            <div class="post-date">
+                @Model.Date
+            </div>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-2"></div>
-        <div class="col-md-10">@Model.Text</div>
+        <div class="col-md-10">
+            <div class="post-text">
+                @Model.Text
+            </div>
+        </div>
     </div>
 </div>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Reflection;
 
 namespace SimpleSocialNetwork.Models
 {
@@ -13,7 +14,7 @@ namespace SimpleSocialNetwork.Models
         public DateTime? BirthDay { get; set; }
 
         public string Email { get; set; }
-        public string MobiePhone { get; set; }
+        public string MobilePhone { get; set; }
 
         public string Country { get; set; }
         public string City { get; set; }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SimpleSocialNetwork.Models;
 
 namespace SimpleSocialNetwork.Migrations
 {
     [DbContext(typeof(UsersContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191001210030_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,6 +42,21 @@ namespace SimpleSocialNetwork.Migrations
                     b.HasIndex("PostId");
 
                     b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("SimpleSocialNetwork.Models.Dialog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("User1Id");
+
+                    b.Property<int>("User2Id");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Dialogs");
                 });
 
             modelBuilder.Entity("SimpleSocialNetwork.Models.Friendship", b =>
@@ -90,6 +107,8 @@ namespace SimpleSocialNetwork.Migrations
 
                     b.Property<DateTime>("Date");
 
+                    b.Property<int?>("DialogId");
+
                     b.Property<string>("Text");
 
                     b.Property<int?>("UserFromId");
@@ -97,6 +116,8 @@ namespace SimpleSocialNetwork.Migrations
                     b.Property<int?>("UserToId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DialogId");
 
                     b.HasIndex("UserFromId");
 
@@ -163,7 +184,7 @@ namespace SimpleSocialNetwork.Migrations
 
                     b.Property<string>("JobPosition");
 
-                    b.Property<string>("MobiePhone");
+                    b.Property<string>("MobilePhone");
 
                     b.Property<string>("Name");
 
@@ -213,6 +234,10 @@ namespace SimpleSocialNetwork.Migrations
 
             modelBuilder.Entity("SimpleSocialNetwork.Models.Message", b =>
                 {
+                    b.HasOne("SimpleSocialNetwork.Models.Dialog", "Dialog")
+                        .WithMany("Messages")
+                        .HasForeignKey("DialogId");
+
                     b.HasOne("SimpleSocialNetwork.Models.User", "UserFrom")
                         .WithMany("MessageFrom")
                         .HasForeignKey("UserFromId");

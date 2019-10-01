@@ -9,6 +9,20 @@ namespace SimpleSocialNetwork.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Dialogs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    User1Id = table.Column<int>(nullable: false),
+                    User2Id = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Dialogs", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -18,7 +32,7 @@ namespace SimpleSocialNetwork.Migrations
                     Surname = table.Column<string>(nullable: true),
                     BirthDay = table.Column<DateTime>(nullable: true),
                     Email = table.Column<string>(nullable: true),
-                    MobiePhone = table.Column<string>(nullable: true),
+                    MobilePhone = table.Column<string>(nullable: true),
                     Country = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
@@ -68,11 +82,18 @@ namespace SimpleSocialNetwork.Migrations
                     Text = table.Column<string>(nullable: true),
                     Date = table.Column<DateTime>(nullable: false),
                     UserFromId = table.Column<int>(nullable: true),
-                    UserToId = table.Column<int>(nullable: true)
+                    UserToId = table.Column<int>(nullable: true),
+                    DialogId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Messages", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Messages_Dialogs_DialogId",
+                        column: x => x.DialogId,
+                        principalTable: "Dialogs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Messages_Users_UserFromId",
                         column: x => x.UserFromId,
@@ -214,6 +235,11 @@ namespace SimpleSocialNetwork.Migrations
                 column: "PostId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Messages_DialogId",
+                table: "Messages",
+                column: "DialogId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Messages_UserFromId",
                 table: "Messages",
                 column: "UserFromId");
@@ -250,6 +276,9 @@ namespace SimpleSocialNetwork.Migrations
 
             migrationBuilder.DropTable(
                 name: "Photos");
+
+            migrationBuilder.DropTable(
+                name: "Dialogs");
 
             migrationBuilder.DropTable(
                 name: "Posts");

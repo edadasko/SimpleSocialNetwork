@@ -19,5 +19,6 @@ namespace SimpleSocialNetwork.Models
         public DbSet<Like> Likes { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Friendship> Friendships { get; set; }
+        public DbSet<Dialog> Dialogs { get; set; }
     }
 }

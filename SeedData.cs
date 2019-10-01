@@ -47,59 +47,6 @@ namespace SimpleSocialNetwork
                 }
             };
 
-            var messages = new List<Message>
-            {
-                new Message
-                {
-                    Date = new DateTime(2019, 9, 19, 20, 1, 5),
-                    Text = "Привет",
-                    UserFrom = users[0],
-                    UserTo = users[1]
-                },
-
-                new Message
-                {
-                    Date = new DateTime(2019, 9, 19, 20, 2, 10),
-                    Text = "Привет",
-                    UserFrom = users[1],
-                    UserTo = users[0]
-                },
-
-                new Message
-                {
-                    Date = new DateTime(2019, 9, 19, 20, 2, 20),
-                    Text = "Как дела?",
-                    UserFrom = users[0],
-                    UserTo = users[1]
-                },
-
-                new Message
-                {
-                    Date = new DateTime(2019, 9, 19, 20, 2, 30),
-                    Text = "Хорошо",
-                    UserFrom = users[1],
-                    UserTo = users[0]
-                },
-
-                new Message
-                {
-                    Date = new DateTime(2019, 9, 19, 20, 2, 20),
-                    Text = "Привет",
-                    UserFrom = users[0],
-                    UserTo = users[2]
-                },
-
-                new Message
-                {
-                    Date = new DateTime(2019, 9, 19, 20, 2, 20),
-                    Text = "Привет",
-                    UserFrom = users[2],
-                    UserTo = users[0]
-                },
-
-            };
-            
-
             var posts = new List<Post>
             {
                 new Post
@@ -264,8 +211,6 @@ namespace SimpleSocialNetwork
                 context.SaveChanges();
                 context.Posts.AddRange(posts);
                 context.SaveChanges();
-                context.Messages.AddRange(messages);
-                context.SaveChanges();
                 context.Photos.AddRange(photos);
                 context.SaveChanges();
                 context.Comments.AddRange(comments);
@@ -273,6 +218,88 @@ namespace SimpleSocialNetwork
                 context.Likes.AddRange(likes);
                 context.SaveChanges();
                 context.Friendships.AddRange(friendships);
+                context.SaveChanges();
+            }
+
+
+            var dialogs = new List<Dialog>
+            {
+                new Dialog
+                {
+                    User1Id = context.Users.ToList()[0].UserId,
+                    User2Id = context.Users.ToList()[1].UserId
+                },
+
+                new Dialog
+                {
+                    User1Id = context.Users.ToList()[0].UserId,
+                    User2Id = context.Users.ToList()[2].UserId
+                }
+            };
+
+            var messages = new List<Message>
+            {
+                new Message
+                {
+                    Date = new DateTime(2019, 9, 19, 20, 1, 5),
+                    Text = "Привет",
+                    UserFrom = users[0],
+                    UserTo = users[1],
+                    Dialog = dialogs[0]
+                },
+
+                new Message
+                {
+                    Date = new DateTime(2019, 9, 19, 20, 2, 10),
+                    Text = "Привет",
+                    UserFrom = users[1],
+                    UserTo = users[0],
+                    Dialog = dialogs[0]
+                },
+
+                new Message
+                {
+                    Date = new DateTime(2019, 9, 19, 20, 2, 20),
+                    Text = "Как дела?",
+                    UserFrom = users[0],
+                    UserTo = users[1],
+                    Dialog = dialogs[0]
+                },
+
+                new Message
+                {
+                    Date = new DateTime(2019, 9, 19, 20, 2, 30),
+                    Text = "Хорошо",
+                    UserFrom = users[1],
+                    UserTo = users[0],
+                    Dialog = dialogs[0]
+                },
+
+                new Message
+                {
+                    Date = new DateTime(2019, 9, 19, 20, 2, 20),
+                    Text = "Привет",
+                    UserFrom = users[0],
+                    UserTo = users[2],
+                    Dialog = dialogs[1]
+                },
+
+                new Message
+                {
+                    Date = new DateTime(2019, 9, 19, 20, 2, 20),
+                    Text = "Привет",
+                    UserFrom = users[2],
+                    UserTo = users[0],
+                    Dialog = dialogs[1]
+                },
+
+            };
+
+            if(!context.Messages.Any())
+            {
+                context.Dialogs.AddRange(dialogs);
+                context.SaveChanges();
+                context.Messages.AddRange(messages);
                 context.SaveChanges();
             }
         }

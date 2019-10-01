@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <title>@ViewData["Title"] - SimpleSocialNetwork</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="~/css/site.css?Version=5" />
+    <link rel="stylesheet" href="~/css/site.css?Version=13" />
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -24,8 +24,8 @@
         <ul>
             <li><a asp-controller="User" asp-action="Index">Моя страница</a></li>
             <li><a asp-controller="User" asp-action="Friends">Друзья</a></li>
-            <li><a asp-controller="User" asp-action="Friends">Сообщения</a></li>
-            <li><a asp-controller="User" asp-action="Friends">Новости</a></li>
+            <li><a asp-controller="Message" asp-action="Index">Сообщения</a></li>
+            <li><a asp-controller="User" asp-action="News">Новости</a></li>
             <li><a asp-controller="User" asp-action="Friends">Поиск</a></li>
         </ul>
     </div>

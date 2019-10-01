@@ -18,6 +18,7 @@ namespace SimpleSocialNetwork.Controllers
         }
         public RedirectToActionResult Index()
         {
+            //_repository.ClearData();
             return RedirectToAction("Index", "User");
         }
     }

@@ -86,27 +86,17 @@ namespace SimpleSocialNetwork.Models
             return news.OrderBy(n => n.Date).ToList();
         }
 
-        public List<User> GetDialogs(User user)
+        public List<Dialog> GetDialogs(User user)
         {
-            var users = context.Messages.Where(m => m.UserFrom == user).Select(u => u.UserTo).Distinct().ToList();
-            users.AddRange(context.Messages.Where(m => m.UserTo == user).Select(u => u.UserFrom).Distinct().ToList());
-            return users;
+            var q = context.Dialogs.ToList();
+            var dialogs = context.Dialogs.Where(d => d.User1Id == user.UserId || d.User2Id == user.UserId).ToList();
+            return dialogs;
         }
 
-        public List<Message> GetUsersMessages(User user, User dialogUser)
+        public List<Message> GetMessagesFromDialog(Dialog dialog)
         {
-            var outMessages = context.Messages.Where(m => m.UserFrom == user && m.UserTo == dialogUser).ToList();
-            var inMessages = context.Messages.Where(m => m.UserFrom == dialogUser && m.UserTo == user).ToList();
-            var messages = outMessages;
-            messages.AddRange(inMessages);
-            return messages.OrderByDescending(m => m.Date).ToList();
-        }
-
-        public Message GetFirstMessage(User user, User userWith)
-        {
-            var outMessage = context.Messages.Where(m => m.UserFrom == user && m.UserTo == userWith).Last();
-            var inMessage = context.Messages.Where(m => m.UserFrom == userWith && m.UserTo == user).Last();
-            return outMessage.Date > inMessage.Date ? outMessage : inMessage;
+            context.Entry(dialog).Collection("Messages").Load();
+            return dialog.Messages.ToList();
         }
 
         public List<Post> GetUsersPhotos(User user)
@@ -149,6 +139,8 @@ namespace SimpleSocialNetwork.Models
         public void GetUsersMainPageInfo(User user)
         {
             GetUsersFriends(user);
+            foreach (var friend in user.Friends)
+                GetUsersMainPhoto(friend);
             GetUsersMainPhoto(user);
             GetUsersPhotos(user);
             GetUsersPosts(user);
@@ -170,6 +162,8 @@ namespace SimpleSocialNetwork.Models
                 context.Comments.Remove(entity);
             foreach (var entity in context.Friendships)
                 context.Friendships.Remove(entity);
+            foreach (var entity in context.Dialogs)
+                context.Dialogs.Remove(entity);
             context.SaveChanges();
         }
 
