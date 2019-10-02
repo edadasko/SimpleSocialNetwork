@@ -486,6 +486,18 @@ img {
     font-weight: 200;
 }
 
+.add-post-button {
+    float: right;
+    margin-bottom: 20px;
+}
+
+#postTextArea {
+    resize: vertical;
+}
+
+.delete-post-button {
+}
+
 
 /* ============== user-information ============== */
 

@@ -26,6 +26,8 @@ namespace SimpleSocialNetwork.Models
         public string JobPlace { get; set; }
         public string JobPosition { get; set; }
 
+        public bool IsLogin { get; set; } = false;
+
 
         public ICollection<Friendship> IncomingFrienshipRequests { get; set; }
         public ICollection<Friendship> OutgoingFrienshipRequests { get; set; }
@@ -64,7 +66,7 @@ namespace SimpleSocialNetwork.Models
         public Post MainPhoto => Posts.Single(p => p.Type == PostType.MainPhoto);
 
         [NotMapped]
-        public List<Post> WallPosts => Posts.Where(p => p.Type == PostType.Normal).ToList();
+        public List<Post> WallPosts => Posts.Where(p => p.Type == PostType.Normal).Reverse().ToList();
 
         [NotMapped]
         public string MainPhotoPath => Posts.Single(p => p.Type == PostType.MainPhoto).Photos.ToList()[0].Image;

@@ -20,6 +20,7 @@ namespace SimpleSocialNetwork
                     Address = "Жукова 18/2 - 24",
                     School = "СШ 19",
                     University = "БГУИР",
+                    IsLogin = true
                 },
 
                 new User
@@ -49,12 +50,6 @@ namespace SimpleSocialNetwork
 
             var posts = new List<Post>
             {
-                new Post
-                {
-                    Date = DateTime.Now,
-                    Text = "Информативный пост",
-                    Owner = users[0]
-                },
 
                 new Post
                 {

@@ -21,6 +21,9 @@ namespace SimpleSocialNetwork.Models
         void GetUsersMainPageInfo(User user);
 
         User GetUserById(int id);
+        Like GetLikeById(int id);
+        Comment GetCommentById(int id);
+        Post GetPostById(int id);
 
         void Create(User user);
         void Update(User user);

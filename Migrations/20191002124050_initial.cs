@@ -39,7 +39,8 @@ namespace SimpleSocialNetwork.Migrations
                     School = table.Column<string>(nullable: true),
                     University = table.Column<string>(nullable: true),
                     JobPlace = table.Column<string>(nullable: true),
-                    JobPosition = table.Column<string>(nullable: true)
+                    JobPosition = table.Column<string>(nullable: true),
+                    IsLogin = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

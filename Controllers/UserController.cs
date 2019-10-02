@@ -22,11 +22,19 @@ namespace SimpleSocialNetwork.Controllers
             return View(_user);
         }
 
-        public ViewResult MainPage(int userId)
+        public ActionResult MainPage(int userId)
         {
+            if(userId == _user.UserId)
+                return Redirect("~/User");
             User user = _repository.GetUserById(userId);
             _repository.GetUsersMainPageInfo(user);
             return View("Index", user);
+        }
+
+        public ActionResult Posts()
+        {
+            _repository.GetUsersPosts(_user);
+            return PartialView(_user.WallPosts);
         }
 
         public ViewResult Friends(int userId)

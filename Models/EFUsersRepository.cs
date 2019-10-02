@@ -83,7 +83,7 @@ namespace SimpleSocialNetwork.Models
             var friends = GetUsersFriends(user);
             foreach (var friend in friends)
                 news.AddRange(GetUsersPosts(friend));
-            return news.OrderBy(n => n.Date).ToList();
+            return news.OrderBy(n => n.Date).Reverse().ToList();
         }
 
         public List<Dialog> GetDialogs(User user)
@@ -204,5 +204,8 @@ namespace SimpleSocialNetwork.Models
         public void Save() => context.SaveChanges();
 
         public User GetUserById(int id) => context.Users.Find(id);
+        public Post GetPostById(int id) => context.Posts.Find(id);
+        public Like GetLikeById(int id) => context.Likes.Find(id);
+        public Comment GetCommentById(int id) => context.Comments.Find(id);
     }
 }

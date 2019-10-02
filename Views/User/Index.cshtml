@@ -1,4 +1,5 @@
 ﻿@model User
+
 <div class="container-fluid">
     <div class="main-section-data">
         <div class="row">
@@ -30,7 +31,7 @@
                                     </div>
                                 </div>
                             }
-                        </div>     
+                        </div>
                         <div class="view-more">
                             @Html.ActionLink("Все друзья", "Friends", new { userId = @Model.UserId })
                         </div>
@@ -39,16 +40,21 @@
             </div>
 
             <div class="col-lg-8 col-md-8 pd-left-none no-pd">
-                <div class="info">
-                    @{await Html.RenderPartialAsync("Information", @Model);}
-                </div>
-                <div class="container-fluid">
-                    @foreach (var post in Model.WallPosts)
-                    {
-                        <div class="post full-width">
-                            @{await Html.RenderPartialAsync("~/Views/Post/Index.cshtml", @post);}
+                @{await Html.RenderPartialAsync("Information", @Model);}
+
+                @if (Model.IsLogin)
+                {
+                    <div class="container-fluid">
+                        <div class="post-area">
+                            <div class="form-group">
+                                <textarea class="form-control" id="postTextArea" rows="3" placeholder="Новый пост"></textarea>
+                            </div>
+                            <button type="submit" id="addPostButton" class="btn btn-primary add-post-button">Добавить</button>
                         </div>
-                    }
+                    </div>
+                }
+                <div class="posts" id="postsArea">
+                    @{await Html.RenderPartialAsync("Posts", @Model.WallPosts);}
                 </div>
             </div>
         </div>

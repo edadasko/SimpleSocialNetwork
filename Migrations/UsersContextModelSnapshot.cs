@@ -178,6 +178,8 @@ namespace SimpleSocialNetwork.Migrations
 
                     b.Property<string>("Email");
 
+                    b.Property<bool>("IsLogin");
+
                     b.Property<string>("JobPlace");
 
                     b.Property<string>("JobPosition");
