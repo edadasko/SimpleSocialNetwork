@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using SimpleSocialNetwork.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace SimpleSocialNetwork.Controllers
 {
@@ -51,5 +52,6 @@ namespace SimpleSocialNetwork.Controllers
             var news = _repository.GetUsersNews(_user);
             return View(news.Where(p => p.Type == PostType.Normal).ToList());
         }
+
     }
 }

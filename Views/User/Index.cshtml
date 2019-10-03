@@ -15,6 +15,13 @@
                             <div class="user-specs">
                                 <h3>@Model</h3>
                             </div>
+                            @if (!Model.IsLogin)
+                            {
+                                <button type="submit" id="sendMessageButtonMainPage"
+                                userToId ="@Model.UserId" class="btn btn-primary" 
+                                onclick="@("window.location.href='" + @Url.Action("Index", "Message",
+                                new { userWithId = @Model.UserId as int? }) + "'");">Отправить сообщение</button>
+                            }
                         </div>
                     </div>
                     <div class="friends-main full-width">

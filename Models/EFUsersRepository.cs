@@ -96,7 +96,9 @@ namespace SimpleSocialNetwork.Models
         public List<Message> GetMessagesFromDialog(Dialog dialog)
         {
             context.Entry(dialog).Collection("Messages").Load();
-            return dialog.Messages.ToList();
+            GetUsersMainPhoto(GetUserById(dialog.User1Id));
+            GetUsersMainPhoto(GetUserById(dialog.User2Id));
+            return dialog.Messages.OrderBy(m => m.Date).ToList();
         }
 
         public List<Post> GetUsersPhotos(User user)
@@ -201,6 +203,8 @@ namespace SimpleSocialNetwork.Models
         public void Create(Friendship friendship) => context.Friendships.Add(friendship);
         public void Update(Friendship friendship) => context.Friendships.Update(friendship);
         public void Remove(Friendship friendship) => context.Friendships.Remove(friendship);
+        public void Create(Dialog dialog) => context.Dialogs.Add(dialog);
+        public void Remove(Dialog dialog) => context.Dialogs.Remove(dialog);
         public void Save() => context.SaveChanges();
 
         public User GetUserById(int id) => context.Users.Find(id);

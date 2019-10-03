@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using SimpleSocialNetwork.Models;
@@ -15,8 +16,9 @@ namespace SimpleSocialNetwork.Controllers
             _user = ((List<User>)_repository.Users)[0];
         }
 
-        public string Index()
+        public ViewResult Index(int? userWithId = null)
         {
+            ViewBag.userWithId = userWithId;
             var dialogs = _repository.GetDialogs(_user);
             var users = new List<User>();
             foreach (var dialog in dialogs)
@@ -27,28 +29,69 @@ namespace SimpleSocialNetwork.Controllers
                 _repository.GetUsersMainPhoto(second_user);
                 users.Add(second_user);
             }
-            return string.Join("\n", users);
+            return View(users);
         }
 
-        public string Dialog()
+        [HttpGet]
+        [Route("dialog/{userId}")]
+        public PartialViewResult Dialog(int userId)
         {
-            var messages =_repository.GetMessagesFromDialog(_repository.GetDialogs(_user)[0]);
-            return string.Join("\n", messages);
+            ViewBag.ownerUser = _user;
+            ViewBag.otherUser = _repository.GetUserById(userId);
+            Dialog dialog = null;
+            try
+            {
+                dialog = _repository.GetDialogs(_user)
+                                    .Single(d => (d.User1Id == _user.UserId && d.User2Id == userId) ||
+                                                 (d.User2Id == _user.UserId && d.User1Id == userId));
+            }
+            catch (InvalidOperationException)
+            {
+                return PartialView(new List<Message>());
+            }
+
+            var messages =_repository.GetMessagesFromDialog(dialog);
+            return PartialView(messages);
         }
-        public string SendMessage(User userTo, string text)
+
+        [Route("sendMessage/{userToId}/{text}")]
+        public RedirectResult SendMessage(int userToId, string text)
         {
-            // сначала проверить существование диалога, получить или создать новый, затем создать сообщение 
+            var userTo = _repository.GetUserById(userToId);
+            Dialog dialog;
+            try
+            {
+                dialog = _repository.GetDialogs(_user)
+                                    .Single(d => (d.User1Id == _user.UserId && d.User2Id == userToId) ||
+                                                 (d.User2Id == _user.UserId && d.User1Id == userToId));
+
+            }
+            catch (InvalidOperationException)
+            {
+                dialog = new Dialog()
+                {
+                    User1Id = _user.UserId,
+                    User2Id = userToId,
+                };
+
+                _repository.Create(dialog);
+                _repository.Save();
+            }
+
             Message message = new Message
             {
                 UserFrom = _user,
                 UserTo = userTo,
                 Text = text,
-                Date = DateTime.Now
+                Date = DateTime.Now,
+                Dialog = dialog
             };
 
             _repository.Create(message);
             _repository.Save();
-            return Index();
+
+            return Redirect("~/dialog/" + userToId);
+
         }
     }
 }
