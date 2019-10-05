@@ -1,0 +1,10 @@
+﻿@model List<Post>
+<div class="container-fluid posts-container">
+    @foreach (var post in @Model)
+    {
+        string postId = "post" + post.Id;
+        <div id="@postId">
+            @{await Html.RenderPartialAsync("Index.cshtml", @post);}
+        </div>
+    }
+</div>

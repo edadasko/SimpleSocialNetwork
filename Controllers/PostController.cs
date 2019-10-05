@@ -38,7 +38,7 @@ namespace SimpleSocialNetwork.Controllers
 
             _repository.Create(post);
             _repository.Save();
-            return RedirectToAction("Posts", "User");
+            return RedirectToAction("PostsList");
         }
 
         [Route("removePost/{postId}")]
@@ -47,7 +47,14 @@ namespace SimpleSocialNetwork.Controllers
             var post = _repository.GetPostById(postId);
             _repository.Remove(post);
             _repository.Save();
-            return RedirectToAction("Posts", "User");
+            return RedirectToAction("PostsList");
+        }
+
+        public PartialViewResult PostsList(int? userId = null)
+        {
+            User user = userId == null ? _user : _repository.GetUserById(userId.Value);
+            _repository.GetUsersPosts(user);
+            return PartialView(user.WallPosts);
         }
 
         public override void OnActionExecuted(ActionExecutedContext context)

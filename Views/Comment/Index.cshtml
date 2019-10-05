@@ -1,0 +1,32 @@
+﻿@model Comment
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <img class="comment-owner-photo" src="@Url.Content(@Model.Owner.MainPhotoPath)" />
+        </div>
+        <div class="col-md-8">
+            <div class="comment-owner">
+                @Html.ActionLink(@Model.Owner.ToString(), "MainPage", "User", new { userId = @Model.Owner.UserId })
+            </div>
+            <div class="comment-date">
+                @Model.Date
+            </div>
+        </div>
+       @if (Model.Owner.IsLogin)
+        {
+            <div class="col-md-2">
+                <button commentId="@Model.Id" postId="@Model.Post.Id" class="btn glyphicon glyphicon-remove delete-comment-button"></button>
+            </div>
+        }
+    </div>
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-10">
+            <div class="comment-text">
+                @Model.Text
+            </div>
+        </div>
+    </div>
+</div>

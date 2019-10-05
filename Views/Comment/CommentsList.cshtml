@@ -1,0 +1,14 @@
+﻿@model List<Comment>
+
+@if (!Model.Any())
+{
+    <p>Будьте первым, кто оставит комментарий к этому посту.</p>
+}
+
+@foreach(var comment in Model)
+{
+    <div class="post-comment">
+        @{await Html.RenderPartialAsync("Index.cshtml", comment);}
+    </div>
+}
+

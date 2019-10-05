@@ -33,12 +33,6 @@ namespace SimpleSocialNetwork.Controllers
             return View("Index", user);
         }
 
-        public ActionResult Posts(int userId)
-        {
-            User user = userId == 0 ? _user: _repository.GetUserById(userId);
-            _repository.GetUsersPosts(user);
-            return PartialView(user.WallPosts);
-        }
 
         public ViewResult Friends(int userId)
         {

@@ -190,11 +190,6 @@ namespace SimpleSocialNetwork
                     User2Id = context.Users.ToList()[1].UserId
                 },
 
-                new Dialog
-                {
-                    User1Id = context.Users.ToList()[0].UserId,
-                    User2Id = context.Users.ToList()[2].UserId
-                }
             };
 
             var messages = new List<Message>
@@ -233,25 +228,7 @@ namespace SimpleSocialNetwork
                     UserFrom = users[1],
                     UserTo = users[0],
                     Dialog = dialogs[0]
-                },
-
-                new Message
-                {
-                    Date = new DateTime(2019, 9, 19, 20, 2, 20),
-                    Text = "Привет",
-                    UserFrom = users[0],
-                    UserTo = users[2],
-                    Dialog = dialogs[1]
-                },
-
-                new Message
-                {
-                    Date = new DateTime(2019, 9, 19, 20, 2, 20),
-                    Text = "Привет",
-                    UserFrom = users[2],
-                    UserTo = users[0],
-                    Dialog = dialogs[1]
-                },
+                }
 
             };
 

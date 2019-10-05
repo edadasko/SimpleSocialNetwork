@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
 using SimpleSocialNetwork.Models;
 
 namespace SimpleSocialNetwork.Controllers
 {
-    public class CommentController
+    public class CommentController: Controller
     {
         IUsersRepository _repository;
         User _user;
@@ -15,26 +16,46 @@ namespace SimpleSocialNetwork.Controllers
             _user = ((List<User>)_repository.Users)[0];
         }
 
-        public string Create(Post post, string text)
+        [Route("addComment/{text}/{postId}")]
+        public RedirectToActionResult Create(string text, int postId)
         {
             var comment = new Comment()
             {
                 Owner = _user,
-                Post = post,
+                Post = _repository.GetPostById(postId),
                 Text = text,
                 Date = DateTime.Now
             };
 
             _repository.Create(comment);
             _repository.Save();
-            return "Created";
+
+            return RedirectToAction("CommentsList", new { postId });
         }
+
+
+        [Route("removeComment/{commentId}")]
+        public RedirectToActionResult Remove(int commentId)
+        {
+            var comment = _repository.GetCommentById(commentId);
+            var postId = comment.Post.Id;
+            _repository.Remove(comment);
+            _repository.Save();
+            return RedirectToAction("CommentsList", new { postId });
+        }
+
 
         public string Remove(Comment comment)
         {
             _repository.Remove(comment);
             _repository.Save();
             return "Removed";
+        }
+
+        public PartialViewResult CommentsList(int postId)
+        {
+            Post post = _repository.GetPostById(postId);
+            return PartialView(post.Comments);
         }
     }
 }

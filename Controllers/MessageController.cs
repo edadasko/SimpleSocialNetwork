@@ -37,7 +37,9 @@ namespace SimpleSocialNetwork.Controllers
         public PartialViewResult Dialog(int userId)
         {
             ViewBag.ownerUser = _user;
-            ViewBag.otherUser = _repository.GetUserById(userId);
+            var otherUser = _repository.GetUserById(userId);
+            ViewBag.otherUser = otherUser;
+            _repository.GetUsersMainPhoto(otherUser);
             Dialog dialog = null;
             try
             {
