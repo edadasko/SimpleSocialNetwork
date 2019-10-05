@@ -30,7 +30,7 @@ body {
     line-height: 1;
     font-family: 'Source Sans Pro', sans-serif;
     overflow-x: hidden;
-    font-weight: 400;
+    font-weight: 40p0;
     background-color: #eeeeee;
 }
 
@@ -495,6 +495,30 @@ img {
 .delete-post-button {
 }
 
+.post-likes {
+    float: right;
+    margin-bottom: 10px;
+}
+
+.post-likes>.not-liked {
+    background-color: #006064;
+    color: #FFF;
+}
+
+.post-likes>.not-liked:hover {
+    background-color: #FF1122;
+    color: #FFF;
+}
+
+.post-likes>.liked {
+    background-color: #FF1122;
+    color: #FFF;
+}
+
+.post-likes>.liked:hover {
+    background-color: #006064;
+    color: #FFF;
+}
 
 /* ============== User-information ============== */
 

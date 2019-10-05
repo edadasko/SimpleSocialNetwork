@@ -16,6 +16,7 @@ namespace SimpleSocialNetwork.Controllers
         {
             _repository = repository;
         }
+
         public RedirectToActionResult Index()
         {
             //_repository.ClearData();

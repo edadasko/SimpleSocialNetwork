@@ -27,6 +27,21 @@
             <div class="post-text">
                 @Model.Text
             </div>
+            <div class = "post-likes">
+                    <button class="btn post-like-button not-liked" id="@Model.Id" postId ="@Model.Id"><span class="glyphicon glyphicon-heart" postId ="@Model.Id"></span> @Model.Likes.Count</button>
+            </div>
         </div>
     </div>
+
+        <script src="~/js/post_deleting.js"></script>
+
+        @if (((User)ViewBag.User).Likes.Select(l => l.PostId).Contains(Model.Id))
+        {
+            <script>
+                $(document).ready(function(){
+                    $('#@Model.Id').removeClass('not-liked');
+                    $('#@Model.Id').addClass('liked');
+                });
+            </script>
+        }
 </div>

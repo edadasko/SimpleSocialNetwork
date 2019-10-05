@@ -1,13 +1,12 @@
 ﻿@model List<Post>
-
-<div class="container-fluid">
+<div class="container-fluid posts-container">
     @foreach (var post in @Model)
     {
-        <div class="post full-width">
+        string postId = "post" + post.Id;
+        <div class="post full-width" id="@postId">
             @{await Html.RenderPartialAsync("~/Views/Post/Index.cshtml", @post);}
         </div>
     }
-
     <script src="~/js/post_adding.js"></script>
-    <script src="~/js/post_deleting.js"></script>
+    <script src="~/js/likes.js"></script>
 </div>

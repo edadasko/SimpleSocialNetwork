@@ -50,6 +50,12 @@ namespace SimpleSocialNetwork
 
             var posts = new List<Post>
             {
+                new Post
+                {
+                    Date = DateTime.Now,
+                    Text = "Информативный пост",
+                    Owner = users[0]
+                },
 
                 new Post
                 {
@@ -133,47 +139,6 @@ namespace SimpleSocialNetwork
 
             var likes = new List<Like>
             {
-                new Like
-                {
-                    Owner = users[2],
-                    Post = posts[0],
-                },
-
-                new Like
-                {
-                    Owner = users[0],
-                    Post = posts[0],
-                },
-
-                new Like
-                {
-                    Owner = users[1],
-                    Post = posts[0],
-                },
-
-                new Like
-                {
-                    Owner = users[0],
-                    Post = posts[1],
-                },
-
-                new Like
-                {
-                    Owner = users[1],
-                    Post = posts[2],
-                },
-
-                new Like
-                {
-                    Owner = users[0],
-                    Post = posts[3],
-                },
-
-                new Like
-                {
-                    Owner = users[1],
-                    Post = posts[3],
-                },
             };
 
 

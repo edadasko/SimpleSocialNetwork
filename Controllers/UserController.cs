@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using SimpleSocialNetwork.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace SimpleSocialNetwork.Controllers
 {
@@ -32,10 +33,11 @@ namespace SimpleSocialNetwork.Controllers
             return View("Index", user);
         }
 
-        public ActionResult Posts()
+        public ActionResult Posts(int userId)
         {
-            _repository.GetUsersPosts(_user);
-            return PartialView(_user.WallPosts);
+            User user = userId == 0 ? _user: _repository.GetUserById(userId);
+            _repository.GetUsersPosts(user);
+            return PartialView(user.WallPosts);
         }
 
         public ViewResult Friends(int userId)
@@ -49,8 +51,15 @@ namespace SimpleSocialNetwork.Controllers
 
         public ViewResult News()
         {
+            var likedPostsId = _repository.GetUsersLikes(_user).Select(l => l.PostId).ToHashSet();
+            ViewBag.Likes = likedPostsId;
             var news = _repository.GetUsersNews(_user);
             return View(news.Where(p => p.Type == PostType.Normal).ToList());
+        }
+
+        public override void OnActionExecuted(ActionExecutedContext context)
+        {
+            ViewBag.User = _user;
         }
 
     }

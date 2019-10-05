@@ -37,6 +37,12 @@ namespace SimpleSocialNetwork.Models
             return LoadInformationFromPosts(posts);
         }
 
+        public HashSet<Like> GetUsersLikes(User user)
+        {
+            var likes = context.Likes.Where(l => l.Owner == user).ToHashSet();
+            return likes;
+        }
+
         private List<Post> LoadInformationFromPosts(List<Post> posts)
         {
             foreach (var post in posts)
@@ -193,7 +199,17 @@ namespace SimpleSocialNetwork.Models
 
         public void Create(Message message) => context.Messages.Add(message);
         public void Create(Post post) => context.Posts.Add(post);
-        public void Remove(Post post) => context.Posts.Remove(post);
+
+        public void Remove(Post post)
+        {
+            LoadInformationFromPosts(new List<Post> { post });
+            foreach (var like in post.Likes)
+                Remove(like);
+            foreach (var comment in post.Comments)
+                Remove(comment);
+            context.Posts.Remove(post);
+        }
+        
         public void Create(Like like) => context.Likes.Add(like);
         public void Remove(Like like) => context.Likes.Remove(like);
         public void Create(Comment comment) => context.Comments.Add(comment);
@@ -208,7 +224,14 @@ namespace SimpleSocialNetwork.Models
         public void Save() => context.SaveChanges();
 
         public User GetUserById(int id) => context.Users.Find(id);
-        public Post GetPostById(int id) => context.Posts.Find(id);
+
+        public Post GetPostById(int id)
+        {
+            var post = context.Posts.Find(id);
+            LoadInformationFromPosts(new List<Post>{post});
+            GetUsersMainPhoto(post.Owner);
+            return post;
+        } 
         public Like GetLikeById(int id) => context.Likes.Find(id);
         public Comment GetCommentById(int id) => context.Comments.Find(id);
     }

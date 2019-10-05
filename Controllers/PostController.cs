@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using SimpleSocialNetwork.Models;
 
 namespace SimpleSocialNetwork.Controllers
@@ -11,14 +12,16 @@ namespace SimpleSocialNetwork.Controllers
         IUsersRepository _repository;
         User _user;
 
+
         public PostController(IUsersRepository repository)
         {
             _repository = repository;
             _user = ((List<User>)_repository.Users)[0];
         }
 
-        public ActionResult Index(Post post)
+        public ActionResult Index(int postId)
         {
+            var post = _repository.GetPostById(postId);
             return PartialView(post);
         }
 
@@ -45,6 +48,11 @@ namespace SimpleSocialNetwork.Controllers
             _repository.Remove(post);
             _repository.Save();
             return RedirectToAction("Posts", "User");
+        }
+
+        public override void OnActionExecuted(ActionExecutedContext context)
+        {
+            ViewBag.User = _user;
         }
     }
 }

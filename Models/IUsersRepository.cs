@@ -16,6 +16,7 @@ namespace SimpleSocialNetwork.Models
         List<Post> GetUsersPosts(User user);
         List<Post> GetUsersPhotos(User user); 
         List<User> GetUsersFriends(User user);
+        HashSet<Like> GetUsersLikes(User user);
         List<Post> GetUsersNews(User user);
         Post GetUsersMainPhoto(User user);
         void GetUsersMainPageInfo(User user);
