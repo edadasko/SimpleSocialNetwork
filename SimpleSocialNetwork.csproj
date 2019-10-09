@@ -19,6 +19,7 @@
     <Folder Include="Views\Message\" />
     <Folder Include="wwwroot\photos\" />
     <Folder Include="Views\Comment\" />
+    <Folder Include="TagHelpers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\css\site.min.css" />
