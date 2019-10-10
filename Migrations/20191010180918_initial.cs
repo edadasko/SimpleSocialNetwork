@@ -15,7 +15,8 @@ namespace SimpleSocialNetwork.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     User1Id = table.Column<int>(nullable: false),
-                    User2Id = table.Column<int>(nullable: false)
+                    User2Id = table.Column<int>(nullable: false),
+                    LastMessageId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

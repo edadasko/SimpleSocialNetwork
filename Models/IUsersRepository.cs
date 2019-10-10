@@ -25,6 +25,7 @@ namespace SimpleSocialNetwork.Models
         Like GetLikeById(int id);
         Comment GetCommentById(int id);
         Post GetPostById(int id);
+        Message GetMessageById(int id);
 
         void Create(User user);
         void Update(User user);
@@ -49,6 +50,7 @@ namespace SimpleSocialNetwork.Models
         void Remove(Friendship friendship);
 
         void Create(Dialog dialog);
+        void Update(Dialog dialog);
         void Remove(Dialog dialog);
 
         List<Dialog> GetDialogs(User user);
@@ -58,6 +60,5 @@ namespace SimpleSocialNetwork.Models
         void Save();
 
         void ClearData();
-
     }
 }

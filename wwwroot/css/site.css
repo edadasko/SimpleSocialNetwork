@@ -660,10 +660,6 @@ img {
     float: left;
     width: 100%;
     background-color: #fff;
-    border-left: 1px solid #e4e4e4;
-    border-bottom: 1px solid #e4e4e4;
-    border-right: 1px solid #e4e4e4;
-    border-radius: 10px;
 }
 .dialogs-title {
     float: left;

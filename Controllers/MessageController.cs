@@ -19,41 +19,13 @@ namespace SimpleSocialNetwork.Controllers
         public ViewResult Index(int? userWithId = null)
         {
             ViewBag.userWithId = userWithId;
-            var dialogs = _repository.GetDialogs(_user);
-            var users = new List<User>();
-            foreach (var dialog in dialogs)
-            {
-                var second_user = dialog.User1Id == _user.UserId ?
-                            _repository.GetUserById(dialog.User2Id) :
-                            _repository.GetUserById(dialog.User1Id);
-                _repository.GetUsersMainPhoto(second_user);
-                users.Add(second_user);
-            }
-            return View(users);
+            return View();
         }
 
-        [HttpGet]
         [Route("dialog/{userId}")]
-        public PartialViewResult Dialog(int userId)
+        public ViewComponentResult Dialog(int userId)
         {
-            ViewBag.ownerUser = _user;
-            var otherUser = _repository.GetUserById(userId);
-            ViewBag.otherUser = otherUser;
-            _repository.GetUsersMainPhoto(otherUser);
-            Dialog dialog = null;
-            try
-            {
-                dialog = _repository.GetDialogs(_user)
-                                    .Single(d => (d.User1Id == _user.UserId && d.User2Id == userId) ||
-                                                 (d.User2Id == _user.UserId && d.User1Id == userId));
-            }
-            catch (InvalidOperationException)
-            {
-                return PartialView(new List<Message>());
-            }
-
-            var messages =_repository.GetMessagesFromDialog(dialog);
-            return PartialView(messages);
+            return ViewComponent("Dialogs", new { userId });
         }
 
         [Route("sendMessage/{userToId}/{text}")]
@@ -73,7 +45,7 @@ namespace SimpleSocialNetwork.Controllers
                 dialog = new Dialog()
                 {
                     User1Id = _user.UserId,
-                    User2Id = userToId,
+                    User2Id = userToId
                 };
 
                 _repository.Create(dialog);
@@ -91,7 +63,9 @@ namespace SimpleSocialNetwork.Controllers
 
             _repository.Create(message);
             _repository.Save();
-
+            dialog.LastMessageId = _repository.Messages.Single(p => p == message).Id;
+            _repository.Update(dialog);
+            _repository.Save();
             return Redirect("~/dialog/" + userToId);
 
         }

@@ -48,6 +48,8 @@ namespace SimpleSocialNetwork.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("LastMessageId");
+
                     b.Property<int>("User1Id");
 
                     b.Property<int>("User2Id");

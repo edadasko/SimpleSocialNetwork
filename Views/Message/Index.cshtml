@@ -1,31 +1,10 @@
-﻿@model List<User>
-
-<section class="messages-page">
+﻿<section class="messages-page">
     <div class="container-fluid">
         <div class="dialogs-sec">
             <div class="row">
                 <div class="col-lg-4 col-md-12 no-pdd">
                     <div class="dialogs-list">
-                        <div class="dialogs-title">
-                            <h3>Диалоги</h3>
-                        </div>
-                        <div class="dialogs-list">
-                            <ul>
-                                @foreach (var user in Model)
-                                {
-                                    <li userId="@user.UserId" class="user-dialog">
-                                        <div class="dialogs-msg-details" userId="@user.UserId">
-                                            <div class="usr-msg-img" userId="@user.UserId">
-                                                <img src="@Url.Content(@user.MainPhotoPath)" alt="" userId="@user.UserId">
-                                            </div>
-                                            <div class="usr-msg-info" userId="@user.UserId" >
-                                                <h3 userId="@user.UserId">@user</h3>
-                                            </div>
-                                        </div>
-                                    </li>
-                                }
-                            </ul>
-                        </div>
+                        @await Component.InvokeAsync("DialogsList")
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-12 pd-right-none pd-left-none">

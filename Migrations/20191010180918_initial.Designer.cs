@@ -10,7 +10,7 @@ using SimpleSocialNetwork.Models;
 namespace SimpleSocialNetwork.Migrations
 {
     [DbContext(typeof(UsersContext))]
-    [Migration("20191002124050_initial")]
+    [Migration("20191010180918_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,6 +49,8 @@ namespace SimpleSocialNetwork.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("LastMessageId");
 
                     b.Property<int>("User1Id");
 

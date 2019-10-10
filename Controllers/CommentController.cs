@@ -45,13 +45,6 @@ namespace SimpleSocialNetwork.Controllers
         }
 
 
-        public string Remove(Comment comment)
-        {
-            _repository.Remove(comment);
-            _repository.Save();
-            return "Removed";
-        }
-
         public PartialViewResult CommentsList(int postId)
         {
             Post post = _repository.GetPostById(postId);

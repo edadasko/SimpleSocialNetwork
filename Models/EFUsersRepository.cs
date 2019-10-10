@@ -233,6 +233,7 @@ namespace SimpleSocialNetwork.Models
         public void Remove(Friendship friendship) => context.Friendships.Remove(friendship);
         public void Create(Dialog dialog) => context.Dialogs.Add(dialog);
         public void Remove(Dialog dialog) => context.Dialogs.Remove(dialog);
+        public void Update(Dialog dialog) => context.Dialogs.Update(dialog);
         public void Save() => context.SaveChanges();
 
         public User GetUserById(int id) => context.Users.Find(id);
@@ -244,6 +245,7 @@ namespace SimpleSocialNetwork.Models
             return post;
         } 
         public Like GetLikeById(int id) => context.Likes.Find(id);
+        public Message GetMessageById(int id) => context.Messages.Find(id);
         public Comment GetCommentById(int id)
         {
             var comment = context.Comments.Find(id);
