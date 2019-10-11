@@ -23,7 +23,6 @@
     <Folder Include="Components\" />
     <Folder Include="Views\Message\Components\" />
     <Folder Include="Views\Message\Components\DialogsList\" />
-    <Folder Include="Views\Message\Components\Dialogs\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\css\site.min.css" />

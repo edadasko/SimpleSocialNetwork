@@ -6,11 +6,11 @@ using SimpleSocialNetwork.Models;
 
 namespace SimpleSocialNetwork.Components
 {
-    public class DialogsViewComponent : ViewComponent
+    public class DialogViewComponent : ViewComponent
     {
         IUsersRepository _repository;
         User _user;
-        public DialogsViewComponent(IUsersRepository repository)
+        public DialogViewComponent(IUsersRepository repository)
         {
             _repository = repository;
             _user = ((List<User>)_repository.Users)[0];

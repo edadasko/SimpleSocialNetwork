@@ -22,12 +22,6 @@ namespace SimpleSocialNetwork.Controllers
             return View();
         }
 
-        [Route("dialog/{userId}")]
-        public ViewComponentResult Dialog(int userId)
-        {
-            return ViewComponent("Dialogs", new { userId });
-        }
-
         [Route("sendMessage/{userToId}/{text}")]
         public RedirectResult SendMessage(int userToId, string text)
         {
@@ -68,6 +62,18 @@ namespace SimpleSocialNetwork.Controllers
             _repository.Save();
             return Redirect("~/dialog/" + userToId);
 
+        }
+
+        [Route("dialog/{userId}")]
+        public ViewComponentResult Dialog(int userId)
+        {
+            return ViewComponent("Dialog", new { userId });
+        }
+
+        [Route("dialogsList")]
+        public ViewComponentResult DialogsList()
+        {
+            return ViewComponent("DialogsList");
         }
     }
 }

@@ -12,25 +12,20 @@
                 </div>
             </div>
         </div>
-        <script>
-            $('.user-dialog').on('click', function () {
-                $('.user-dialog').removeClass('selected');
-                $(this).addClass('selected');
-            });
-
-        </script>
-        @if (ViewBag.userWithId != null)
-        {
-            <script>
-                $(document).ready(function(){
-                    var userWithId = @((int)ViewBag.userWithId);
-                    $('.user-dialog').each(function(indx, element){
-                        if (element.getAttribute('userId') == userWithId)
-                            $(element).addClass('selected');
-                    });
-                    $(".main-conversation-box").load("dialog/" + userWithId);
-                });
-            </script>
-        }
     </div>
+
+    @if (ViewBag.userWithId != null)
+    {
+        <script>
+            $(document).ready(function(){
+                var userWithId = @((int)ViewBag.userWithId);
+                $('.user-dialog').each(function(indx, element){
+                    if (element.getAttribute('userId') == userWithId)
+                        $(element).addClass('selected');
+                });
+                $(".main-conversation-box").load("dialog/" + userWithId);
+            });
+        </script>
+    }
+
 </section>
