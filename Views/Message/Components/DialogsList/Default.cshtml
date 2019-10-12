@@ -16,14 +16,14 @@
                         <h3 userId="@user.Item1.UserId">@user.Item1</h3>
                         <h4 userId="@user.Item1.UserId">@user.Item2.Date</h4>
                         @{
-                            string text;
+                            string text = user.Item2.UserFrom == user.Item1 ? user.Item1 + ": " : "Вы: ";
                             if (user.Item2.Text.Length < 10)
                             {
-                                text = user.Item2.Text;
+                                text += user.Item2.Text;
                             }
                             else
                             {
-                                text = user.Item2.Text.Substring(0, 10) + "...";
+                                text += user.Item2.Text.Substring(0, 10) + "...";
                             }
                         }
                         <h4 userId="@user.Item1.UserId">@text</h4>
