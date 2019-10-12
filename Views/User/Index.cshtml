@@ -52,7 +52,7 @@
             </div>
 
             <div class="col-lg-8 col-md-8 pd-left-none no-pd">
-                @{await Html.RenderPartialAsync("Information", @Model);}
+                @{await Html.RenderPartialAsync("Information", new UserInfoViewModel(Model));}
 
                 @if (Model.IsLogin)
                 {

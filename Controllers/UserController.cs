@@ -61,7 +61,7 @@ namespace SimpleSocialNetwork.Controllers
         [HttpGet]
         public ViewResult Update()
         {
-            return View(_user);
+            return View(new UserInfoViewModel(_user));
         }
 
 
