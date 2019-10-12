@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.AspNetCore.Http;
 using SimpleSocialNetwork.Models;
 
 namespace SimpleSocialNetwork
@@ -22,5 +23,7 @@ namespace SimpleSocialNetwork
 
         public string JobPlace { get; set; }
         public string JobPosition { get; set; }
+
+        public IFormFile Avatar { get; set; }
     }
 }

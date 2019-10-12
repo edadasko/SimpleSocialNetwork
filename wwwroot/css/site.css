@@ -164,7 +164,9 @@ main {
     -webkit-border-radius: 100px;
     -moz-border-radius: 100px;
     border-radius: 100px;
-    width: 100%;
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
 }
 
 .user-profile {
@@ -305,6 +307,7 @@ body {
 
 img {
     width: 100%;
+    object-fit: cover;
     height: auto;
 }
 
@@ -345,7 +348,12 @@ img {
 }
 
 .comment-owner-photo {
-    width: 90%;
+    width: 50px;
+    height: 50px;
+    border: 5px solid #fff;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
 }
 
 .comment-owner > a:hover {
@@ -435,6 +443,7 @@ img {
 
 .friends-main-usd img {
     width: 40px;
+    height: 40px;
     -webkit-border-radius: 100px;
     -moz-border-radius: 100px;
     border-radius: 100px;
@@ -518,6 +527,7 @@ img {
     -moz-border-radius: 100px;
     border-radius: 100px;
     width: 100px;
+    height: 100px;
     object-fit: cover;
 }
 
@@ -549,7 +559,12 @@ img {
 }
 
 .post-owner-photo {
-    width: 90%;
+    width: 80px;
+    height: 80px;
+    border: 5px solid #fff;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
 }
 
 .post-owner > a:hover {
@@ -570,6 +585,7 @@ img {
 }
 
 .add-post-button {
+    background-color: #006064;
     float: right;
     margin-bottom: 20px;
 }
@@ -641,10 +657,19 @@ img {
 
 /* ============== News ============== */
 
+.news {
+    padding: 10px 150px;
+}
+
 .news-title {
+    margin-left: 20px;
     color: #000000;
     font-size: 25px;
     font-weight: 500;
+}
+
+.update-page {
+    padding: 10px 150px;
 }
 
 
@@ -707,13 +732,15 @@ img {
     width: 100%;
 }
 .usr-msg-img {
+    height: 50px;
     float: left;
     width: 50px;
     position: relative;
 }
 
 .usr-msg-img img {
-    width: 100%;
+    width: 50px;
+    height: 50px;
     -webkit-border-radius: 100px;
     -moz-border-radius: 100px;
     border-radius: 100px;
@@ -737,6 +764,22 @@ img {
     top: 5px;
     padding-left: 5px;
 }
+
+.usr-msg-name {
+    float: left;
+    padding-top: 15px;
+    padding-left: 13px;
+}
+.usr-msg-name a {
+    color: #000000;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.usr-msg-name > a:hover {
+    color: #006064
+}
+
 .posted_time {
     position: absolute;
     top: 2px;
@@ -789,10 +832,13 @@ img {
     position: absolute;
     left: 20px;
     width: 50px;
+    height: 50px;
     bottom: 18px;
 }
 .msg-usr-img img {
     width: 100%;
+    width: 50px;
+    height: 50px;
     -webkit-border-radius: 100px;
     -moz-border-radius: 100px;
     border-radius: 100px;

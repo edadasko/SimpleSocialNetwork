@@ -98,15 +98,27 @@ namespace SimpleSocialNetwork
 
             var mainPhotos = new List<Photo>();
 
-            for (int i = 0; i < 3; i++)
-            {
-                mainPhotos.Add(
-                    new Photo
-                    {
-                        Image = "~/images/no_photo.png",
-                        Post = mainPhotosPosts[i]
-                    });
-            }
+            mainPhotos.Add(
+                new Photo
+                {
+                    Image = "~/images/no_photo.png",
+                    Post = mainPhotosPosts[0]
+                });
+
+            mainPhotos.Add(
+                new Photo
+                {
+                    Image = "~/usersPhotos/polina.jpg",
+                    Post = mainPhotosPosts[1]
+                });
+
+            mainPhotos.Add(
+                new Photo
+                {
+                    Image = "~/usersPhotos/dima.jpg",
+                    Post = mainPhotosPosts[2]
+                });
+
 
             var photos = new List<Photo>
             {

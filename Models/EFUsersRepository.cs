@@ -222,6 +222,8 @@ namespace SimpleSocialNetwork.Models
                 Remove(like);
             foreach (var comment in post.Comments)
                 Remove(comment);
+            foreach (var photo in post.Photos)
+                Remove(photo);
             context.Posts.Remove(post);
         }
         
@@ -246,7 +248,8 @@ namespace SimpleSocialNetwork.Models
             var post = context.Posts.Find(id);
             LoadInformationFromPosts(new List<Post>{post});
             return post;
-        } 
+        }
+        public void Update(Post post) => context.Posts.Update(post);
         public Like GetLikeById(int id) => context.Likes.Find(id);
         public Message GetMessageById(int id) => context.Messages.Find(id);
         public Comment GetCommentById(int id)

@@ -17,13 +17,13 @@
     <Folder Include="Views\User\" />
     <Folder Include="Views\Post\" />
     <Folder Include="Views\Message\" />
-    <Folder Include="wwwroot\photos\" />
     <Folder Include="Views\Comment\" />
     <Folder Include="TagHelpers\" />
     <Folder Include="Components\" />
     <Folder Include="Views\Message\Components\" />
     <Folder Include="Views\Message\Components\DialogsList\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="wwwroot\usersPhotos\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\css\site.min.css" />

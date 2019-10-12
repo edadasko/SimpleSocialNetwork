@@ -35,6 +35,7 @@ namespace SimpleSocialNetwork.Models
 
         void Create(Post post);
         void Remove(Post post);
+        void Update(Post post);
 
         void Create(Like like);
         void Remove(Like like);
