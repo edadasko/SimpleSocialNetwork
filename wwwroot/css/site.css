@@ -230,7 +230,7 @@ main {
     font-weight: 600;
 }
 
-#sendMessageButtonMainPage {
+.button-main-page {
     margin-bottom: 20px;
     background-color: #006064;
 }
@@ -633,6 +633,10 @@ img {
     font-size: 16px;
     font-weight: 500;
     margin: 7px 0px;
+}
+
+.change-info-link {
+    float: left;
 }
 
 /* ============== News ============== */

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Reflection;
 
 namespace SimpleSocialNetwork.Models
 {
@@ -12,6 +12,7 @@ namespace SimpleSocialNetwork.Models
         public string Name { get; set; }
         public string Surname { get; set; }
         public DateTime? BirthDay { get; set; }
+        public Gender Gender { get; set; }
 
         public string Email { get; set; }
         public string MobilePhone { get; set; }
@@ -63,13 +64,43 @@ namespace SimpleSocialNetwork.Models
         public List<Post> Photos => Posts.Where(p => p.Type == PostType.PhotoOnly).ToList();
 
         [NotMapped]
-        public Post MainPhoto => Posts.Single(p => p.Type == PostType.MainPhoto);
+        public Post MainPhoto => Posts.SingleOrDefault(p => p.Type == PostType.MainPhoto);
 
         [NotMapped]
         public List<Post> WallPosts => Posts.Where(p => p.Type == PostType.Normal).Reverse().ToList();
 
         [NotMapped]
-        public string MainPhotoPath => Posts.Single(p => p.Type == PostType.MainPhoto).Photos.ToList()[0].Image;
+        public string MainPhotoPath
+        {
+            get
+            {
+                try
+                {
+                    return Posts.SingleOrDefault(p => p.Type == PostType.MainPhoto).Photos.ToList()[0].Image;
+                }
+                catch(NullReferenceException)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public void ChangeInformation(UserInfoViewModel info)
+        {
+            Name = info.Name;
+            Surname = info.Surname;
+            BirthDay = info.BirthDay;
+            Email = info.Email;
+            MobilePhone = info.MobilePhone;
+            Country = info.Country;
+            City = info.City;
+            Address = info.Address;
+            School = info.School;
+            University = info.University;
+            JobPlace = info.JobPlace;
+            JobPosition = info.JobPosition;
+            Gender = info.Gender;
+        }
 
         public User()
         {
@@ -83,5 +114,13 @@ namespace SimpleSocialNetwork.Models
         }
 
         public override string ToString() => Name + " " + Surname;
+    }
+
+    public enum Gender
+    {
+        [Display(Name = "Мужской")]
+        Male,
+        [Display(Name = "Женский")]
+        Female
     }
 }

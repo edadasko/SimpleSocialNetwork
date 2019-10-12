@@ -32,6 +32,7 @@ namespace SimpleSocialNetwork.Migrations
                     Name = table.Column<string>(nullable: true),
                     Surname = table.Column<string>(nullable: true),
                     BirthDay = table.Column<DateTime>(nullable: true),
+                    Gender = table.Column<int>(nullable: false),
                     Email = table.Column<string>(nullable: true),
                     MobilePhone = table.Column<string>(nullable: true),
                     Country = table.Column<string>(nullable: true),

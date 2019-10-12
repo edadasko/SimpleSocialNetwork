@@ -10,7 +10,7 @@ using SimpleSocialNetwork.Models;
 namespace SimpleSocialNetwork.Migrations
 {
     [DbContext(typeof(UsersContext))]
-    [Migration("20191010180918_initial")]
+    [Migration("20191012151106_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -181,6 +181,8 @@ namespace SimpleSocialNetwork.Migrations
                     b.Property<string>("Country");
 
                     b.Property<string>("Email");
+
+                    b.Property<int>("Gender");
 
                     b.Property<bool>("IsLogin");
 

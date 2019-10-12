@@ -17,10 +17,15 @@
                             </div>
                             @if (!Model.IsLogin)
                             {
-                                <button type="submit" id="sendMessageButtonMainPage"
-                                userToId ="@Model.UserId" class="btn btn-primary" 
+                                <button type="submit"
+                                userToId ="@Model.UserId" class="btn btn-primary button-main-page" 
                                 onclick="@("window.location.href='" + @Url.Action("Index", "Message",
                                 new { userWithId = @Model.UserId as int? }) + "'");">Отправить сообщение</button>
+                            }
+                            else
+                            {
+                                <button type="submit" class="btn btn-primary button-main-page"  
+                                onclick="@("window.location.href='" + @Url.Action("Update", "User") + "'");">Редактировать страницу</button>
                             }
                         </div>
                     </div>

@@ -207,7 +207,10 @@ namespace SimpleSocialNetwork.Models
         }
 
         public void Remove(User user) => context.Users.Remove(user);
-        public void Update(User user) => context.Users.Update(user);
+        public void Update(User user)
+        {
+            context.Entry(user).State = EntityState.Modified;
+        }
 
         public void Create(Message message) => context.Messages.Add(message);
         public void Create(Post post) => context.Posts.Add(post);

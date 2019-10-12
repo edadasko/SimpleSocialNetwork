@@ -51,6 +51,24 @@ namespace SimpleSocialNetwork.Controllers
             return View(news.Where(p => p.Type == PostType.Normal).ToList());
         }
 
+        [HttpGet]
+        public ViewResult Update()
+        {
+            return View(_user);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public RedirectToActionResult Update(UserInfoViewModel info)
+        {
+            _user.ChangeInformation(info);
+            _repository.Update(_user);
+            _repository.Save();
+            return RedirectToAction("Index");
+        }
+
+
         public override void OnActionExecuted(ActionExecutedContext context)
         {
             ViewBag.User = _user;

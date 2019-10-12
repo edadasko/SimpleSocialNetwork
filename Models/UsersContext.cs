@@ -9,7 +9,7 @@ namespace SimpleSocialNetwork.Models
         public UsersContext(DbContextOptions<UsersContext> options)
             :base(options)
         {
-            Database.EnsureCreated();
+            Database.Migrate();
         }
 
         public DbSet<User> Users { get; set; }

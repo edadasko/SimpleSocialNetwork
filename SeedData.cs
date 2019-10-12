@@ -20,6 +20,7 @@ namespace SimpleSocialNetwork
                     Address = "Жукова 18/2 - 24",
                     School = "СШ 19",
                     University = "БГУИР",
+                    Gender = Gender.Male,
                     IsLogin = true
                 },
 
@@ -32,6 +33,7 @@ namespace SimpleSocialNetwork
                     City = "Минск",
                     Address = "Восточая 26 - 35",
                     School = "СШ 19",
+                    Gender = Gender.Female,
                     University = "БГУИР",
                 },
 
@@ -44,6 +46,7 @@ namespace SimpleSocialNetwork
                     City = "Барановичи",
                     Address = "Наконечникова",
                     School = "СШ 19",
+                    Gender = Gender.Male,
                     University = "МГЛУ",
                 }
             };
