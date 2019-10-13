@@ -3,55 +3,53 @@
 <div class="container-fluid">
     <div class="main-section-data">
         <div class="row">
-            <div class="col-lg-4 col-md-4 pd-left-none no-pd">
-                <div class="main-left-sidebar no-margin">
-                    <div class="user-data full-width">
-                        <div class="user-profile">
-                            <div class="username-dt">
-                                <div class="usr-pic">
-                                    <img src="@Url.Content(@Model.MainPhotoPath)" alt="">
-                                </div>
+            <div class="col-lg-4 col-md-4 pd-left-none no-pd main-column">
+                <div class="user-data full-width">
+                    <div class="user-profile">
+                        <div class="username-dt">
+                            <div class="usr-pic">
+                                <img src="@Url.Content(@Model.MainPhotoPath)" alt="">
                             </div>
-                            <div class="user-specs">
-                                <h3>@Model</h3>
-                            </div>
-                            @if (!Model.IsLogin)
-                            {
-                                <button type="submit"
-                                userToId ="@Model.UserId" class="btn btn-primary button-main-page" 
-                                onclick="@("window.location.href='" + @Url.Action("Index", "Message",
-                                new { userWithId = @Model.UserId as int? }) + "'");">Отправить сообщение</button>
-                            }
-                            else
-                            {
-                                <button type="submit" class="btn btn-primary button-main-page"  
-                                onclick="@("window.location.href='" + @Url.Action("Update", "User") + "'");">Редактировать страницу</button>
-                            }
                         </div>
-                    </div>
-                    <div class="friends-main full-width">
-                        <div class="friends-main-title">
-                            <h3>Друзья <span>@Model.Friends.Count</span></h3>
+                        <div class="user-specs">
+                            <h3>@Model</h3>
                         </div>
-                        <div class="friends-main-list">
-                            @foreach (var friend in Model.Friends.Take(5))
-                            {
-                                <div class="friends-main-usd">
-                                    <img src="@Url.Content(@friend.MainPhotoPath)" alt="">
-                                    <div class="friends-text">
-                                        @Html.ActionLink(@friend.ToString(), "MainPage", new { userId = @friend.UserId })
-                                    </div>
-                                </div>
-                            }
-                        </div>
-                        <div class="view-more">
-                            @Html.ActionLink("Все друзья", "Friends", new { userId = @Model.UserId })
-                        </div>
+                        @if (!Model.IsLogin)
+                        {
+                            <button type="submit"
+                            userToId ="@Model.UserId" class="btn btn-primary button-main-page" 
+                            onclick="@("window.location.href='" + @Url.Action("Index", "Message",
+                            new { userWithId = @Model.UserId as int? }) + "'");">Отправить сообщение</button>
+                        }
+                        else
+                        {
+                            <button type="submit" class="btn btn-primary button-main-page"  
+                            onclick="@("window.location.href='" + @Url.Action("Update", "User") + "'");">Редактировать страницу</button>
+                        }
                     </div>
                 </div>
-            </div>
+                <div class="friends-main full-width">
+                    <div class="friends-main-title">
+                        <h3>Друзья <span>@Model.Friends.Count</span></h3>
+                    </div>
+                    <div class="friends-main-list">
+                        @foreach (var friend in Model.Friends.Take(5))
+                        {
+                            <div class="friends-main-usd">
+                                <img src="@Url.Content(@friend.MainPhotoPath)" alt="">
+                                <div class="friends-text">
+                                    @Html.ActionLink(@friend.ToString(), "MainPage", new { userId = @friend.UserId })
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="view-more">
+                        @Html.ActionLink("Все друзья", "Friends", new { userId = @Model.UserId })
+                    </div>
+                </div>
+                </div>
 
-            <div class="col-lg-8 col-md-8 pd-left-none no-pd">
+            <div class="col-lg-8 col-md-8 pd-left-none no-pd main-column">
                 @{await Html.RenderPartialAsync("Information", new UserInfoViewModel(Model));}
 
                 @if (Model.IsLogin)

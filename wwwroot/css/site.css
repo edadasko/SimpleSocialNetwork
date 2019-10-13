@@ -118,14 +118,14 @@ main {
     width: 100%;
 }
 
-.main-section-data {
-    float: left;
-    width: 100%;
+.main-section-data > .row {
+    display: table;
 }
 
-.main-left-sidebar {
-    float: left;
-    width: 100%;
+.main-column {
+    float: none;
+    display: table-cell;
+    vertical-align: top;
 }
 
 .full-width {
@@ -409,12 +409,18 @@ img {
 
 /* ============= Friends-mainpage ============ */
 
+.friends-main {
+    position: -webkit-sticky;
+    display: block;
+    position: sticky;
+    top: 70px;
+}
+
 .friends-main-title {
     float: left;
     width: 100%;
     padding: 20px;
     border-bottom: 1px solid #e5e5e5;
-    position: relative;
 }
 
 .friends-main-title h3 {
