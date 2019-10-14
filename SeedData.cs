@@ -161,9 +161,9 @@ namespace SimpleSocialNetwork
             {
                 new Friendship()
                 {
-                    RequestFrom = users[0],
-                    RequestTo = users[1],
-                    Status = FriendshipStatus.Confirmed
+                    RequestFrom = users[1],
+                    RequestTo = users[0],
+                    Status = FriendshipStatus.Waiting
                 },
 
                 new Friendship()
@@ -177,7 +177,7 @@ namespace SimpleSocialNetwork
                 {
                     RequestFrom = users[2],
                     RequestTo = users[0],
-                    Status = FriendshipStatus.Confirmed
+                    Status = FriendshipStatus.Waiting
                 },
             };
             if (!context.Users.Any())

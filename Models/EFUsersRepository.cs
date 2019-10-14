@@ -75,6 +75,12 @@ namespace SimpleSocialNetwork.Models
         
         public List<User> GetUsersFriends(User user)
         {
+            GetRequests(user);
+            return user.Friends;
+        }
+
+        public void GetRequests(User user)
+        {
             void loadRequests(string x) => context.Entry(user)
                                                   .Collection(x)
                                                   .Load();
@@ -91,14 +97,14 @@ namespace SimpleSocialNetwork.Models
 
             foreach (var request in user.OutgoingFrienshipRequests)
                 loadSenders("RequestTo", request);
-            
-            return user.Friends;
         }
 
         public List<Post> GetUsersNews(User user)
         {
             var news = new List<Post>();
-            var friends = GetUsersFriends(user);
+            GetRequests(user);
+            var friends = user.Friends;
+            friends.AddRange(user.Following);
             foreach (var friend in friends)
                 news.AddRange(GetUsersPosts(friend));
             return news.OrderBy(n => n.Date).Reverse().ToList();

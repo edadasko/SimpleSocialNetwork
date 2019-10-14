@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using SimpleSocialNetwork.Models;
@@ -11,7 +10,6 @@ namespace SimpleSocialNetwork.Controllers
     {
         IUsersRepository _repository;
         User _user;
-
 
         public PostController(IUsersRepository repository)
         {

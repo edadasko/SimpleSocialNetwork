@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using SimpleSocialNetwork.Models;
 
-namespace SimpleSocialNetwork
+namespace SimpleSocialNetwork.ViewModels
 {
     public class UserInfoViewModel
     {
@@ -30,7 +30,7 @@ namespace SimpleSocialNetwork
         {
         }
 
-            public UserInfoViewModel(User user)
+        public UserInfoViewModel(User user)
         {
             Name = user.Name;
             Surname = user.Surname;

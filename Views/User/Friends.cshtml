@@ -1,12 +1,40 @@
-﻿@model List<User>
+﻿@model FriendsRequestsViewModel
 
 <div class="container-fluid">
+    @if (Model.Requests != null && Model.Requests.Count > 0)
+    {
+        <div class="friends-title">
+            <h3>Заявки</h3>
+        </div>
+        <div class="friends-list">
+            <div class="row">
+                @foreach (var request in Model.Requests)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                        <div class="friend-info full-width">
+                            <div class="friend-up-info">
+                                <img src="@Url.Content(@request.MainPhotoPath)" />
+                            </div>
+                            @Html.ActionLink(@request.ToString(), "MainPage", new { userId = @request.UserId })
+                            <div class="request-buttons">
+                                <button class="btn btn-success" onclick="@("window.location.href='" +
+                                    @Url.Action("ConfirmRequestFromFriendsView", "Friendship", new { userId = request.UserId }) + "'");">Добавить</button>
+                                <button class="btn btn-danger" onclick="@("window.location.href='" +
+                                    @Url.Action("CancelRequestFromFriendsView", "Friendship", new { userId = request.UserId }) + "'");">Удалить</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+
     <div class="friends-title">
         <h3>Друзья</h3>
     </div>
     <div class="friends-list">
         <div class="row">
-            @foreach (var friend in Model)
+            @foreach (var friend in Model.Friends)
             {
                 <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                     <div class="friend-info full-width">

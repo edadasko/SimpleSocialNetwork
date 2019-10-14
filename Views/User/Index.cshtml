@@ -1,9 +1,12 @@
 ﻿@model User
+@{
+    User ownerUser = (User)ViewBag.User;
+}
 
 <div class="container-fluid">
     <div class="main-section-data">
         <div class="row">
-            <div class="col-lg-4 col-md-4 pd-left-none no-pd main-column">
+            <div class="col-md-4 col-sm-4 pd-left-none no-pd main-column">
                 <div class="user-data full-width">
                     <div class="user-profile">
                         <div class="username-dt">
@@ -20,6 +23,37 @@
                             userToId ="@Model.UserId" class="btn btn-primary button-main-page" 
                             onclick="@("window.location.href='" + @Url.Action("Index", "Message",
                             new { userWithId = @Model.UserId as int? }) + "'");">Отправить сообщение</button>
+                            <div class="requests-info">
+                                @if(ownerUser.Friends.Contains(Model))
+                                {
+                                    <p>У вас в друзьях</p>
+                                    <button type="submit" class="btn btn-primary button-main-page"
+                                        onclick="@("window.location.href='" +
+                                        @Url.Action("Remove", "Friendship", new { userId = Model.UserId }) + "'");">Удалить из друзей</button>
+                                }
+                                else if (ownerUser.Followers.Contains(Model))
+                                {
+                                    var text = Model.Gender == Gender.Male ? "Подписан на вас" : "Подписана на вас";
+                                    <p>@text</p>
+                                    
+                                    <button type="submit" class="btn btn-primary button-main-page"
+                                        onclick="@("window.location.href='" +
+                                        @Url.Action("ConfirmRequest", "Friendship", new { userId = Model.UserId }) + "'");">Добавить в друзья</button>
+                                }
+                                else if (ownerUser.Following.Contains(Model))
+                                {
+                                    <p>Заявка отправлена</p>
+                                    <button type="submit" class="btn btn-primary button-main-page"
+                                        onclick="@("window.location.href='" +
+                                        @Url.Action("CancelRequest", "Friendship", new { userId = Model.UserId }) + "'");">Отменить заявку</button>
+                                }
+                                else
+                                {
+                                    <button type="submit" class="btn btn-primary button-main-page"
+                                        onclick="@("window.location.href='" +
+                                        @Url.Action("AddToFriends", "Friendship", new { userId = Model.UserId }) + "'");">Добавить в друзья</button>
+                                }
+                            </div>
                         }
                         else
                         {
@@ -49,7 +83,7 @@
                 </div>
                 </div>
 
-            <div class="col-lg-8 col-md-8 pd-left-none no-pd main-column">
+            <div class="col-md-8 col-sm-8 pd-left-none no-pd main-column">
                 @{await Html.RenderPartialAsync("Information", new UserInfoViewModel(Model));}
 
                 @if (Model.IsLogin)
