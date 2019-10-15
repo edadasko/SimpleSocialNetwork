@@ -22,6 +22,14 @@ namespace SimpleSocialNetwork.Controllers
             return View(GetItemsPage(0, GetResponse("")));
         }
 
+        public ActionResult SearchResponse(string request, int page)
+        {
+            request ??= "";
+            IEnumerable<User> response = GetResponse(request);
+            return PartialView("SearchResult", GetItemsPage(page, response));
+        }
+
+        [NonAction]
         private List<User> GetItemsPage(int page, IEnumerable<User> response)
         {
             if (response == null || !response.Any())
@@ -33,38 +41,22 @@ namespace SimpleSocialNetwork.Controllers
             return users;
         }
 
-        public ActionResult SearchResponse(string request, int page)
-        {
-            if (request == null)
-                request = "";
-            IEnumerable<User> response = GetResponse(request);
-            return PartialView("SearchResult", GetItemsPage(page, response));
-        }
-
         [NonAction]
         private IEnumerable<User> GetResponse(string request)
         {
-            IEnumerable<User> response;
             var words = request.Split();
-            switch (words.Count())
+            var comp = StringComparison.OrdinalIgnoreCase;
+            var response = (words.Count()) switch
             {
-                case 0:
-                    response = _repository.Users;
-                    break;
-                case 1:
-                    response = _repository.Users.Where(u => u.Name.StartsWith(request, StringComparison.OrdinalIgnoreCase)
-                                                            || u.Surname.StartsWith(request, StringComparison.OrdinalIgnoreCase));
-                    break;
-                case 2:
-                    response = _repository.Users.Where(u => (u.Name.StartsWith(words[0], StringComparison.OrdinalIgnoreCase)
-                                                             && u.Surname.StartsWith(words[1], StringComparison.OrdinalIgnoreCase))
-                                                            || (u.Surname.StartsWith(words[0], StringComparison.OrdinalIgnoreCase)
-                                                             && u.Name.StartsWith(words[1], StringComparison.OrdinalIgnoreCase)));
-                    break;
-                default:
-                    response = null;
-                    break;
-            }
+                0 => _repository.Users,
+                1 => _repository.Users.Where(u => u.Name.StartsWith(request, comp)
+                                            || u.Surname.StartsWith(request, comp)),
+                2 => _repository.Users.Where(u => (u.Name.StartsWith(words[0], comp)
+                                            && u.Surname.StartsWith(words[1], comp))
+                                            || (u.Surname.StartsWith(words[0], comp)
+                                            && u.Name.StartsWith(words[1], comp))),
+                _ => null,
+            };
             return response;
         }
     }

@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using System.Threading.Tasks;
-using System.Web;
 using SimpleSocialNetwork.ViewModels;
 
 namespace SimpleSocialNetwork.Controllers
@@ -64,12 +63,6 @@ namespace SimpleSocialNetwork.Controllers
             return View(friendsVM);
         }
 
-        public ViewResult News()
-        {
-            var news = _repository.GetUsersNews(_user);
-            return View(news.Where(p => p.Type == PostType.Normal).ToList());
-        }
-
         [HttpGet]
         public ViewResult Update()
         {
@@ -117,7 +110,6 @@ namespace SimpleSocialNetwork.Controllers
         {
             ViewBag.User = _user;
         }
-
 
     }
 }
