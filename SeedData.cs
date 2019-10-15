@@ -177,6 +177,35 @@ namespace SimpleSocialNetwork
                 new Post
                 {
                     Date = DateTime.Now,
+                    Text = "Не банальный пост 2",
+                    Owner = users[2]
+                },
+
+                new Post
+                {
+                    Date = DateTime.Now,
+                    Text = "Новый пост",
+                    Owner = users[1]
+                },
+
+                new Post
+                {
+                    Date = DateTime.Now,
+                    Text = "Еще один новый пост",
+                    Owner = users[1]
+                },
+
+                new Post
+                {
+                    Date = DateTime.Now,
+                    Text = "Интересный пост",
+                    Owner = users[2]
+                },
+
+
+                new Post
+                {
+                    Date = DateTime.Now,
                     Text = "Наинтереснейший пост",
                     Owner = users[1]
                 }

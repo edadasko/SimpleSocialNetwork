@@ -31,12 +31,6 @@ namespace SimpleSocialNetwork.Models
             return LoadInformationFromPosts(user.Posts.ToList());
         }
 
-        public List<Post> GetUsersPosts(User user, int num)
-        {
-            var posts = context.Posts.Where(p => p.Owner == user).Take(num).ToList();
-            return LoadInformationFromPosts(posts);
-        }
-
         public HashSet<Like> GetUsersLikes(User user)
         {
             var likes = context.Likes.Where(l => l.Owner == user).ToHashSet();
@@ -106,7 +100,7 @@ namespace SimpleSocialNetwork.Models
             var friends = user.Friends;
             friends.AddRange(user.Following);
             foreach (var friend in friends)
-                news.AddRange(GetUsersPosts(friend));
+                news.AddRange(GetUsersPosts(friend).Where(p => p.Type == PostType.Normal));
             return news.OrderBy(n => n.Date).Reverse().ToList();
         }
 

@@ -1,8 +1,0 @@
-﻿@model List<Post>
-
-<div class="container-fluid news">
-    <div class="news-title">
-        <h2>Новости</h2>
-    </div>
-    @{await Html.RenderPartialAsync("~/Views/Post/PostsList.cshtml", Model);}
-</div>

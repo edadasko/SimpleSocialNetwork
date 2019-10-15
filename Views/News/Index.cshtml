@@ -1,0 +1,44 @@
+﻿@model List<Post>
+
+<div class="container-fluid news">
+    <div class="news-title">
+        <h2>Новости</h2>
+    </div>
+    <div class="news-list">
+        @{await Html.RenderPartialAsync("~/Views/Post/PostsList.cshtml", Model);}
+    </div>
+</div>
+
+<script>
+$(function () {
+    var page = 0;
+    var _inCallback = false;
+    function loadItems() {
+        if (page > -1 && !_inCallback) {
+            _inCallback = true;
+            page++;
+            $.ajax({
+                type: 'GET',
+                url: '/News/Index/',
+                data: {
+                    page: page
+                },
+                success: function (data, textstatus) {
+                    if (data != '') {
+                        $(".news-list").append(data);
+                    }
+                    else {
+                        page = -1;
+                    }
+                    _inCallback = false;
+                }
+            });
+        }
+    }
+    $(window).scroll(function () {
+        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+            loadItems();
+        }
+    });
+})
+</script>

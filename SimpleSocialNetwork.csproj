@@ -25,6 +25,7 @@
     <Folder Include="ViewModels\" />
     <Folder Include="wwwroot\usersPhotos\" />
     <Folder Include="Views\Search\" />
+    <Folder Include="Views\News\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\css\site.min.css" />
