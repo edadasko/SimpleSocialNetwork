@@ -24,6 +24,7 @@
     <Folder Include="Views\Message\Components\DialogsList\" />
     <Folder Include="ViewModels\" />
     <Folder Include="wwwroot\usersPhotos\" />
+    <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\css\site.min.css" />

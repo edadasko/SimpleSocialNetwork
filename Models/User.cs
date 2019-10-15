@@ -43,6 +43,20 @@ namespace SimpleSocialNetwork.Models
         public ICollection<Message> MessageTo { get; set; }
 
         [NotMapped]
+        public int? Years
+        {
+            get
+            {
+                if (BirthDay == null)
+                    return null;
+                var today = DateTime.Today;
+                var age = today.Year - BirthDay.Value.Year;
+                if (BirthDay.Value.Date > today.AddYears(-age))
+                    age--;
+                return age;
+            }
+        }
+        [NotMapped]
         public List<User> Friends
         {
             get

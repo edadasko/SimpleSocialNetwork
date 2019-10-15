@@ -1,0 +1,38 @@
+﻿@model IEnumerable<User>
+
+@if (Model != null)
+{
+    @foreach (var user in Model)
+    {
+        <div class="full-width user-search-result">
+            <row>
+                <div class="col-md-4 col-sm-4 pd-left-none no-pd">
+                    <img class="search-photo" src="@Url.Content(user.MainPhotoPath)" alt="">
+                </div>
+                <div class="col-md-8 col-sm-8 pd-left-none no-pd search-user-info">
+                    @Html.ActionLink(@user.ToString(), "MainPage", "User", new { userId = @user.UserId })
+                    @if (@user.Country != null && @user.City != null)
+                    {
+                        <p>@(user.City + ", " + user.Country)</p>
+                    }
+                    @if(@user.University != null)
+                    {
+                         <p>@user.University</p>
+                    }
+                    else if (@user.School != null)
+                    {
+                        <p>@user.School</p>
+                    }
+                    @if (@user.BirthDay != null)
+                    {
+                        <p>@user.BirthDay.Value.ToString("dd.MM.yyyy")</p>
+                    }
+                </div>
+            </row>
+        </div>
+    }
+}
+else
+{
+    <p>По вашему запросу не найдено пользователей</p>
+}

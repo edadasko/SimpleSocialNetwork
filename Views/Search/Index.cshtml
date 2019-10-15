@@ -1,0 +1,63 @@
+﻿<div class="main-title">
+    <h3>Поиск</h3>
+</div>
+<div class="search full-width">
+    <textarea class="form-control" id="search-request" placeholder="Введите имя пользователя"></textarea>
+    <button class="btn btn-primary search-button">Поиск</button>
+</div>
+
+<div class="main-title">
+    <h3>Пользователи</h3>
+</div>
+<div class="search-user-list">
+    @{await Html.RenderPartialAsync("SearchResult");}
+</div>
+
+<script>
+    var prevRequest = "";
+    var newRequest = "";
+    $(document).on('click', '.search-button', function () {
+    var request = $("#search-request").val();
+    if (request != "") {
+        $(".search-user-list").load("/Search/SearchResponse?request=" + request + "&page=0");
+        newRequest = request;
+    }
+});
+
+$(function () {
+    var page = 0;
+    var _inCallback = false;
+    function loadItems() {
+        if (page > -1 && !_inCallback) {
+            if (prevRequest != newRequest) {
+                page = 0;
+                prevRequest = newRequest;
+            }   
+            _inCallback = true;
+            page++;
+            $.ajax({
+                type: 'GET',
+                url: '/Search/SearchResponse/',
+                data: {
+                    request: newRequest,
+                    page: page
+                },
+                success: function (data, textstatus) {
+                    if (data != '') {
+                        $(".search-user-list").append(data);
+                    }
+                    else {
+                        page = -1;
+                    }
+                    _inCallback = false;
+                }
+            });
+        }
+    }
+    $(window).scroll(function () {
+        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+            loadItems();
+        }
+    });
+})
+</script>

@@ -48,6 +48,106 @@ namespace SimpleSocialNetwork
                     School = "СШ 19",
                     Gender = Gender.Male,
                     University = "МГЛУ",
+                },
+
+                new User
+                {
+                    Name = "Никита",
+                    Surname = "Яцик",
+                    BirthDay = new DateTime(2002, 2, 26),
+                    Country = "Россия",
+                    City = "Иваново",
+                    Gender = Gender.Male,
+                },
+
+                new User
+                {
+                    Name = "Иван",
+                    Surname = "Иванов",
+                    BirthDay = new DateTime(1990, 2, 5),
+                    Country = "Россия",
+                    City = "Москва",
+                    Gender = Gender.Male,
+                },
+
+                new User
+                {
+                    Name = "Илья",
+                    Surname = "Мороз",
+                    BirthDay = new DateTime(2000, 2, 26),
+                    Country = "Россия",
+                    City = "Санкт-Петербург",
+                    Gender = Gender.Male,
+                },
+
+                new User
+                {
+                    Name = "Екатерина",
+                    Surname = "Петрушкевич",
+                    BirthDay = new DateTime(1999, 7, 10),
+                    Country = "Россия",
+                    City = "Москва",
+                    Gender = Gender.Female,
+                },
+
+                new User
+                {
+                    Name = "Илья",
+                    Surname = "Иванов",
+                    BirthDay = new DateTime(1998, 5, 1),
+                    Country = "Россия",
+                    City = "Санкт-Петербург",
+                    Gender = Gender.Male,
+                },
+
+                new User
+                {
+                    Name = "Илья",
+                    Surname = "Иванов",
+                    BirthDay = new DateTime(2000, 12, 23),
+                    Country = "Россия",
+                    City = "Москва",
+                    Gender = Gender.Male,
+                },
+
+                new User
+                {
+                    Name = "Илья",
+                    Surname = "Холод",
+                    BirthDay = new DateTime(1980, 9, 20),
+                    Country = "Украина",
+                    City = "Киев",
+                    Gender = Gender.Male,
+                },
+
+                new User
+                {
+                    Name = "Илья",
+                    Surname = "Цукенберг",
+                    BirthDay = new DateTime(2000, 3, 10),
+                    Country = "Беларусь",
+                    City = "Гродно",
+                    Gender = Gender.Male,
+                },
+
+                new User
+                {
+                    Name = "Артем",
+                    Surname = "Барташ",
+                    BirthDay = new DateTime(1997, 8, 10),
+                    Country = "Беларусь",
+                    City = "Гродно",
+                    Gender = Gender.Male,
+                },
+
+                new User
+                {
+                    Name = "Илья",
+                    Surname = "Барташ",
+                    BirthDay = new DateTime(1999, 10, 10),
+                    Country = "Беларусь",
+                    City = "Гродно",
+                    Gender = Gender.Male,
                 }
             };
 
@@ -85,7 +185,7 @@ namespace SimpleSocialNetwork
 
             var mainPhotosPosts = new List<Post>();
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 13; i++)
             {
                 mainPhotosPosts.Add(
                     new Post
@@ -119,6 +219,22 @@ namespace SimpleSocialNetwork
                     Post = mainPhotosPosts[2]
                 });
 
+            mainPhotos.Add(
+                new Photo
+                {
+                    Image = "~/usersPhotos/yatsik.jpg",
+                    Post = mainPhotosPosts[3]
+                });
+
+            for  (int i = 4; i < users.Count; i ++)
+            {
+                mainPhotos.Add(
+                new Photo
+                {
+                    Image = "~/images/no_photo.png",
+                    Post = mainPhotosPosts[i]
+                });
+            }
 
             var photos = new List<Photo>
             {

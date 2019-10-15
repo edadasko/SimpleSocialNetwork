@@ -55,17 +55,17 @@ namespace SimpleSocialNetwork.Controllers
             };
 
             if (user == _user)
+            {
                 friendsVM.Requests = user.IncomingFrienshipRequests.Where(r => r.Status == FriendshipStatus.Waiting)
                                                      .Select(r => r.RequestFrom).ToList();
-            foreach (var r in friendsVM.Requests)
-                _repository.GetUsersMainPhoto(r);
+                foreach (var r in friendsVM.Requests)
+                    _repository.GetUsersMainPhoto(r);
+            }
             return View(friendsVM);
         }
 
         public ViewResult News()
         {
-            var likedPostsId = _repository.GetUsersLikes(_user).Select(l => l.PostId).ToHashSet();
-            ViewBag.Likes = likedPostsId;
             var news = _repository.GetUsersNews(_user);
             return View(news.Where(p => p.Type == PostType.Normal).ToList());
         }
