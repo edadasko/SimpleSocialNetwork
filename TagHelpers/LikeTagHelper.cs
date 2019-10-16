@@ -5,21 +5,25 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using SimpleSocialNetwork.Models;
 using System.Text.Encodings.Web;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 
 namespace SimpleSocialNetwork.TagHelpers
 {
     public class LikeTagHelper : TagHelper
-    {
-        readonly IUsersRepository _repository;
-        readonly User _user;
+    { 
+        IUsersRepository _repository;
+        User _user;
         readonly HashSet<int?> likesId;
 
-        public LikeTagHelper(IUsersRepository repository)
+        public LikeTagHelper(IUsersRepository repository,
+                             IHttpContextAccessor httpContextAccessor,
+                             UserManager<User> userManager)
         {
             _repository = repository;
-            _user = ((List<User>)_repository.Users)[0];
+            var id = userManager.GetUserId(httpContextAccessor.HttpContext.User);
+            _user = _repository.GetUserById(id);
             likesId = _repository.GetUsersLikes(_user).Select(l => l.PostId).ToHashSet();
-
         }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)

@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using SimpleSocialNetwork.Models;
 
 namespace SimpleSocialNetwork.Controllers
@@ -10,10 +13,13 @@ namespace SimpleSocialNetwork.Controllers
         IUsersRepository _repository;
         User _user;
 
-        public CommentController(IUsersRepository repository)
+        public CommentController(IUsersRepository repository,
+                                 IHttpContextAccessor httpContextAccessor,
+                                 UserManager<User> userManager)
         {
             _repository = repository;
-            _user = ((List<User>)_repository.Users)[0];
+            var id = userManager.GetUserId(httpContextAccessor.HttpContext.User);
+            _user = _repository.GetUserById(id);
         }
 
         [Route("addComment/{text}/{postId}")]
@@ -49,6 +55,11 @@ namespace SimpleSocialNetwork.Controllers
         {
             Post post = _repository.GetPostById(postId);
             return PartialView(post.Comments);
+        }
+
+        public override void OnActionExecuted(ActionExecutedContext context)
+        {
+            ViewBag.LoggedUser = _user;
         }
     }
 }

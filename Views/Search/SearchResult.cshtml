@@ -10,7 +10,7 @@
                     <img class="search-photo" src="@Url.Content(user.MainPhotoPath)" alt="">
                 </div>
                 <div class="col-md-8 col-sm-8 pd-left-none no-pd search-user-info">
-                    @Html.ActionLink(@user.ToString(), "MainPage", "User", new { userId = @user.UserId })
+                    @Html.ActionLink(@user.ToString(), "MainPage", "User", new { userId = @user.Id })
                     @if (@user.Country != null && @user.City != null)
                     {
                         <p>@(user.City + ", " + user.Country)</p>

@@ -9,13 +9,13 @@
             </div>
             <div class="col-md-8">
                 <div class="post-owner">
-                    @Html.ActionLink(@Model.Owner.ToString(), "MainPage", "User", new { userId = @Model.Owner.UserId })
+                    @Html.ActionLink(@Model.Owner.ToString(), "MainPage", "User", new { userId = @Model.Owner.Id })
                 </div>
                 <div class="post-date">
                     @Model.Date
                 </div>
             </div>
-           @if (Model.Owner.IsLogin)
+           @if (Model.Owner == (User)ViewBag.LoggedUser)
            {
                 <div class="col-md-2">
                     <button postId="@Model.Id" class="glyphicon glyphicon-remove delete-post-button"></button>

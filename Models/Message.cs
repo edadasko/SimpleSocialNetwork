@@ -10,8 +10,8 @@ namespace SimpleSocialNetwork.Models
         public string Text { get; set; }
         public DateTime Date { get; set; }
 
-        public int? UserFromId { get; set; }
-        public int? UserToId { get; set; }
+        public string UserFromId { get; set; }
+        public string UserToId { get; set; }
 
         [InverseProperty("MessageFrom")]
         public User UserFrom { get; set; }

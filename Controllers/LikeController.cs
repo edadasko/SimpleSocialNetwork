@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SimpleSocialNetwork.Models;
 
@@ -11,10 +13,13 @@ namespace SimpleSocialNetwork.Controllers
         IUsersRepository _repository;
         User _user;
 
-        public LikeController(IUsersRepository repository)
+        public LikeController(IUsersRepository repository,
+                              IHttpContextAccessor httpContextAccessor,
+                              UserManager<User> userManager)
         {
             _repository = repository;
-            _user = ((List<User>)_repository.Users)[0];
+            var id = userManager.GetUserId(httpContextAccessor.HttpContext.User);
+            _user = _repository.GetUserById(id);
         }
 
         [Route("addLike/{postId}")]

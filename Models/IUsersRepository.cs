@@ -21,6 +21,7 @@ namespace SimpleSocialNetwork.Models
         Post GetUsersMainPhoto(User user);
         void GetUsersMainPageInfo(User user);
 
+        User GetUserById(string id);
         User GetUserById(int id);
         Like GetLikeById(int id);
         Comment GetCommentById(int id);

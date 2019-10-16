@@ -4,12 +4,8 @@
     <meta charset="utf-8" />
     <title>SimpleSocialNetwork</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="~/css/site.css?Version=39" />
+    <link rel="stylesheet" href="~/css/login.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="~/js/comments.js"></script>
-    <script src="~/js/likes.js"></script>
-    <script src="~/js/posts.js"></script>
-    <script src="~/js/messages.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -20,21 +16,16 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="https://github.com/edadasko/SimpleSocialNetwork">Source Code</a></li>
-                    <li><a method="post" asp-controller="Account" asp-action="LogOff" class="navbar-brand">Выйти</a></li>
+                </ul>
+                 <ul class="nav navbar-nav">
+                    <li><a asp-controller="Account" asp-action="Login" class="navbar-brand">Вход</a></li>
+                </ul>
+                 <ul class="nav navbar-nav">
+                    <li><a asp-controller="Account" asp-action="Register" class="navbar-brand">Регистрация</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    
-    <div class='left_sidebar'>
-        <ul>
-            <li><a asp-controller="User" asp-action="Index">Моя страница</a></li>
-            <li><a asp-controller="User" asp-action="Friends">Друзья</a></li>
-            <li><a asp-controller="Message" asp-action="Index">Сообщения</a></li>
-            <li><a asp-controller="News" asp-action="Index">Новости</a></li>
-            <li><a asp-controller="Search" asp-action="Index">Поиск</a></li>
-        </ul>
-    </div>
 
     <div class="container body-content">
         <div class="main_content">

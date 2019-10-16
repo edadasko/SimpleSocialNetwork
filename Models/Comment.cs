@@ -12,7 +12,7 @@ namespace SimpleSocialNetwork.Models
         public Post Post { get; set; }
         public int? PostId { get; set; }
 
-        public int? OwnerId { get; set; }
+        public string OwnerId { get; set; }
         public User Owner { get; set; }
 
         public override string ToString() => Date.ToString() + "\n" + Owner + ": \n" + Text + "\n";

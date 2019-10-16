@@ -7,26 +7,32 @@
     <ul>
         @foreach (var user in Model)
         {
-            <li userId="@user.Item1.UserId" class="user-dialog">
-                <div class="dialogs-msg-details" userId="@user.Item1.UserId">
-                    <div class="usr-msg-img" userId="@user.Item1.UserId">
-                        <img src="@Url.Content(@user.Item1.MainPhotoPath)" alt="" userId="@user.Item1.UserId">
+            <li userId="@user.Item1.Id" class="user-dialog">
+                <div class="dialogs-msg-details" userId="@user.Item1.Id">
+                    <div class="usr-msg-img" userId="@user.Item1.Id">
+                        <img src="@Url.Content(@user.Item1.MainPhotoPath)" alt="" userId="@user.Item1.Id">
                     </div>
-                    <div class="usr-msg-info" userId="@user.Item1.UserId" >
-                        <h3 userId="@user.Item1.UserId">@user.Item1</h3>
-                        <h4 userId="@user.Item1.UserId">@user.Item2.Date</h4>
+                    <div class="usr-msg-info" userId="@user.Item1.Id" >
                         @{
-                            string text = user.Item2.UserFrom == user.Item1 ? user.Item1 + ": " : "Вы: ";
-                            if (user.Item2.Text.Length < 10)
+                            string text = user.Item1.ToString();
+
+                            @if (user.Item1.ToString().Length > 15)
                             {
-                                text += user.Item2.Text;
-                            }
-                            else
-                            {
-                                text += user.Item2.Text.Substring(0, 10) + "...";
+                                text = text.Substring(0, 15) + "...";
                             }
                         }
-                        <h4 userId="@user.Item1.UserId">@text</h4>
+                        <h3 userId="@user.Item1.Id">@text</h3>
+                        <h4 userId="@user.Item1.Id">@user.Item2.Date</h4>
+                        @{
+                            text = user.Item2.UserFrom == user.Item1 ? user.Item1.Name + ": " : "Вы: ";
+                            text += user.Item2.Text;
+                            if (text.Length > 20)
+                            {
+                                text = text.Substring(0, 20) + "...";
+                            }
+
+                        }
+                        <h4 userId="@user.Item1.Id">@text</h4>
                     </div>
                 </div>
             </li>

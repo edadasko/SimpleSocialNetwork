@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SimpleSocialNetwork.Models;
 
@@ -8,14 +10,17 @@ namespace SimpleSocialNetwork.Controllers
 {
     public class NewsController : Controller
     {
-        IUsersRepository _repository;
         const int pageSize = 5;
+        IUsersRepository _repository;
         User _user;
 
-        public NewsController(IUsersRepository repository)
+        public NewsController(IUsersRepository repository,
+                              IHttpContextAccessor httpContextAccessor,
+                              UserManager<User> userManager)
         {
             _repository = repository;
-            _user = ((List<User>)_repository.Users)[0];
+            var id = userManager.GetUserId(httpContextAccessor.HttpContext.User);
+            _user = _repository.GetUserById(id);
         }
 
         public ActionResult Index(int page = 0)

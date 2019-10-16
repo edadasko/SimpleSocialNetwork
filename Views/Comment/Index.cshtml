@@ -7,13 +7,13 @@
         </div>
         <div class="col-md-8">
             <div class="comment-owner">
-                @Html.ActionLink(@Model.Owner.ToString(), "MainPage", "User", new { userId = @Model.Owner.UserId })
+                @Html.ActionLink(@Model.Owner.ToString(), "MainPage", "User", new { userId = @Model.Owner.Id })
             </div>
             <div class="comment-date">
                 @Model.Date
             </div>
         </div>
-       @if (Model.Owner.IsLogin)
+       @if (Model.Owner == (User)ViewBag.LoggedUser)
         {
             <div class="col-md-2">
                 <button commentId="@Model.Id" postId="@Model.Post.Id" class="btn glyphicon glyphicon-remove delete-comment-button"></button>

@@ -1,0 +1,29 @@
+﻿@model LoginViewModel
+
+@{
+    Layout = "_LoginLayout";
+}
+
+<h3>Вход</h3>
+
+<form method="post" asp-controller="Account" asp-action="Login"
+        asp-route-returnUrl="@Model.ReturnUrl" class="form-group login-container">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div>
+        <label asp-for="Email"></label><br />
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div>
+        <label asp-for="Password"></label><br />
+        <input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div>
+        <label asp-for="RememberMe"></label>
+        <input asp-for="RememberMe" />
+    </div>
+    <div class="button-div">
+        <input type="submit" value="Войти" class="btn btn-default" />
+    </div>
+</form>

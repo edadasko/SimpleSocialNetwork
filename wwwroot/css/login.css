@@ -1,0 +1,55 @@
+﻿body {
+    line-height: 1;
+    font-family: 'Source Sans Pro', sans-serif;
+    overflow-x: hidden;
+    font-weight: 400;
+    background-color: #eeeeee;
+    padding-top: 60px;
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+h3 {
+    color: #000000;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.login-container {
+    width: 50%;
+    padding: 30px 30px 3px 30px;
+    background-color: #fff;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    border-radius: 10px;
+    margin-bottom: 20px; 
+}
+
+.login-container > div {
+    margin-bottom: 20px;
+}
+
+.login-container > div > label {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.login-container > div > input {
+    margin-bottom: 7px;
+}
+
+.login-container > div > span {
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.button-div {
+    text-align: right;
+}
+
+.button-div > input {
+    margin-right: 0;
+    margin-left: auto;
+}

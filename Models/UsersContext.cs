@@ -1,10 +1,11 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace SimpleSocialNetwork.Models
 {
-    public class UsersContext : DbContext
+    public class UsersContext : IdentityDbContext<User>
     {
         public UsersContext(DbContextOptions<UsersContext> options)
             :base(options)
@@ -12,7 +13,6 @@ namespace SimpleSocialNetwork.Models
             Database.Migrate();
         }
 
-        public DbSet<User> Users { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Comment> Comments { get; set; }

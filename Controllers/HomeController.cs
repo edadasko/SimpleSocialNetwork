@@ -11,10 +11,12 @@ namespace SimpleSocialNetwork.Controllers
             _repository = repository;
         }
 
-        public RedirectToActionResult Index()
+        public ActionResult Index()
         {
+            if (User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "User");
             //_repository.ClearData();
-            return RedirectToAction("Index", "User");
+            return View();
         }
     }
 }

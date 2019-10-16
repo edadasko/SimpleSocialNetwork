@@ -1,6 +1,6 @@
 ﻿@model User
 @{
-    User ownerUser = (User)ViewBag.User;
+    User ownerUser = (User)ViewBag.LoggedUser;
 }
 
 <div class="container-fluid">
@@ -17,19 +17,19 @@
                         <div class="user-specs">
                             <h3>@Model</h3>
                         </div>
-                        @if (!Model.IsLogin)
+                        @if (Model != ownerUser)
                         {
                             <button type="submit"
-                            userToId ="@Model.UserId" class="btn btn-primary button-main-page" 
+                            userToId ="@Model.Id" class="btn btn-primary button-main-page" 
                             onclick="@("window.location.href='" + @Url.Action("Index", "Message",
-                            new { userWithId = @Model.UserId as int? }) + "'");">Отправить сообщение</button>
+                            new { userWithId = @Model.Id }) + "'");">Отправить сообщение</button>
                             <div class="requests-info">
                                 @if(ownerUser.Friends.Contains(Model))
                                 {
                                     <p>У вас в друзьях</p>
                                     <button type="submit" class="btn btn-primary button-main-page"
                                         onclick="@("window.location.href='" +
-                                        @Url.Action("Remove", "Friendship", new { userId = Model.UserId }) + "'");">Удалить из друзей</button>
+                                        @Url.Action("Remove", "Friendship", new { userId = Model.Id }) + "'");">Удалить из друзей</button>
                                 }
                                 else if (ownerUser.Followers.Contains(Model))
                                 {
@@ -38,20 +38,20 @@
                                     
                                     <button type="submit" class="btn btn-primary button-main-page"
                                         onclick="@("window.location.href='" +
-                                        @Url.Action("ConfirmRequest", "Friendship", new { userId = Model.UserId }) + "'");">Добавить в друзья</button>
+                                        @Url.Action("ConfirmRequest", "Friendship", new { userId = Model.Id }) + "'");">Добавить в друзья</button>
                                 }
                                 else if (ownerUser.Following.Contains(Model))
                                 {
                                     <p>Заявка отправлена</p>
                                     <button type="submit" class="btn btn-primary button-main-page"
                                         onclick="@("window.location.href='" +
-                                        @Url.Action("CancelRequest", "Friendship", new { userId = Model.UserId }) + "'");">Отменить заявку</button>
+                                        @Url.Action("CancelRequest", "Friendship", new { userId = Model.Id }) + "'");">Отменить заявку</button>
                                 }
                                 else
                                 {
                                     <button type="submit" class="btn btn-primary button-main-page"
                                         onclick="@("window.location.href='" +
-                                        @Url.Action("AddToFriends", "Friendship", new { userId = Model.UserId }) + "'");">Добавить в друзья</button>
+                                        @Url.Action("AddToFriends", "Friendship", new { userId = Model.Id }) + "'");">Добавить в друзья</button>
                                 }
                             </div>
                         }
@@ -72,13 +72,13 @@
                             <div class="friends-main-usd">
                                 <img src="@Url.Content(@friend.MainPhotoPath)" alt="">
                                 <div class="friends-text">
-                                    @Html.ActionLink(@friend.ToString(), "MainPage", new { userId = @friend.UserId })
+                                    @Html.ActionLink(@friend.ToString(), "MainPage", new { userId = @friend.Id })
                                 </div>
                             </div>
                         }
                     </div>
                     <div class="view-more">
-                        @Html.ActionLink("Все друзья", "Friends", new { userId = @Model.UserId })
+                        @Html.ActionLink("Все друзья", "Friends", new { userId = @Model.Id })
                     </div>
                 </div>
                 </div>
@@ -86,7 +86,7 @@
             <div class="col-md-8 col-sm-8 pd-left-none no-pd main-column">
                 @{await Html.RenderPartialAsync("Information", new UserInfoViewModel(Model));}
 
-                @if (Model.IsLogin)
+                @if (Model == ownerUser)
                 {
                     <div class="container-fluid">
                         <div class="post-area">

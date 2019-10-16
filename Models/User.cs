@@ -3,20 +3,17 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using Microsoft.AspNetCore.Identity;
 using SimpleSocialNetwork.ViewModels;
 
 namespace SimpleSocialNetwork.Models
 {
-    public class User
+    public class User : IdentityUser
     {
-        public int UserId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public DateTime? BirthDay { get; set; }
         public Gender Gender { get; set; }
-
-        public string Email { get; set; }
-        public string MobilePhone { get; set; }
 
         public string Country { get; set; }
         public string City { get; set; }
@@ -126,7 +123,7 @@ namespace SimpleSocialNetwork.Models
                 }
                 catch(NullReferenceException)
                 {
-                    return null;
+                    return "~/images/no_photo.png";
                 }
             }
         }
@@ -137,7 +134,7 @@ namespace SimpleSocialNetwork.Models
             Surname = info.Surname;
             BirthDay = info.BirthDay;
             Email = info.Email;
-            MobilePhone = info.MobilePhone;
+            PhoneNumber = info.PhoneNumber;
             Country = info.Country;
             City = info.City;
             Address = info.Address;

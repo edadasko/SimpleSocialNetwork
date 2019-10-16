@@ -74,18 +74,18 @@
             </div>
         }
 
-        @if (@Model.MobilePhone != null || Model.Email != null)
+        @if (@Model.PhoneNumber != null || Model.Email != null)
         {
             <div class="info-section full-width">
                 @{
-                    if (@Model.MobilePhone != null)
+                    if (@Model.PhoneNumber != null)
                     {
                         <div class="row info-row">
                             <div class="col-lg-4 col-md-5 col-sm-6 info-name">
                                 Мобильный телефон:
                             </div>
                             <div class="col-lg-8 col-md-7 col-sm-6 info-value">
-                                @Model.MobilePhone
+                                @Model.PhoneNumber
                             </div>
                         </div>
                     }

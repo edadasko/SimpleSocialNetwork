@@ -15,12 +15,12 @@
                             <div class="friend-up-info">
                                 <img src="@Url.Content(@request.MainPhotoPath)" />
                             </div>
-                            @Html.ActionLink(@request.ToString(), "MainPage", new { userId = @request.UserId })
+                            @Html.ActionLink(@request.ToString(), "MainPage", new { userId = @request.Id })
                             <div class="request-buttons">
                                 <button class="btn btn-success" onclick="@("window.location.href='" +
-                                    @Url.Action("ConfirmRequestFromFriendsView", "Friendship", new { userId = request.UserId }) + "'");">Добавить</button>
+                                    @Url.Action("ConfirmRequestFromFriendsView", "Friendship", new { userId = request.Id }) + "'");">Добавить</button>
                                 <button class="btn btn-danger" onclick="@("window.location.href='" +
-                                    @Url.Action("CancelRequestFromFriendsView", "Friendship", new { userId = request.UserId }) + "'");">Удалить</button>
+                                    @Url.Action("CancelRequestFromFriendsView", "Friendship", new { userId = request.Id }) + "'");">Удалить</button>
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                         <div class="friend-up-info">
                             <img src="@Url.Content(@friend.MainPhotoPath)" />
                         </div>
-                        @Html.ActionLink(@friend.ToString(), "MainPage", new { userId = @friend.UserId })
+                        @Html.ActionLink(@friend.ToString(), "MainPage", new { userId = @friend.Id })
                     </div>
                 </div>
             }

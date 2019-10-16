@@ -8,7 +8,7 @@
             <img src="@Url.Content((userWith.MainPhotoPath))" alt="">
         </div>
         <div class="usr-msg-name">
-            @Html.ActionLink(userWith.ToString(), "MainPage", "User", new { userId = userWith.UserId })
+            @Html.ActionLink(userWith.ToString(), "MainPage", "User", new { userId = userWith.Id })
         </div>
     </div>
 </div>
@@ -16,7 +16,7 @@
     <div class="free-space"></div>
         @foreach (var message in Model)
         {
-            if (@message.UserFromId == (userWith.UserId))
+            if (@message.UserFromId == (userWith.Id))
             {
                 <div class="main-message-box left">
                     <div class="message-dt left">
@@ -58,7 +58,7 @@
         <textarea class="form-control message-control"
                   id ="messageText" rows="3" placeholder="Введите сообщение"></textarea>
         <button type="submit" id="sendMessageButton" 
-                userToId ="@(userWith.UserId)" 
+                userToId ="@(userWith.Id)" 
                 class="btn btn-primary send-message-button" >Отправить</button>
     </div>
 </div>

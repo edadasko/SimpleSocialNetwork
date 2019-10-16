@@ -1022,3 +1022,28 @@ img {
     margin: 5px 0;
     font-weight: 500;
 }
+
+
+/* ============== login-register ============ */
+
+.login-container {
+    width: 50%;
+    margin-top: 50px;
+    margin-left: 15%;
+    padding: 30px;
+    background-color: #fff;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    border-radius: 10px;
+}
+
+.login-container > div {
+    margin-bottom: 20px;
+}
+
+.login-container > div > label {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}

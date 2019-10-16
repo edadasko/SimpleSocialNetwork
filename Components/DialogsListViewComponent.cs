@@ -3,6 +3,8 @@ using System.Linq;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using SimpleSocialNetwork.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 
 namespace SimpleSocialNetwork.Components
 {
@@ -10,10 +12,14 @@ namespace SimpleSocialNetwork.Components
     {
         IUsersRepository _repository;
         User _user;
-        public DialogsListViewComponent(IUsersRepository repository)
+
+        public DialogsListViewComponent(IUsersRepository repository,
+                                    IHttpContextAccessor httpContextAccessor,
+                                    UserManager<User> userManager)
         {
             _repository = repository;
-            _user = ((List<User>)_repository.Users)[0];
+            var id = userManager.GetUserId(httpContextAccessor.HttpContext.User);
+            _user = _repository.GetUserById(id);
         }
 
         public IViewComponentResult Invoke()
@@ -22,7 +28,7 @@ namespace SimpleSocialNetwork.Components
             var users = new List<(User, Message)>();
             foreach (var dialog in dialogs)
             {
-                var second_user = dialog.User1Id == _user.UserId ?
+                var second_user = dialog.User1Id == _user.Id ?
                             _repository.GetUserById(dialog.User2Id) :
                             _repository.GetUserById(dialog.User1Id);
                 _repository.GetUsersMainPhoto(second_user);

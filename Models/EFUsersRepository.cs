@@ -107,7 +107,7 @@ namespace SimpleSocialNetwork.Models
         public List<Dialog> GetDialogs(User user)
         {
             var q = context.Dialogs.ToList();
-            var dialogs = context.Dialogs.Where(d => d.User1Id == user.UserId || d.User2Id == user.UserId).ToList();
+            var dialogs = context.Dialogs.Where(d => d.User1Id == user.Id || d.User2Id == user.Id).ToList();
             return dialogs;
         }
 
@@ -142,18 +142,25 @@ namespace SimpleSocialNetwork.Models
 
         public Post GetUsersMainPhoto(User user)
         {
-            var mainPhoto = context.Posts.Where(p => p.Type == PostType.MainPhoto && p.Owner == user).
-                                          Single();
+            try
+            {
+                var mainPhoto = context.Posts.Where(p => p.Type == PostType.MainPhoto && p.Owner == user).
+                                              Single();
 
-            void load(string x) => context.Entry(mainPhoto)
-                                          .Collection(x)
-                                          .Load();
+                void load(string x) => context.Entry(mainPhoto)
+                                              .Collection(x)
+                                              .Load();
 
-            load("Likes");
-            load("Comments");
-            load("Photos");
+                load("Likes");
+                load("Comments");
+                load("Photos");
 
-            return mainPhoto;
+                return mainPhoto;
+            }
+            catch(InvalidOperationException)
+            {
+                return null;
+            }
         }
 
         public void GetUsersMainPageInfo(User user)
@@ -241,6 +248,7 @@ namespace SimpleSocialNetwork.Models
         public void Update(Dialog dialog) => context.Dialogs.Update(dialog);
         public void Save() => context.SaveChanges();
 
+        public User GetUserById(string id) => context.Users.Find(id);
         public User GetUserById(int id) => context.Users.Find(id);
 
         public Post GetPostById(int id)

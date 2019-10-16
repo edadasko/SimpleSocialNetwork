@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SimpleSocialNetwork.Models;
 
@@ -10,13 +12,17 @@ namespace SimpleSocialNetwork.Components
     {
         IUsersRepository _repository;
         User _user;
-        public DialogViewComponent(IUsersRepository repository)
+
+        public DialogViewComponent(IUsersRepository repository,
+                                    IHttpContextAccessor httpContextAccessor,
+                                    UserManager<User> userManager)
         {
             _repository = repository;
-            _user = ((List<User>)_repository.Users)[0];
+            var id = userManager.GetUserId(httpContextAccessor.HttpContext.User);
+            _user = _repository.GetUserById(id);
         }
 
-        public IViewComponentResult Invoke(int userId)
+        public IViewComponentResult Invoke(string userId)
         {
             ViewBag.ownerUser = _user;
             var otherUser = _repository.GetUserById(userId);
@@ -27,8 +33,8 @@ namespace SimpleSocialNetwork.Components
             try
             {
                 dialog = _repository.GetDialogs(_user)
-                                    .Single(d => (d.User1Id == _user.UserId && d.User2Id == userId) ||
-                                                 (d.User2Id == _user.UserId && d.User1Id == userId));
+                                    .Single(d => (d.User1Id == _user.Id && d.User2Id == userId) ||
+                                                 (d.User2Id == _user.Id && d.User1Id == userId));
             }
             catch (InvalidOperationException)
             {
