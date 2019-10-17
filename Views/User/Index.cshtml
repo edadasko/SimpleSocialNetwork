@@ -1,6 +1,8 @@
 ﻿@model User
 @{
     User ownerUser = (User)ViewBag.LoggedUser;
+    List<string> roles = (List<string>)ViewBag.UserRoles;
+    List<string> ownerRoles = (List<string>)ViewBag.LoggedUserRoles;
 }
 
 <div class="container-fluid">
@@ -16,6 +18,14 @@
                         </div>
                         <div class="user-specs">
                             <h3>@Model</h3>
+                            @if (roles.Contains("admin"))
+                            {
+                                <p>Админ</p>
+                            }
+                            else if (roles.Contains("moderator"))
+                            {
+                                <p>Модератор</p>
+                            }
                         </div>
                         @if (Model != ownerUser)
                         {
@@ -60,6 +70,47 @@
                             <button type="submit" class="btn btn-primary button-main-page"  
                             onclick="@("window.location.href='" + @Url.Action("Update", "User") + "'");">Редактировать страницу</button>
                         }
+
+                        @if ((ownerRoles.Contains("admin") && !roles.Contains("admin")) ||
+                            (ownerRoles.Contains("moderator") && !roles.Contains("moderator")))
+                        {
+                            <div class="admin-area">
+                                @if (ownerRoles.Contains("admin"))
+                                {
+                                    if (!roles.Contains("admin"))
+                                    {
+                                        <button type="submit" class="btn btn-primary button-main-page"
+                                            onclick="@("window.location.href='" +
+                                            @Url.Action("SetAdmin", "Roles",
+                                            new { userId = Model.Id }) + "'");">Назначить админом</button>
+                                    }
+
+                                    if (!roles.Contains("moderator"))
+                                    {
+                                        <button type="submit" class="btn btn-primary button-main-page"
+                                            onclick="@("window.location.href='" +
+                                            @Url.Action("SetModerator", "Roles",
+                                            new { userId = Model.Id }) + "'");">Назначить модератором</button>
+                                    }
+                                    else if (!roles.Contains("admin"))
+                                    {
+                                        <button type="submit" class="btn btn-danger button-main-page-danger"
+                                            onclick="@("window.location.href='" +
+                                            @Url.Action("RemoveModerator", "Roles",
+                                            new { userId = Model.Id }) + "'");">Удалить права модератора</button>
+                                    }
+                                }
+
+                                @if ((ownerRoles.Contains("moderator") && !roles.Contains("moderator")))
+                                {
+                                    <button type="submit" class="btn btn-danger button-main-page-danger"
+                                        onclick="@("window.location.href='" +
+                                        @Url.Action("Block", "User",
+                                        new { userId = Model.Id }) + "'");">Заблокировать</button>
+                                }
+                            </div>
+                        }
+
                     </div>
                 </div>
                 <div class="friends-main full-width">

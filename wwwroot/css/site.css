@@ -237,6 +237,10 @@ main {
     background-color: #006064;
 }
 
+.button-main-page-danger {
+    margin-bottom: 15px;
+}
+
 /* ============= Left Navigation Bar ============ */
 .left_sidebar {
     position: fixed;
@@ -318,10 +322,13 @@ img {
 .requests-info {
     padding-top: 10px;
     margin-bottom: 0;
-    border-left: 1px solid #e5e5e5;
-    border-right: 1px solid #e5e5e5;
     border-top: 1px solid #e5e5e5;
-    border-radius: 10px;
+}
+
+.admin-area {
+    padding-top: 10px;
+    margin-bottom: 0;
+    border-top: 1px solid #e5e5e5;
 }
 
 
@@ -414,6 +421,10 @@ img {
     float: right;
     border: none;
     background-color: rgba(0, 0, 0, 0);
+}
+
+.no-comments {
+    margin-left: 5px;
 }
 
 /* ============= Friends-mainpage ============ */

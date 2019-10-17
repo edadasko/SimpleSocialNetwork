@@ -13,9 +13,14 @@ namespace SimpleSocialNetwork.Controllers
 
         public ActionResult Index()
         {
+            //_repository.ClearData();
             if (User.Identity.IsAuthenticated)
                 return RedirectToAction("Index", "User");
-            //_repository.ClearData();
+            return View();
+        }
+
+        public ActionResult NoAccess()
+        {
             return View();
         }
     }

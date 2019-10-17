@@ -25,8 +25,7 @@ namespace SimpleSocialNetwork.Models
         public string JobPlace { get; set; }
         public string JobPosition { get; set; }
 
-        public bool IsLogin { get; set; } = false;
-
+        public bool IsBlocked { get; set; }
 
         public ICollection<Friendship> IncomingFrienshipRequests { get; set; }
         public ICollection<Friendship> OutgoingFrienshipRequests { get; set; }

@@ -25,6 +25,9 @@ namespace SimpleSocialNetwork.Controllers
 
         public ActionResult Index(int page = 0)
         {
+            if (_user.IsBlocked)
+                return View("NoAccess", "Home");
+
             if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
             {
                 return PartialView("~/Views/Post/PostsList.cshtml", GetItemsPage(page));

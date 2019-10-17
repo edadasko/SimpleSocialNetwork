@@ -1,0 +1,41 @@
+﻿@model User
+@{
+    User ownerUser = (User)ViewBag.LoggedUser;
+    List<string> ownerRoles = (List<string>)ViewBag.LoggedUserRoles;
+}
+
+<div class="container-fluid">
+    <div class="main-section-data">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 pd-left-none no-pd main-column">
+                <div class="user-data full-width">
+                    <div class="user-profile">
+                        <div class="username-dt">
+                            <div class="usr-pic">
+                                <img src="@Url.Content(@Model.MainPhotoPath)" alt="">
+                            </div>
+                        </div>
+                        <div class="user-specs">
+                            <h3>@Model</h3>
+                        </div>
+
+                        @if (ownerRoles.Contains("moderator"))
+                        {
+                            <div class="requests-info">
+                                <button type="submit" class="btn btn-primary button-main-page"
+                                        onclick="@("window.location.href='" +
+                                        @Url.Action("Unblock", "User",
+                                        new { userId = Model.Id }) + "'");">Разблокировать</button>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+                </div>
+
+            <div class="col-md-8 col-sm-8 pd-left-none no-pd main-column">
+                <h3>Страница заблокирована. Информация недоступна.</h3>
+            </div>
+        </div>
+    </div>
+</div>

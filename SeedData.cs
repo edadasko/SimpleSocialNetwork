@@ -21,7 +21,6 @@ namespace SimpleSocialNetwork
                     School = "СШ 19",
                     University = "БГУИР",
                     Gender = Gender.Male,
-                    IsLogin = true
                 },
 
                 new User

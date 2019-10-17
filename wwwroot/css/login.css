@@ -53,3 +53,22 @@ h3 {
     margin-right: 0;
     margin-left: auto;
 }
+
+.blocked-text {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.main-page-title {
+    margin: auto;
+    text-align: center;
+    padding-right: 50%;
+    margin-top: 10%;
+}
+
+.main-page-title > h2 {
+    color: #000000;
+    font-size: 30px;
+    font-weight: 300;
+}

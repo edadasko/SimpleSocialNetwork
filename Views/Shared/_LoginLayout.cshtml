@@ -4,23 +4,21 @@
     <meta charset="utf-8" />
     <title>SimpleSocialNetwork</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="~/css/login.css" />
+    <link rel="stylesheet" href="~/css/login.css?Version=3" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a asp-area="" asp-controller="User" asp-action="Index" class="navbar-brand">SimpleSocialNetwork</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">SimpleSocialNetwork</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="https://github.com/edadasko/SimpleSocialNetwork">Source Code</a></li>
                 </ul>
-                 <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav navbar-right">
                     <li><a asp-controller="Account" asp-action="Login" class="navbar-brand">Вход</a></li>
-                </ul>
-                 <ul class="nav navbar-nav">
                     <li><a asp-controller="Account" asp-action="Register" class="navbar-brand">Регистрация</a></li>
                 </ul>
             </div>

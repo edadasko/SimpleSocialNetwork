@@ -5,11 +5,13 @@ namespace SimpleSocialNetwork.ViewModels
 {
     public class LoginViewModel
     {
-        [Required]
+        private const string errorMessage = "Данное поле обязательно";
+
+        [Required(ErrorMessage = errorMessage)]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = errorMessage)]
         [DataType(DataType.Password)]
         [Display(Name = "Пароль")]
         public string Password { get; set; }
