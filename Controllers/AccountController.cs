@@ -76,10 +76,5 @@ namespace SimpleSocialNetwork.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
-
-        public RedirectToActionResult Test()
-        {
-            return RedirectToAction("Index", "Home");
-        }
     }
 }
