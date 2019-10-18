@@ -29,22 +29,72 @@
         </div>
     }
 
-    <div class="friends-title">
-        <h3>Друзья</h3>
-    </div>
-    <div class="friends-list">
-        <div class="row">
-            @foreach (var friend in Model.Friends)
-            {
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                    <div class="friend-info full-width">
-                        <div class="friend-up-info">
-                            <img src="@Url.Content(@friend.MainPhotoPath)" />
-                        </div>
-                        @Html.ActionLink(@friend.ToString(), "MainPage", new { userId = @friend.Id })
-                    </div>
-                </div>
-            }
+    @if(Model.Friends.Any())
+    {
+        <div class="friends-title">
+            <h3>Друзья</h3>
         </div>
-    </div>
+
+
+        <div class="friends-list">
+            <div class="row">
+                @foreach (var friend in Model.Friends)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                        <div class="friend-info full-width">
+                            <div class="friend-up-info">
+                                <img src="@Url.Content(@friend.MainPhotoPath)" />
+                            </div>
+                            @Html.ActionLink(@friend.ToString(), "MainPage", new { userId = @friend.Id })
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+
+    @if (Model.Following.Any())
+    {
+        <div class="friends-title">
+            <h3>Вы подписаны на</h3>
+        </div>
+        <div class="friends-list">
+            <div class="row">
+                @foreach (var following in Model.Following)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                        <div class="friend-info full-width">
+                            <div class="friend-up-info">
+                                <img src="@Url.Content(@following.MainPhotoPath)" />
+                            </div>
+                            @Html.ActionLink(@following.ToString(), "MainPage", new { userId = @following.Id })
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+
+    @if(Model.Followers.Any())
+    {
+        <div class="friends-title">
+            <h3>Подписчики</h3>
+        </div>
+        <div class="friends-list">
+            <div class="row">
+                @foreach (var follower in Model.Followers)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                        <div class="friend-info full-width">
+                            <div class="friend-up-info">
+                                <img src="@Url.Content(@follower.MainPhotoPath)" />
+                            </div>
+                            @Html.ActionLink(@follower.ToString(), "MainPage", new { userId = @follower.Id })
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+   
 </div>

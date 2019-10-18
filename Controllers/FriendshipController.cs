@@ -56,7 +56,23 @@ namespace SimpleSocialNetwork.Controllers
 
         public RedirectToActionResult Remove(string userId)
         {
-            var request = GetRequest(userId);
+            var request = GetRequestToOwner(userId);
+            var user = _repository.GetUserById(userId);
+
+            if (request == null)
+            {
+                CancelRequest(userId);
+                request = new Friendship
+                {
+                    RequestFrom = user,
+                    RequestTo = _user,
+                    Status = FriendshipStatus.Rejected
+                };
+                _repository.Create(request);
+                _repository.Save();
+                return RedirectToAction("MainPage", "User", new { userId });
+            }
+
             request.Status = FriendshipStatus.Rejected;
             _repository.Update(request);
             _repository.Save();
@@ -71,6 +87,15 @@ namespace SimpleSocialNetwork.Controllers
                     (f.RequestFrom == _user && f.RequestTo == user) ||
                     (f.RequestFrom == user && f.RequestTo == _user));
         }
+
+        [NonAction]
+        private Friendship GetRequestToOwner(string userId)
+        {
+            var user = _repository.GetUserById(userId);
+            return _repository.Friendships.SingleOrDefault(f =>
+                    f.RequestFrom == user && f.RequestTo == _user);
+        }
+
 
         public RedirectToActionResult ConfirmRequestFromFriendsView(string userId)
         {
