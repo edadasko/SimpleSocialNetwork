@@ -14,8 +14,8 @@ namespace SimpleSocialNetwork.Controllers
         User _user;
 
         public MessageController(IUsersRepository repository,
-                              IHttpContextAccessor httpContextAccessor,
-                              UserManager<User> userManager)
+                                 IHttpContextAccessor httpContextAccessor,
+                                 UserManager<User> userManager)
         {
             _repository = repository;
             var id = userManager.GetUserId(httpContextAccessor.HttpContext.User);

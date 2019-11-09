@@ -23,5 +23,10 @@ namespace SimpleSocialNetwork.Controllers
         {
             return View();
         }
+
+        public ActionResult Error()
+        {
+            return View();
+        }
     }
 }

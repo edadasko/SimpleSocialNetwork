@@ -39,7 +39,7 @@ namespace SimpleSocialNetwork.Controllers
                 }
 
                 ModelState.AddModelError("", "Неверный email или пароль.\n" +
-                    "Пароль должен быть не менее 6 символов, а email уникальным ");
+                    "Пароль должен быть не менее 6 символов, а email уникальным");
             }
             return View(model);
         }
