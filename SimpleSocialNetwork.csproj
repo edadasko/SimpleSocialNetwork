@@ -32,6 +32,7 @@
     <Folder Include="wwwroot\usersPhotos\" />
     <Folder Include="Views\Search\" />
     <Folder Include="Views\News\" />
+    <Folder Include="Hubs\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\css\site.min.css" />

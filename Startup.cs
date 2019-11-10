@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SimpleSocialNetwork.Hubs;
 using SimpleSocialNetwork.Models;
 
 namespace SimpleSocialNetwork
@@ -32,6 +33,7 @@ namespace SimpleSocialNetwork
             })
                 .AddEntityFrameworkStores<UsersContext>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSignalR();
             services.AddMvc();
         }
 
@@ -52,6 +54,11 @@ namespace SimpleSocialNetwork
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseAuthentication();
+
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<ChatHub>("/chat");
+            });
 
             app.UseMvc(routes =>
             {

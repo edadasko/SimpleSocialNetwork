@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    @if (ViewBag.userWIthId != null)
+    @if (ViewBag.userWithId != null)
     {
         <script>
             $(document).ready(function(){
@@ -29,3 +29,47 @@
     }
 
 </section>
+
+<script src="js/signalr/dist/browser/signalr.js"></script>
+
+<script>
+    let hubUrl = 'https://localhost:5001/chat';
+    const hubConnection = new signalR.HubConnectionBuilder()
+        .withUrl(hubUrl)
+        .configureLogging(signalR.LogLevel.Information)
+        .build();
+
+    hubConnection.on('Send', function (userFromId) {
+        $(".main-conversation-box").load("dialog/" + userFromId, function () {
+            $(".dialogs-list").load("dialogsList/", function () {
+                $(".user-dialog:first").addClass('selected');
+            })
+        });
+    });
+
+
+    $(document).on('click', '#sendMessageButton', function () {
+        var messageText = $('#messageText').val();
+        var userToId = event.target.getAttribute('userToId')
+        $('#messageText').val("");
+        messageText = encodeURIComponent(messageText);
+        if (messageText != "") {
+            $(".main-conversation-box").load("sendMessage/" + userToId + "/" + messageText, function () {
+                $(".dialogs-list").load("dialogsList/", function () {
+                    $(".user-dialog:first").addClass('selected');
+                })
+            });
+        }
+        hubConnection.invoke('Send', "@ViewBag.loggedUserId", userToId);
+    });
+ 
+    hubConnection.start();
+</script>
+
+<script>
+    $(document).on('click', ".user-dialog", function () {
+        $('.user-dialog').removeClass('selected');
+        $(this).addClass('selected');
+        $(".main-conversation-box").load("dialog/" + event.target.getAttribute('userId'));
+    });
+</script>

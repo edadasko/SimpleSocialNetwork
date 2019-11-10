@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using SimpleSocialNetwork.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace SimpleSocialNetwork.Controllers
 {
@@ -83,6 +83,11 @@ namespace SimpleSocialNetwork.Controllers
         public ViewComponentResult DialogsList()
         {
             return ViewComponent("DialogsList");
+        }
+
+        public override void OnActionExecuted(ActionExecutedContext context)
+        {
+            ViewBag.loggedUserId = _user.Id;
         }
     }
 }
