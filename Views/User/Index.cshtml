@@ -144,8 +144,8 @@
                         <div class="post-area">
                             <div class="form-group">
                                 <form asp-action="Create" asp-controller="Post" method="POST" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#postsArea" enctype="multipart/form-data">
-                                    <input name = "Text" id="postText" type="text" class="form-control" placeholder="Новый пост"/>
-                                    <input name = "Photo" type="file" class="form-control" />
+                                    <textarea name = "Text" id="postTextArea" class="form-control" rows="3" placeholder="Новый пост"></textarea>
+                                    <input name = "Photo" id="photoPostInput" type="file" class="form-control add-post-image" />
                                     <input type="submit" value="Добавить" class="btn btn-primary add-post-button"/>
                                 </form>
                             </div>

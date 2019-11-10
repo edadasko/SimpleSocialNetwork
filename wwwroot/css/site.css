@@ -621,7 +621,12 @@ img {
 .add-post-button {
     background-color: #006064;
     float: right;
+    margin-top: 10px;
     margin-bottom: 20px;
+}
+
+.add-post-image {
+    float: right;
 }
 
 #postTextArea {
