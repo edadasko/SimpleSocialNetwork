@@ -17,6 +17,7 @@
       <Publish>true</Publish>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.jQuery.Unobtrusive.Ajax" Version="3.2.6" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,6 +34,8 @@
     <Folder Include="Views\Search\" />
     <Folder Include="Views\News\" />
     <Folder Include="Hubs\" />
+    <Folder Include="wwwroot\lib\jquery-unobtrusive-ajax\" />
+    <Folder Include="wwwroot\usersPostPhotos\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\css\site.min.css" />

@@ -29,6 +29,11 @@
                 <div class="post-text">
                     @Model.Text
                 </div>
+
+                @if(Model.Photos.Any())
+                {
+                    <img class="post-image" src="@Model.Photos.First().Image" />
+                }
                 <div class = "post-likes">
                         <like class="btn post-like-button not-liked" postId ="@Model.Id"><span class="glyphicon glyphicon-heart" postId ="@Model.Id"></span> @Model.Likes.Count</like>
                 </div>

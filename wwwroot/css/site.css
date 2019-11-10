@@ -660,6 +660,13 @@ img {
     color: #FFF;
 }
 
+.post-image {
+    margin: 10px 0;
+    border: thin;
+    border-color: cornsilk;
+}
+
+
 /* ============== User-information ============== */
 
 .info {

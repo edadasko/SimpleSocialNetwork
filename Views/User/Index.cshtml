@@ -140,14 +140,19 @@
                 @if (Model == ownerUser)
                 {
                     <div class="container-fluid">
+
                         <div class="post-area">
                             <div class="form-group">
-                                <textarea class="form-control" id="postTextArea" rows="3" placeholder="Новый пост"></textarea>
+                                <form asp-action="Create" asp-controller="Post" method="POST" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#postsArea" enctype="multipart/form-data">
+                                    <input name = "Text" id="postText" type="text" class="form-control" placeholder="Новый пост"/>
+                                    <input name = "Photo" type="file" class="form-control" />
+                                    <input type="submit" value="Добавить" class="btn btn-primary add-post-button"/>
+                                </form>
                             </div>
-                            <button type="submit" id="addPostButton" class="btn btn-primary add-post-button">Добавить</button>
                         </div>
                     </div>
                 }
+
                 <div class="posts" id="postsArea">
                     @{await Html.RenderPartialAsync("~/Views/Post/PostsList.cshtml", @Model.WallPosts);}
                 </div>
@@ -155,3 +160,5 @@
         </div>
     </div>
 </div>
+
+<script src="~/lib/jquery-unobtrusive-ajax/jquery.unobtrusive-ajax.js"></script>
