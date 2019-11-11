@@ -679,6 +679,10 @@ img {
     border-color: cornsilk;
 }
 
+#attached-photo-name {
+    margin-top: 5px;
+}
+
 
 /* ============== User-information ============== */
 
