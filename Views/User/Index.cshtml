@@ -145,8 +145,17 @@
                             <div class="form-group">
                                 <form asp-action="Create" asp-controller="Post" method="POST" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#postsArea" enctype="multipart/form-data">
                                     <textarea name = "Text" id="postTextArea" class="form-control" rows="3" placeholder="Новый пост"></textarea>
-                                    <input name = "Photo" id="photoPostInput" type="file" class="form-control add-post-image" />
-                                    <input type="submit" value="Добавить" class="btn btn-primary add-post-button"/>
+                                    <div class="container-fluid">
+                                         <div class="row">
+                                             <div class="col-md-10 col-sm-10 pd-right-none no-pd">
+                                                 <label id= "attached-photo-name" for="photoPostInput" class="btn">Выберите фото</label>
+                                                 <input name = "Photo" id="photoPostInput" type="file" class="form-control add-post-image" />
+                                             </div>
+                                             <div class="col-md-2 col-sm-2 pd-right-none no-pd add-post-button-col">
+                                                 <input type="submit" value="Добавить" class="btn btn-primary add-post-button"/>
+                                             </div>
+                                         </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -162,3 +171,8 @@
 </div>
 
 <script src="~/lib/jquery-unobtrusive-ajax/jquery.unobtrusive-ajax.js"></script>
+<script>
+    $("#photoPostInput").change(function() {
+      $("#attached-photo-name").text(this.files[0].name);
+    });
+</script>

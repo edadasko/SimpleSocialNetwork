@@ -621,12 +621,20 @@ img {
 .add-post-button {
     background-color: #006064;
     float: right;
+    width: 100%;
     margin-top: 10px;
-    margin-bottom: 20px;
+    margin-right: 0;
+}
+
+.add-post-button-col {
+    padding: 0;
+    float: right;
 }
 
 .add-post-image {
-    float: right;
+    visibility: hidden;
+    margin: 0;
+    height: 0;
 }
 
 #postTextArea {
