@@ -1,7 +1,8 @@
 ﻿@model List<(User, Message)>;
+@inject IViewLocalizer Localizer
 
 <div class="dialogs-title">
-    <h3>Диалоги</h3>
+    <h3>@Localizer["dialogs"]</h3>
 </div>
 <div class="dialogs-list">
     <ul>
@@ -24,7 +25,8 @@
                         <h3 userId="@user.Item1.Id">@text</h3>
                         <h4 userId="@user.Item1.Id">@user.Item2.Date</h4>
                         @{
-                            text = user.Item2.UserFrom == user.Item1 ? user.Item1.Name + ": " : "Вы: ";
+                            text = user.Item2.UserFrom == user.Item1 ? user.Item1.Name: Localizer["you"].Value;
+                            text += ": ";
                             text += user.Item2.Text;
                             if (text.Length > 20)
                             {

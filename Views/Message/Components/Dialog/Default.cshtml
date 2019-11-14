@@ -1,4 +1,6 @@
 ﻿@model List<Message>
+@inject IViewLocalizer Localizer
+
 @{
     User userWith = ((User)ViewBag.otherUser);
 }
@@ -56,9 +58,9 @@
 <div class="message-send-area">
     <div class="mf-field">
         <textarea class="form-control message-control"
-                  id ="messageText" rows="3" placeholder="Введите сообщение"></textarea>
+                  id ="messageText" rows="3" placeholder="@Localizer["type_message"]"></textarea>
         <button type="submit" id="sendMessageButton" 
                 userToId ="@(userWith.Id)" 
-                class="btn btn-primary send-message-button" >Отправить</button>
+                class="btn btn-primary send-message-button">@Localizer["send"]</button>
     </div>
 </div>

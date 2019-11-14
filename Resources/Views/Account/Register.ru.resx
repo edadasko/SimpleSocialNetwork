@@ -15,4 +15,19 @@
     <data name="sign_up">
         <value>Регистрация</value>
     </data>
+    <data name="password">
+        <value>Пароль</value>
+    </data>
+    <data name="password_confirm">
+        <value>Подтверждение пароля</value>
+    </data>
+    <data name="name">
+        <value>Имя</value>
+    </data>
+    <data name="surname">
+        <value>Фамилия</value>
+    </data>
+    <data name="gender">
+        <value>Пол</value>
+    </data>
 </root>

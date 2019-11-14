@@ -1,4 +1,5 @@
 ﻿@model Post
+@inject IViewLocalizer Localizer
 @addTagHelper SimpleSocialNetwork.TagHelpers.LikeTagHelper, SimpleSocialNetwork
 
 <div class="post full-width">
@@ -53,7 +54,7 @@
 <div class="container-fluid comment-sending-area">
     <div class="row">
         <div class="col-md-11">
-            <textarea class="form-control comment-sending-form" commentForPost ="@Model.Id" placeholder="Введите комментарий"></textarea>
+            <textarea class="form-control comment-sending-form" commentForPost ="@Model.Id" placeholder="@Localizer["comment"]"></textarea>
         </div>
         <div class="col-md-1">
             <button postId ="@Model.Id" class="glyphicon glyphicon-plus add-comment-button"></button>

@@ -15,4 +15,20 @@
     <data name="sign_up">
         <value>Sign up</value>
     </data>
+    <data name="password">
+        <value>Password</value>
+    </data>
+    <data name="password_confirm">
+        <value>Confirm password</value>
+    </data>
+    <data name="name">
+        <value>Name</value>
+    </data>
+    <data name="surname">
+        <value>Surname</value>
+    </data>
+    <data name="gender">
+        <value>Gender</value>
+    </data>
+    
 </root>

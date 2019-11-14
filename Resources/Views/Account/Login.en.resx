@@ -15,4 +15,10 @@
     <data name="sign_in">
         <value>Sign in</value>
     </data>
+    <data name="remember">
+        <value>Remember me</value>
+    </data>
+    <data name="password">
+        <value>Password</value>
+    </data>
 </root>

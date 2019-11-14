@@ -1,4 +1,6 @@
 ﻿@model List<Post>
+@inject IViewLocalizer Localizer
+
 <div class="container-fluid posts-container">
     @foreach (var post in @Model)
     {
@@ -12,5 +14,5 @@
 <script>
     $('#postTextArea').val('');
     $('#photoPostInput').val('');
-    $("#attached-photo-name").text('Выберите фото');
+    $("#attached-photo-name").text("@Localizer["photo"]");
 </script>

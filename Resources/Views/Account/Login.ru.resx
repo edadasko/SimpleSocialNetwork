@@ -15,4 +15,10 @@
     <data name="sign_in">
         <value>Вход</value>
     </data>
+    <data name="remember">
+        <value>Замомнить меня</value>
+    </data>
+    <data name="password">
+        <value>Пароль</value>
+    </data>
 </root>

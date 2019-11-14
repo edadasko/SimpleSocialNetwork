@@ -14,28 +14,28 @@
         <span asp-validation-for="Email"></span>
     </div>
     <div>
-        <label asp-for="Password"></label><br />
+        <label asp-for="Password">@Localizer["password"]</label><br />
         <input asp-for="Password" class="form-control" />
         <span asp-validation-for="Password"></span>
     </div>
     <div>
-        <label asp-for="PasswordConfirm"></label><br />
+        <label asp-for="PasswordConfirm">@Localizer["password_confirm"]</label><br />
         <input asp-for="PasswordConfirm" class="form-control" />
         <span asp-validation-for="PasswordConfirm"></span>
     </div>
     <div>
-        <label asp-for="Name"></label><br />
+        <label asp-for="Name">@Localizer["name"]</label><br />
         <input asp-for="Name" class="form-control" />
         <span asp-validation-for="Name"></span>
     </div>
     <div>
-        <label asp-for="Surname"></label><br />
+        <label asp-for="Surname">@Localizer["surname"]</label><br />
         <input asp-for="Surname" class="form-control" />
         <span asp-validation-for="Surname"></span>
     </div>
 
     <div >
-        <label asp-for="Gender"></label><br />
+        <label asp-for="Gender">@Localizer["gender"]</label><br />
         <select asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()" class="form-control"></select>
         <span asp-validation-for="Gender"></span>
     </div>

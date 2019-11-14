@@ -1,8 +1,10 @@
 ﻿@using Microsoft.AspNetCore.Builder
 @using Microsoft.AspNetCore.Http.Features
+@using Microsoft.AspNetCore.Http
 @using Microsoft.AspNetCore.Localization
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.Extensions.Options
+@using Microsoft.AspNetCore.Http.Extensions
  
 @inject IViewLocalizer Localizer
 @inject IOptions<RequestLocalizationOptions> LocOptions
@@ -15,7 +17,7 @@
 }
  
 <form asp-controller="Home" asp-action="SetLanguage"
-      asp-route-returnUrl="@Context.Request.Path"
+      asp-route-returnUrl="@Context.Request.GetEncodedPathAndQuery()"
       method="post">
     <select class="select-language" name="culture" onchange="this.form.submit();"
                                     asp-for="@requestCulture.RequestCulture.UICulture.Name"

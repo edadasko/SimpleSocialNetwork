@@ -1,8 +1,9 @@
 ﻿@model List<Post>
+@inject IViewLocalizer Localizer
 
 <div class="container-fluid news">
     <div class="news-title">
-        <h2>Новости</h2>
+        <h2>@Localizer["news"]</h2>
     </div>
     <div class="news-list">
         @{await Html.RenderPartialAsync("~/Views/Post/PostsList.cshtml", Model);}

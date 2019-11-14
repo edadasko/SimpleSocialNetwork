@@ -1,13 +1,15 @@
-﻿<div class="main-title">
-    <h3>Поиск</h3>
+﻿@inject IViewLocalizer Localizer
+
+<div class="main-title">
+    <h3>@Localizer["search"]</h3>
 </div>
 <div class="search full-width">
-    <textarea class="form-control" id="search-request" placeholder="Введите имя пользователя"></textarea>
-    <button class="btn btn-primary search-button">Поиск</button>
+    <textarea class="form-control" id="search-request" placeholder="@Localizer["type_name"]"></textarea>
+    <button class="btn btn-primary search-button">@Localizer["search"]</button>
 </div>
 
 <div class="main-title">
-    <h3>Пользователи</h3>
+    <h3>@Localizer["users"]</h3>
 </div>
 <div class="search-user-list">
     @{await Html.RenderPartialAsync("SearchResult");}

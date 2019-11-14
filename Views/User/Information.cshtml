@@ -1,5 +1,5 @@
 ﻿@model UserInfoViewModel
-
+@inject IViewLocalizer Localizer
 <div class="container-fluid info">
         @if (@Model.BirthDay != null || @Model.Country != null || @Model.City != null)
         {
@@ -9,7 +9,7 @@
                     {
                         <div class="row info-row">
                             <div class="col-lg-4 col-md-5 col-sm-6 info-name">
-                                Дата рождения:
+                                @Localizer["birthday"]
                             </div>
                             <div class="col-lg-8 col-md-7 col-sm-6 info-value">
                                 @Model.BirthDay.Value.ToString("dd.MM.yyyy")
@@ -21,7 +21,7 @@
                     {
                         <div class="row info-row">
                             <div class="col-lg-4 col-md-5 col-sm-6 info-name">
-                                Страна:
+                                @Localizer["country"]
                             </div>
                             <div class="col-lg-8 col-md-7 col-sm-6 info-value">
                                 @Model.Country
@@ -33,7 +33,7 @@
                     {
                         <div class="row info-row">
                             <div class="col-lg-4 col-md-5 col-sm-6 info-name">
-                                Город:
+                                @Localizer["city"]
                             </div>
                             <div class="col-lg-8 col-md-7 col-sm-6 info-value">
                                 @Model.City
@@ -52,7 +52,7 @@
                     {
                         <div class="row info-row">
                             <div class="col-lg-4 col-md-5 col-sm-6 info-name">
-                                Университет:
+                                @Localizer["university"]
                             </div>
                             <div class="col-lg-8 col-md-7 col-sm-6 info-value">
                                 @Model.University
@@ -63,7 +63,7 @@
                     {
                         <div class="row info-row">
                             <div class="col-lg-4 col-md-5 col-sm-6 info-name">
-                                Школа:
+                                @Localizer["school"]
                             </div>
                             <div class="col-lg-8 col-md-7 col-sm-6 info-value">
                                 @Model.School
@@ -82,7 +82,7 @@
                     {
                         <div class="row info-row">
                             <div class="col-lg-4 col-md-5 col-sm-6 info-name">
-                                Мобильный телефон:
+                                @Localizer["mobile_num"]
                             </div>
                             <div class="col-lg-8 col-md-7 col-sm-6 info-value">
                                 @Model.PhoneNumber
@@ -94,7 +94,7 @@
                     {
                         <div class="row info-row">
                             <div class="col-lg-4 col-md-5 col-sm-6 info-name">
-                                Электронная почта:
+                                @Localizer["email"]
                             </div>
                             <div class="col-lg-8 col-md-7 col-sm-6 info-value">
                                 @Model.Email
@@ -113,7 +113,7 @@
                     {
                         <div class="row info-row">
                             <div class="col-lg-4 col-md-5 col-sm-6 info-name">
-                                Место работы:
+                                @Localizer["job_place"]
                             </div>
                             <div class="col-lg-8 col-md-7 col-sm-6 info-value">
                                 @Model.JobPlace
@@ -125,7 +125,7 @@
                     {
                         <div class="row info-row">
                             <div class="col-lg-4 col-md-5 col-sm-6 info-name">
-                                Должность:
+                                @Localizer["job_position"]
                             </div>
                             <div class="col-lg-8 col-md-7 col-sm-6 info-value">
                                 @Model.JobPosition

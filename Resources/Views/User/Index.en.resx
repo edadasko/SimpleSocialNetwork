@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="add_post">
+        <value>Add</value>
+    </data>
+    <data name="admin">
+        <value>Admin</value>
+    </data>
+    <data name="moderator">
+        <value>Moderator</value>
+    </data>
+    <data name="send_message">
+        <value>Send message</value>
+    </data>
+    <data name="remove_friend">
+        <value>Remove from friends</value>
+    </data>
+    <data name="follower_he">
+        <value>Your follower</value>
+    </data>
+     <data name="follower_she">
+        <value>Your follower</value>
+    </data>
+    <data name="add_friend">
+        <value>Add to friends</value>
+    </data>
+    <data name="cancel_request">
+        <value>Cancel request</value>
+    </data>
+    <data name="edit_page">
+        <value>Edit page</value>
+    </data>
+    <data name="appoint_as_admin">
+        <value>Appoint as a admin</value>
+    </data>
+    <data name="appoint_as_moderator">
+        <value>Appoint as a moderator</value>
+    </data>
+    <data name="remove_moderator">
+        <value>Remove moderator's laws</value>
+    </data>
+    <data name="block">
+        <value>Block</value>
+    </data>
+    <data name="friends">
+        <value>Friends </value>
+    </data>
+    <data name="new_post">
+        <value>New post</value>
+    </data>
+    <data name="all_friends">
+        <value>All friends</value>
+    </data>
+     <data name="your_friend">
+        <value>Your friend</value>
+    </data>
+</root>

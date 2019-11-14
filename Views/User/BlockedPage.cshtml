@@ -1,4 +1,5 @@
 ﻿@model User
+@inject IViewLocalizer Localizer
 @{
     User ownerUser = (User)ViewBag.LoggedUser;
     List<string> ownerRoles = (List<string>)ViewBag.LoggedUserRoles;
@@ -25,7 +26,7 @@
                                 <button type="submit" class="btn btn-primary button-main-page"
                                         onclick="@("window.location.href='" +
                                         @Url.Action("Unblock", "User",
-                                        new { userId = Model.Id }) + "'");">Разблокировать</button>
+                                        new { userId = Model.Id }) + "'");">@Localizer["unblock"]</button>
                             </div>
                         }
 
@@ -34,7 +35,7 @@
                 </div>
 
             <div class="col-md-8 col-sm-8 pd-left-none no-pd main-column">
-                <h3>Страница заблокирована. Информация недоступна.</h3>
+                <h3>@Localizer["block_info"]</h3>
             </div>
         </div>
     </div>

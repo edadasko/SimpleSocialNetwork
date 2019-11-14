@@ -46,5 +46,11 @@ namespace SimpleSocialNetwork.Resources.Views.Home {
                 resourceCulture = value;
             }
         }
+        
+        internal static string error {
+            get {
+                return ResourceManager.GetString("error", resourceCulture);
+            }
+        }
     }
 }

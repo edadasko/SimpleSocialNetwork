@@ -52,5 +52,17 @@ namespace SimpleSocialNetwork.Resources.Views.Account {
                 return ResourceManager.GetString("sign_in", resourceCulture);
             }
         }
+        
+        internal static string remember {
+            get {
+                return ResourceManager.GetString("remember", resourceCulture);
+            }
+        }
+        
+        internal static string password {
+            get {
+                return ResourceManager.GetString("password", resourceCulture);
+            }
+        }
     }
 }

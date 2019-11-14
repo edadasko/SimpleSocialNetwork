@@ -16,12 +16,12 @@
         <span asp-validation-for="Email"></span>
     </div>
     <div>
-        <label asp-for="Password"></label><br />
+        <label asp-for="Password">@Localizer["password"]</label><br />
         <input asp-for="Password" class="form-control" />
         <span asp-validation-for="Password"></span>
     </div>
     <div>
-        <label asp-for="RememberMe"></label>
+        <label asp-for="RememberMe">@Localizer["remember"]</label>
         <input asp-for="RememberMe" />
     </div>
     <div class="button-div">

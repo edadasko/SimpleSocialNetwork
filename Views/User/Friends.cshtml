@@ -1,10 +1,11 @@
 ﻿@model FriendsRequestsViewModel
+@inject IViewLocalizer Localizer
 
 <div class="container-fluid">
     @if (Model.Requests != null && Model.Requests.Count > 0)
     {
         <div class="friends-title">
-            <h3>Заявки</h3>
+            <h3>@Localizer["requests"]</h3>
         </div>
         <div class="friends-list">
             <div class="row">
@@ -18,9 +19,9 @@
                             @Html.ActionLink(@request.ToString(), "MainPage", new { userId = @request.Id })
                             <div class="request-buttons">
                                 <button class="btn btn-success" onclick="@("window.location.href='" +
-                                    @Url.Action("ConfirmRequestFromFriendsView", "Friendship", new { userId = request.Id }) + "'");">Добавить</button>
+                                    @Url.Action("ConfirmRequestFromFriendsView", "Friendship", new { userId = request.Id }) + "'");">@Localizer["add"]</button>
                                 <button class="btn btn-danger" onclick="@("window.location.href='" +
-                                    @Url.Action("CancelRequestFromFriendsView", "Friendship", new { userId = request.Id }) + "'");">Удалить</button>
+                                    @Url.Action("CancelRequestFromFriendsView", "Friendship", new { userId = request.Id }) + "'");">@Localizer["remove"]</button>
                             </div>
                         </div>
                     </div>
@@ -32,7 +33,7 @@
     @if(Model.Friends.Any())
     {
         <div class="friends-title">
-            <h3>Друзья</h3>
+            <h3>@Localizer["friends"]</h3>
         </div>
 
 
@@ -56,7 +57,7 @@
     @if (Model.Following.Any())
     {
         <div class="friends-title">
-            <h3>Вы подписаны на</h3>
+            <h3>@Localizer["following"]</h3>
         </div>
         <div class="friends-list">
             <div class="row">
@@ -78,7 +79,7 @@
     @if(Model.Followers.Any())
     {
         <div class="friends-title">
-            <h3>Подписчики</h3>
+            <h3>@Localizer["followers"]</h3>
         </div>
         <div class="friends-list">
             <div class="row">

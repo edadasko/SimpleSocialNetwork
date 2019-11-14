@@ -42,6 +42,11 @@
     <Folder Include="Resources\Views\Shared\" />
     <Folder Include="Resources\Views\Comment\" />
     <Folder Include="Resources\Views\Home\" />
+    <Folder Include="Resources\Views\Message\" />
+    <Folder Include="Resources\Views\News\" />
+    <Folder Include="Resources\Views\Post\" />
+    <Folder Include="Resources\Views\Search\" />
+    <Folder Include="Resources\Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\css\site.min.css" />
@@ -108,6 +113,118 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Error.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Home\Index.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Home\Index.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Home\NoAccess.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>NoAccess.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Message\Components.Dialog.Default.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Components.Dialog.Default.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Message\Components.Dialog.Default.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Components.Dialog.Default.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Home\NoAccess.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>NoAccess.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Message\Components.DialogsList.Default.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Components.DialogsList.Default.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Message\Components.DialogsList.Default.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Components.DialogsList.Default.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\News\Index.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\News\Index.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Post\Index.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Post\Index.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Post\PostsList.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PostsList.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Post\PostsList.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PostsList.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Search\Index.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Search\Index.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Search\SearchResult.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SearchResult.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Search\SearchResult.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SearchResult.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\User\BlockedPage.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>BlockedPage.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\User\BlockedPage.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>BlockedPage.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\User\Friends.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Friends.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\User\Friends.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Friends.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\User\Index.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\User\Index.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\User\Information.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Information.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\User\Information.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Information.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\User\Update.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Update.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\User\Update.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Update.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Resources\Views\Shared\_Layout.en.Designer.cs">
@@ -151,6 +268,90 @@
     </Compile>
     <Compile Update="Resources\Views\Home\Error.ru.Designer.cs">
       <DependentUpon>Error.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Home\Index.ru.Designer.cs">
+      <DependentUpon>Index.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Home\Index.en.Designer.cs">
+      <DependentUpon>Index.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Home\NoAccess.ru.Designer.cs">
+      <DependentUpon>NoAccess.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Message\Components.Dialog.Default.ru.Designer.cs">
+      <DependentUpon>Components.Dialog.Default.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Message\Components.Dialog.Default.en.Designer.cs">
+      <DependentUpon>Components.Dialog.Default.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Home\NoAccess.en.Designer.cs">
+      <DependentUpon>NoAccess.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Message\Components.DialogsList.Default.ru.Designer.cs">
+      <DependentUpon>Components.DialogsList.Default.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Message\Components.DialogsList.Default.en.Designer.cs">
+      <DependentUpon>Components.DialogsList.Default.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\News\Index.en.Designer.cs">
+      <DependentUpon>Index.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\News\Index.ru.Designer.cs">
+      <DependentUpon>Index.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Post\Index.ru.Designer.cs">
+      <DependentUpon>Index.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Post\Index.en.Designer.cs">
+      <DependentUpon>Index.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Post\PostsList.ru.Designer.cs">
+      <DependentUpon>PostsList.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Post\PostsList.en.Designer.cs">
+      <DependentUpon>PostsList.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Search\Index.en.Designer.cs">
+      <DependentUpon>Index.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Search\Index.ru.Designer.cs">
+      <DependentUpon>Index.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Search\SearchResult.en.Designer.cs">
+      <DependentUpon>SearchResult.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Search\SearchResult.ru.Designer.cs">
+      <DependentUpon>SearchResult.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\User\BlockedPage.ru.Designer.cs">
+      <DependentUpon>BlockedPage.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\User\BlockedPage.en.Designer.cs">
+      <DependentUpon>BlockedPage.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\User\Friends.ru.Designer.cs">
+      <DependentUpon>Friends.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\User\Friends.en.Designer.cs">
+      <DependentUpon>Friends.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\User\Index.ru.Designer.cs">
+      <DependentUpon>Index.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\User\Index.en.Designer.cs">
+      <DependentUpon>Index.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\User\Information.en.Designer.cs">
+      <DependentUpon>Information.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\User\Information.ru.Designer.cs">
+      <DependentUpon>Information.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\User\Update.en.Designer.cs">
+      <DependentUpon>Update.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\User\Update.ru.Designer.cs">
+      <DependentUpon>Update.ru.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>

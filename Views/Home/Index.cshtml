@@ -1,8 +1,10 @@
-﻿@{
+﻿@inject IViewLocalizer Localizer
+
+@{
     Layout = "_LoginLayout";
 }
 
 <div class="main-page-title">
-    <h2>Добро пожаловать!</h2>
-    <h2>Войдите или зарегистрируйтесь, <br /> чтобы начать работу.</h2>
+    <h2>@Localizer["greeting"]</h2>
+    <h2>@Localizer["sign_message_1"]<br /> @Localizer["sign_message_2"]</h2>
 </div>

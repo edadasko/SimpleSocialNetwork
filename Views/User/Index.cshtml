@@ -1,4 +1,5 @@
 ﻿@model User
+@inject IViewLocalizer Localizer
 @{
     User ownerUser = (User)ViewBag.LoggedUser;
     List<string> roles = (List<string>)ViewBag.UserRoles;
@@ -20,11 +21,11 @@
                             <h3>@Model</h3>
                             @if (roles.Contains("admin"))
                             {
-                                <p>Админ</p>
+                                <p>@Localizer["admin"]</p>
                             }
                             else if (roles.Contains("moderator"))
                             {
-                                <p>Модератор</p>
+                                <p>@Localizer["moderator"]</p>
                             }
                         </div>
                         @if (Model != ownerUser)
@@ -32,43 +33,43 @@
                             <button type="submit"
                             userToId ="@Model.Id" class="btn btn-primary button-main-page" 
                             onclick="@("window.location.href='" + @Url.Action("Index", "Message",
-                            new { userWithId = @Model.Id }) + "'");">Отправить сообщение</button>
+                            new { userWithId = @Model.Id }) + "'");">@Localizer["send_message"]</button>
                             <div class="requests-info">
                                 @if(ownerUser.Friends.Contains(Model))
                                 {
-                                    <p>У вас в друзьях</p>
+                                    <p>@Localizer["your_friend"]</p>
                                     <button type="submit" class="btn btn-primary button-main-page"
                                         onclick="@("window.location.href='" +
-                                        @Url.Action("Remove", "Friendship", new { userId = Model.Id }) + "'");">Удалить из друзей</button>
+                                        @Url.Action("Remove", "Friendship", new { userId = Model.Id }) + "'");">@Localizer["remove_friend"]</button>
                                 }
                                 else if (ownerUser.Followers.Contains(Model))
                                 {
-                                    var text = Model.Gender == Gender.Male ? "Подписан на вас" : "Подписана на вас";
+                                    var text = Model.Gender == Gender.Male ? @Localizer["follower_he"].Value : @Localizer["follower_she"].Value;
                                     <p>@text</p>
                                     
                                     <button type="submit" class="btn btn-primary button-main-page"
                                         onclick="@("window.location.href='" +
-                                        @Url.Action("ConfirmRequest", "Friendship", new { userId = Model.Id }) + "'");">Добавить в друзья</button>
+                                        @Url.Action("ConfirmRequest", "Friendship", new { userId = Model.Id }) + "'");">@Localizer["add_friend"]</button>
                                 }
                                 else if (ownerUser.Following.Contains(Model))
                                 {
-                                    <p>Заявка отправлена</p>
+                                    <p>@Localizer["request_send"]</p>
                                     <button type="submit" class="btn btn-primary button-main-page"
                                         onclick="@("window.location.href='" +
-                                        @Url.Action("CancelRequest", "Friendship", new { userId = Model.Id }) + "'");">Отменить заявку</button>
+                                        @Url.Action("CancelRequest", "Friendship", new { userId = Model.Id }) + "'");">@Localizer["cancel_request"]</button>
                                 }
                                 else
                                 {
                                     <button type="submit" class="btn btn-primary button-main-page"
                                         onclick="@("window.location.href='" +
-                                        @Url.Action("AddToFriends", "Friendship", new { userId = Model.Id }) + "'");">Добавить в друзья</button>
+                                        @Url.Action("AddToFriends", "Friendship", new { userId = Model.Id }) + "'");">@Localizer["add_friend"]</button>
                                 }
                             </div>
                         }
                         else
                         {
                             <button type="submit" class="btn btn-primary button-main-page"  
-                            onclick="@("window.location.href='" + @Url.Action("Update", "User") + "'");">Редактировать страницу</button>
+                            onclick="@("window.location.href='" + @Url.Action("Update", "User") + "'");">@Localizer["edit_page"]</button>
                         }
 
                         @if ((ownerRoles.Contains("admin") && !roles.Contains("admin")) ||
@@ -82,7 +83,7 @@
                                         <button type="submit" class="btn btn-primary button-main-page"
                                             onclick="@("window.location.href='" +
                                             @Url.Action("SetAdmin", "Roles",
-                                            new { userId = Model.Id }) + "'");">Назначить админом</button>
+                                            new { userId = Model.Id }) + "'");">@Localizer["appoint_as_admin"].Value</button>
                                     }
 
                                     if (!roles.Contains("moderator"))
@@ -90,14 +91,14 @@
                                         <button type="submit" class="btn btn-primary button-main-page"
                                             onclick="@("window.location.href='" +
                                             @Url.Action("SetModerator", "Roles",
-                                            new { userId = Model.Id }) + "'");">Назначить модератором</button>
+                                            new { userId = Model.Id }) + "'");">@Localizer["appoint_as_moderator"].Value</button>
                                     }
                                     else if (!roles.Contains("admin"))
                                     {
                                         <button type="submit" class="btn btn-danger button-main-page-danger"
                                             onclick="@("window.location.href='" +
                                             @Url.Action("RemoveModerator", "Roles",
-                                            new { userId = Model.Id }) + "'");">Удалить права модератора</button>
+                                            new { userId = Model.Id }) + "'");">@Localizer["remove_moderator"].Value</button>
                                     }
                                 }
 
@@ -106,7 +107,7 @@
                                     <button type="submit" class="btn btn-danger button-main-page-danger"
                                         onclick="@("window.location.href='" +
                                         @Url.Action("Block", "User",
-                                        new { userId = Model.Id }) + "'");">Заблокировать</button>
+                                        new { userId = Model.Id }) + "'");">@Localizer["block"].Value</button>
                                 }
                             </div>
                         }
@@ -115,7 +116,7 @@
                 </div>
                 <div class="friends-main full-width">
                     <div class="friends-main-title">
-                        <h3>Друзья <span>@Model.Friends.Count</span></h3>
+                        <h3>@Localizer["friends"]<span>@Model.Friends.Count</span></h3>
                     </div>
                     <div class="friends-main-list">
                         @foreach (var friend in Model.Friends.Take(5))
@@ -129,7 +130,7 @@
                         }
                     </div>
                     <div class="view-more">
-                        @Html.ActionLink("Все друзья", "Friends", new { userId = @Model.Id })
+                        @Html.ActionLink(@Localizer["all_friends"].Value, "Friends", new { userId = @Model.Id })
                     </div>
                 </div>
                 </div>
@@ -144,15 +145,15 @@
                         <div class="post-area">
                             <div class="form-group">
                                 <form asp-action="Create" asp-controller="Post" method="POST" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#postsArea" enctype="multipart/form-data">
-                                    <textarea name = "Text" id="postTextArea" class="form-control" rows="3" placeholder="Новый пост"></textarea>
+                                    <textarea name = "Text" id="postTextArea" class="form-control" rows="3" placeholder="@Localizer["new_post"]"></textarea>
                                     <div class="container-fluid">
                                          <div class="row">
                                              <div class="col-md-10 col-sm-10 pd-right-none no-pd">
-                                                 <label id="attached-photo-name" for="photoPostInput" class="btn">Выберите фото</label>
+                                                 <label id="attached-photo-name" for="photoPostInput" class="btn">@Localizer["choose_photo"]</label>
                                                  <input name = "Photo" id="photoPostInput" type="file" class="form-control add-post-image" />
                                              </div>
                                              <div class="col-md-2 col-sm-2 pd-right-none no-pd add-post-button-col">
-                                                 <input type="submit" value="Добавить" class="btn btn-primary add-post-button"/>
+                                                 <input type="submit" value="@Localizer["add_post"]" class="btn btn-primary add-post-button"/>
                                              </div>
                                          </div>
                                     </div>
