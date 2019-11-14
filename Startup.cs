@@ -89,6 +89,26 @@ namespace SimpleSocialNetwork
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                    name: "friends",
+                    template: "friends",
+                    defaults: new { controller = "User", action = "Friends"});
+
+                routes.MapRoute(
+                    name: "news",
+                    template: "news",
+                    defaults: new { controller = "News", action = "Index"});
+
+                routes.MapRoute(
+                    name: "messages",
+                    template: "messages",
+                    defaults: new { controller = "Message", action = "Index" });
+
+                routes.MapRoute(
+                    name: "search",
+                    template: "search",
+                    defaults: new { controller = "Search", action = "Index" });
+
+                routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
