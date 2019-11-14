@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using SimpleSocialNetwork.Models;
 using SimpleSocialNetwork.ViewModels;
 
@@ -11,11 +12,15 @@ namespace SimpleSocialNetwork.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly IStringLocalizer<AccountController> _localizer;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
+        public AccountController(UserManager<User> userManager,
+            SignInManager<User> signInManager,
+            IStringLocalizer<AccountController> localizer)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _localizer = localizer;
         }
         [HttpGet]
         public IActionResult Register()
@@ -38,8 +43,7 @@ namespace SimpleSocialNetwork.Controllers
                     return RedirectToAction("Index", "User");
                 }
 
-                ModelState.AddModelError("", "Неверный email или пароль.\n" +
-                    "Пароль должен быть не менее 6 символов, а email уникальным");
+                ModelState.AddModelError("", _localizer["sign_up_error"]);
             }
             return View(model);
         }
@@ -66,7 +70,7 @@ namespace SimpleSocialNetwork.Controllers
                     }
                     return RedirectToAction("Index", "User");
                 }
-                ModelState.AddModelError("", "Неправильный логин и (или) пароль");
+                ModelState.AddModelError("", _localizer["sign_in_error"]);
             }
             return View(model);
         }

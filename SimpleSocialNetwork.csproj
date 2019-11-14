@@ -47,6 +47,7 @@
     <Folder Include="Resources\Views\Post\" />
     <Folder Include="Resources\Views\Search\" />
     <Folder Include="Resources\Views\User\" />
+    <Folder Include="Resources\Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\css\site.min.css" />
@@ -225,6 +226,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Update.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Controllers\AccountController.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AccountController.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Controllers\AccountController.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AccountController.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Resources\Views\Shared\_Layout.en.Designer.cs">
@@ -352,6 +361,12 @@
     </Compile>
     <Compile Update="Resources\Views\User\Update.ru.Designer.cs">
       <DependentUpon>Update.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Controllers\AccountController.ru.Designer.cs">
+      <DependentUpon>AccountController.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Controllers\AccountController.en.Designer.cs">
+      <DependentUpon>AccountController.en.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>
