@@ -1,10 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@inject IViewLocalizer Localizer
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <title>SimpleSocialNetwork</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="~/css/site.css?Version=47" />
+    <link rel="stylesheet" href="~/css/site.css?Version=48" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="~/js/comments.js"></script>
     <script src="~/js/likes.js"></script>
@@ -19,10 +21,11 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="https://github.com/edadasko/SimpleSocialNetwork">Source Code</a></li>
+                    <li><a href="https://github.com/edadasko/SimpleSocialNetwork">@Localizer["source_code"]</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a method="post" asp-controller="Account" asp-action="LogOff" class="navbar-brand">Выйти</a></li>
+                    <li>@await Html.PartialAsync("_SelectLanguagePartial")</li>
+                    <li><a method="post" asp-controller="Account" asp-action="LogOff" class="navbar-brand">@Localizer["exit"]</a></li>
                 </ul>
             </div>
         </div>
@@ -30,11 +33,11 @@
     
     <div class='left_sidebar'>
         <ul>
-            <li><a asp-controller="User" asp-action="Index">Моя страница</a></li>
-            <li><a asp-controller="User" asp-action="Friends">Друзья</a></li>
-            <li><a asp-controller="Message" asp-action="Index">Сообщения</a></li>
-            <li><a asp-controller="News" asp-action="Index">Новости</a></li>
-            <li><a asp-controller="Search" asp-action="Index">Поиск</a></li>
+            <li><a asp-controller="User" asp-action="Index">@Localizer["my_page"]</a></li>
+            <li><a asp-controller="User" asp-action="Friends">@Localizer["friends"]</a></li>
+            <li><a asp-controller="Message" asp-action="Index">@Localizer["messages"]</a></li>
+            <li><a asp-controller="News" asp-action="Index">@Localizer["news"]</a></li>
+            <li><a asp-controller="Search" asp-action="Index">@Localizer["search"]</a></li>
         </ul>
     </div>
 

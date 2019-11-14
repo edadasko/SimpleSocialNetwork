@@ -1,10 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@inject IViewLocalizer Localizer
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <title>SimpleSocialNetwork</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="~/css/login.css?Version=3" />
+    <link rel="stylesheet" href="~/css/login.css?Version=4" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
@@ -15,11 +17,12 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="https://github.com/edadasko/SimpleSocialNetwork">Source Code</a></li>
+                    <li><a href="https://github.com/edadasko/SimpleSocialNetwork">@Localizer["source_code"]</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a asp-controller="Account" asp-action="Login" class="navbar-brand">Вход</a></li>
-                    <li><a asp-controller="Account" asp-action="Register" class="navbar-brand">Регистрация</a></li>
+                    <li>@await Html.PartialAsync("_SelectLanguagePartial")</li>
+                    <li><a asp-controller="Account" asp-action="Login" class="navbar-brand">@Localizer["sign_in"]</a></li>
+                    <li><a asp-controller="Account" asp-action="Register" class="navbar-brand">@Localizer["sign_up"]</a></li>
                 </ul>
             </div>
         </div>

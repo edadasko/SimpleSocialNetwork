@@ -72,3 +72,8 @@ h3 {
     font-size: 30px;
     font-weight: 300;
 }
+
+.select-language {
+    margin-top: 14px;
+    margin-right: 20px;
+}

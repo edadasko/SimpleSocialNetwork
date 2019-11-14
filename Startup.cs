@@ -1,12 +1,16 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System.Globalization;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using SimpleSocialNetwork.Hubs;
 using SimpleSocialNetwork.Models;
+
 
 namespace SimpleSocialNetwork
 {
@@ -21,6 +25,8 @@ namespace SimpleSocialNetwork
 
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddScoped<IUsersRepository, EFUsersRepository>();
             services.AddDbContext<UsersContext>(options => options.UseSqlServer(connection));
@@ -32,9 +38,25 @@ namespace SimpleSocialNetwork
                 opts.Password.RequireDigit = false;
             })
                 .AddEntityFrameworkStores<UsersContext>();
+
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var supportedCultures = new[]
+                {
+                    new CultureInfo("en"),
+                    new CultureInfo("ru")
+                };
+
+                options.DefaultRequestCulture = new RequestCulture("ru");
+                options.SupportedCultures = supportedCultures;
+                options.SupportedUICultures = supportedCultures;
+            });
+
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSignalR();
-            services.AddMvc();
+            services.AddMvc()
+                .AddDataAnnotationsLocalization()
+                .AddViewLocalization();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -51,6 +73,10 @@ namespace SimpleSocialNetwork
 
             app.UseStatusCodePages();
             app.UseHttpsRedirection();
+
+            var locOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
+            app.UseRequestLocalization(locOptions.Value);
+
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseAuthentication();

@@ -9,6 +9,5 @@ namespace SimpleSocialNetwork.ViewModels
         public List<User> Followers { get; set; }
         public List<User> Following { get; set; }
         public List<User> Requests { get; set; }
-
     }
 }

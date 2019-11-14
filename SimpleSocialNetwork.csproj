@@ -36,10 +36,121 @@
     <Folder Include="Hubs\" />
     <Folder Include="wwwroot\lib\jquery-unobtrusive-ajax\" />
     <Folder Include="wwwroot\usersPostPhotos\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\Views\" />
+    <Folder Include="Resources\Views\Account\" />
+    <Folder Include="Resources\Views\Shared\" />
+    <Folder Include="Resources\Views\Comment\" />
+    <Folder Include="Resources\Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\css\site.min.css" />
     <Content Remove="Views\Shared\_CookieConsentPartial.cshtml" />
     <Content Remove="Views\Shared\Error.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\Views\Account\Login.ru.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Views\Shared\_Layout.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>_Layout.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Shared\_Layout.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>_Layout.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Shared\_JustHeaderLayout.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>_JustHeaderLayout.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Shared\_JustHeaderLayout.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>_JustHeaderLayout.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Shared\_LoginLayout.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>_LoginLayout.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Shared\_LoginLayout.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>_LoginLayout.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Account\Login.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Login.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Account\Login.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Login.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Account\Register.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Register.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Account\Register.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Register.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Comment\CommentsList.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CommentsList.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Comment\CommentsList.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CommentsList.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Home\Error.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Error.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Home\Error.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Error.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Resources\Views\Shared\_Layout.en.Designer.cs">
+      <DependentUpon>_Layout.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Shared\_Layout.ru.Designer.cs">
+      <DependentUpon>_Layout.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Shared\_JustHeaderLayout.en.Designer.cs">
+      <DependentUpon>_JustHeaderLayout.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Shared\_JustHeaderLayout.ru.Designer.cs">
+      <DependentUpon>_JustHeaderLayout.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Shared\_LoginLayout.ru.Designer.cs">
+      <DependentUpon>_LoginLayout.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Shared\_LoginLayout.en.Designer.cs">
+      <DependentUpon>_LoginLayout.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Account\Login.ru.Designer.cs">
+      <DependentUpon>Login.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Account\Login.en.Designer.cs">
+      <DependentUpon>Login.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Account\Register.ru.Designer.cs">
+      <DependentUpon>Register.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Account\Register.en.Designer.cs">
+      <DependentUpon>Register.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Comment\CommentsList.ru.Designer.cs">
+      <DependentUpon>CommentsList.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Comment\CommentsList.en.Designer.cs">
+      <DependentUpon>CommentsList.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Home\Error.en.Designer.cs">
+      <DependentUpon>Error.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Home\Error.ru.Designer.cs">
+      <DependentUpon>Error.ru.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

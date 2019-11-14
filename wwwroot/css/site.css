@@ -1082,3 +1082,8 @@ img {
     font-weight: 400;
     margin-bottom: 5px;
 }
+
+.select-language {
+    margin-top: 12px;
+    margin-right: 20px;
+}

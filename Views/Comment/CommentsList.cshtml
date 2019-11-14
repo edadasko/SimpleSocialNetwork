@@ -1,8 +1,9 @@
 ﻿@model List<Comment>
+@inject IViewLocalizer Localizer
 
 @if (!Model.Any())
 {
-    <p class="no-comments">Будьте первым, кто оставит комментарий к этому посту.</p>
+    <p class="no-comments">@Localizer["first_comment"]</p>
 }
 
 @foreach(var comment in Model)
