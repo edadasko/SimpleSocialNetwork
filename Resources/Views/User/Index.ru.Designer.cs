@@ -154,5 +154,11 @@ namespace SimpleSocialNetwork.Resources.Views.User {
                 return ResourceManager.GetString("your_friend", resourceCulture);
             }
         }
+        
+        internal static string choose_photo {
+            get {
+                return ResourceManager.GetString("choose_photo", resourceCulture);
+            }
+        }
     }
 }

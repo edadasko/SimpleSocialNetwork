@@ -66,4 +66,7 @@
     <data name="your_friend">
         <value>Ваш друг</value>
     </data>
+    <data name="choose_photo">
+        <value>Выберите фото</value>
+    </data>
 </root>

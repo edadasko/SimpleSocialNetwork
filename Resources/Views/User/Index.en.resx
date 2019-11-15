@@ -63,7 +63,10 @@
     <data name="all_friends">
         <value>All friends</value>
     </data>
-     <data name="your_friend">
+    <data name="your_friend">
         <value>Your friend</value>
+    </data>
+    <data name="choose_photo">
+        <value>Choose a photo</value>
     </data>
 </root>
