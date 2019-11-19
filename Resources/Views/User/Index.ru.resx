@@ -69,4 +69,7 @@
     <data name="choose_photo">
         <value>Выберите фото</value>
     </data>
+    <data name="request_send">
+        <value>Заявка отправлена</value>
+    </data>
 </root>

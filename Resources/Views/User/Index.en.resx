@@ -69,4 +69,7 @@
     <data name="choose_photo">
         <value>Choose a photo</value>
     </data>
+    <data name="request_send">
+        <value>You send a request</value>
+    </data>
 </root>

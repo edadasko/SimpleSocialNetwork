@@ -160,5 +160,11 @@ namespace SimpleSocialNetwork.Resources.Views.User {
                 return ResourceManager.GetString("choose_photo", resourceCulture);
             }
         }
+        
+        internal static string request_send {
+            get {
+                return ResourceManager.GetString("request_send", resourceCulture);
+            }
+        }
     }
 }

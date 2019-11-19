@@ -50,3 +50,10 @@ The web-project made with ASP.NET Core, BSUIR 2019
 
 ## Лабораторная работа 9. Использование технологии SignalR
 * Использована технология SignalR для обмена сообщениями между пользователями без необходимости обновления страницы. 
+
+
+# Итог:
+
+![](screenshots/photo1.png)
+![](screenshots/photo2.png)
+![](screenshots/photo3.png)
